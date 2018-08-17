@@ -9,7 +9,7 @@
 
 </head>
 <body ng-app="app">
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #4b2971;border-color: #ff1bca;color:azure;">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #1f1b35ba;border-color: #00fff7;color:azure;padding-bottom:15px;padding-top:15px;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="color:azure";>
@@ -27,10 +27,10 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" style="padding-top:55px;">
         @RenderBody()
         <hr />
-        <footer>
+        <footer style="color:azure;">
             <p>&copy; @DateTime.Now.Year - FunClub</p>
         </footer>
     </div>
@@ -42,6 +42,9 @@
     <script src="~/Scripts/angular-route.min.js"></script>
 
     <script src="~/SPA/Controller/AppController.js"></script>
+    <script src="~/SPA/Controller/HomeController.js"></script>
+
+    <script src="~/SPA/Services/HomeService.js"></script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

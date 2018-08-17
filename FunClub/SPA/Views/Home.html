@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <title>Agency - Start Bootstrap Theme</title>
 
-   
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -29,168 +29,57 @@
 
     <script src="../../Content/agency.min.js"></script>
 </head>
-<body id="page-top" style="background-image: url('../../img/header-bg.jpg');">
-        
+<body style="background-image: url('../../img/header-bg.jpg');">
+
 
     <!-- Header -->
     <header class="masthead">
-        <div ng-show="!VerServicios" class="container">
+        <div ng-show="VerHeader" class="container">
             <div class="intro-text">
                 <div class="intro-lead-in">Bienvenido a FindeInnova!</div>
                 <div class="intro-heading text-uppercase">Conoce la experiencia de FunClub</div>
-                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" ng-click="VerServicios = True">Cuéntame más</a>
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" ng-click="VerHeader = false">Cuéntame más</a>
             </div>
         </div>
     </header>
-   
-    <!-- Portfolio Grid -->
-    <section class="bg-light" id="portfolio" style="padding: 10px 10px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading text-uppercase">Nuestros clientes</h2>
-                    <h3 class="section-subheading text-muted">Conoce aquellos que ya poseen FunClub en su negocio!</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="img/portfolio/01-thumbnail.jpg" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Threads</h4>
-                        <p class="text-muted">Illustration</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="img/portfolio/02-thumbnail.jpg" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Explore</h4>
-                        <p class="text-muted">Graphic Design</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="img/portfolio/03-thumbnail.jpg" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Finish</h4>
-                        <p class="text-muted">Identity</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- About -->
-   
+
     <!-- Team -->
-    <section class="bg-light" id="team" style="padding: 10px 10px;">
-        <div class="container">
+    <section class="bg-light" id="team" style="padding: 10px 10px;color:azure;">
+        <div class="container" style="border:12px; ">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading text-uppercase">Nuestro equipo</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="img/team/1.jpg" alt="">
-                        <h4>Kay Garland</h4>
-                        <p class="text-muted">Lead Designer</p>
-                        <ul class="list-inline social-buttons">
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                            </li>
-                        </ul>
+                    <div style="text-shadow:4px 4px black;">
+                        <h2 class="section-heading text-uppercase">¿Cuál es nuestra misión?</h2><h2 class="section-heading text-uppercase"><span class="glyphicon glyphicon-edit"></span></h2>
                     </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="img/team/2.jpg" alt="">
-                        <h4>Larry Parker</h4>
-                        <p class="text-muted">Lead Marketer</p>
-                        <ul class="list-inline social-buttons">
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                            </li>
-                        </ul>
+                    <div>
+                        <p style="font-size:22px; font-weight:bold;" class="section-subheading">Somos una empresa dedicada a brindar servicios de software a la industria del entretenimiento. Nuestro principal objetivo el lograr imponer nuestros servicios en la mayoría de las discotecas de Capital Federal y la provincia de Buenos Aires, logrando que nuestros clientes se sientan satisfechos no solo por la parte técnica de nuestros productos, sino que también el alto poder de generar valor en sus negocios de cara al cliente y, como resultado, procurar un notable incremento en sus beneficios económicos.</p>
                     </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
-                        <h4>Diana Pertersen</h4>
-                        <p class="text-muted">Lead Developer</p>
-                        <ul class="list-inline social-buttons">
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
                 </div>
             </div>
         </div>
     </section>
-   
-    
-    </body>
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <section class="bg-light" id="team" style="padding: 10px 10px;color:azure;">
+        <div class="container" style="border:12px; ">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div style="text-shadow:4px 4px black;">
+                        <h2 class="section-heading text-uppercase">¿A qué apuntamos?</h2>
+                        <h2 class="section-heading text-uppercase"><span class="glyphicon glyphicon-eye-open"></span></h2>
+                    </div>
+                    <div>
+                        <p style="font-size:22px; font-weight:bold;" class="section-subheading">Brindar el mejor servicio de software para entretenimientos, de la mano de los mejores profesionales en el rubro, permitiendo que nuestros clientes se vean satisfechos por la calidad y facilidad de uso, cumpliendo los requerimientos de los mismos en forma responsable, eficiente y rentable, persistiendo nuestra posición de liderazgo en el sector a largo plazo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
 </html>
