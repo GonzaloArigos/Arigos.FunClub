@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>cae8625f-a5f6-4688-a51b-03553086a2a3</ProjectGuid>
+    <ProjectGuid>{CAE8625F-A5F6-4688-A51B-03553086A2A3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DAL</RootNamespace>
@@ -30,24 +30,151 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bebida.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Beneficio.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BeneficiosAdquiridosCliente.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Beneficio_has_Consumicion.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="Cliente.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consumicion.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consumicion_Bebida.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallePagoEfectivo.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallePagoTarjetaCredito.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallePagoTarjetaDebito.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleVentaBarra.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Discoteca.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entrada.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entrada_has_Beneficio.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FunClubDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FunClubDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FunClubDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FunClubDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FunClubDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaPreciosConsumicion.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ListaPreciosEntrada.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Noche.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pago.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PrecioConsumicion.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PrecioEntrada.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VentaBarra.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VentaEntrada.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="FunClubDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FunClubDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="FunClubDb.edmx.diagram">
+      <DependentUpon>FunClubDb.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FunClubDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FunClubDb.Context.cs</LastGenOutput>
+      <DependentUpon>FunClubDb.edmx</DependentUpon>
+    </Content>
+    <Content Include="FunClubDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FunClubDb.edmx</DependentUpon>
+      <LastGenOutput>FunClubDb.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>

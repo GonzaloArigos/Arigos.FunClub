@@ -2,9 +2,36 @@
     ViewBag.Title = "Confirm Email";
 }
 
-<h2>@ViewBag.Title.</h2>
-<div>
-    <p>
-        Thank you for confirming your email. Please @Html.ActionLink("Click here to Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-    </p>
+@*<h2>@ViewBag.Title.</h2>
+    <div>
+        <p>
+            Thank you for confirming your email. Please @Html.ActionLink("Click here to Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        </p>
+    </div>*@
+
+<link href="~/Content/main.css" rel="stylesheet" />
+<br />
+<div class="row" style="color:black; text-align:center;">
+ 
+    <div class="wrap-login100" style="display: block;margin-left: auto;margin-right: auto;">
+
+        <span style="text-align:center;" class="login100-form-title p-b-48">
+            <img width="200" height="150" src="~/img/discologo.png" />
+        </span>
+
+        <section id="loginForm">
+
+            <form class="login100-form validate-form" style="display: inline-block;">
+
+                <h4>Su registro se ha completado correctamente!</h4>
+
+                <br />
+                @Html.ActionLink("Click aqui para ingresar", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+
+            </form>
+
+        </section>
+
+    </div>
+
 </div>
