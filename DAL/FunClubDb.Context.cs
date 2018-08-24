@@ -50,6 +50,7 @@ namespace DAL
         public virtual DbSet<Pago> Pagoes { get; set; }
         public virtual DbSet<PrecioConsumicion> PrecioConsumicions { get; set; }
         public virtual DbSet<PrecioEntrada> PrecioEntradas { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<VentaBarra> VentaBarras { get; set; }
         public virtual DbSet<VentaEntrada> VentaEntradas { get; set; }
     }

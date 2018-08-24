@@ -145,9 +145,9 @@
         </EntityType>
         <EntityType Name="Consumicion">
           <Key>
-            <PropertyRef Name="DetalleVentaBarraCodConsumicion" />
+            <PropertyRef Name="CodConsumicion" />
           </Key>
-          <Property Name="DetalleVentaBarraCodConsumicion" Type="int" Nullable="false" />
+          <Property Name="CodConsumicion" Type="int" Nullable="false" />
           <Property Name="Discoteca_CodDiscoteca" Type="int" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="1" />
           <Property Name="Estado" Type="int" />
@@ -231,10 +231,10 @@
         </EntityType>
         <EntityType Name="DetalleVentaBarra">
           <Key>
-            <PropertyRef Name="Consumicion_DetalleVentaBarraCodConsumicion" />
+            <PropertyRef Name="Consumicion_CodConsumicion" />
             <PropertyRef Name="VentaBarra_CodVentaBarra" />
           </Key>
-          <Property Name="Consumicion_DetalleVentaBarraCodConsumicion" Type="int" Nullable="false" />
+          <Property Name="Consumicion_CodConsumicion" Type="int" Nullable="false" />
           <Property Name="VentaBarra_CodVentaBarra" Type="int" Nullable="false" />
           <Property Name="Cantidad" Type="int" />
           <Property Name="FechaAlta" Type="datetime" />
@@ -265,8 +265,9 @@
           <Property Name="CodEntrada" Type="int" Nullable="false" />
           <Property Name="Discoteca_CodDiscoteca" Type="int" Nullable="false" />
           <Property Name="FechaRegistro" Type="date" />
-          <Property Name="Descripcion" Type="int" />
-          <Property Name="Estado" Type="bit" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="CodConsumicion" Type="int" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Entrada_has_Beneficio">
           <Key>
@@ -377,6 +378,16 @@
           <Property Name="TerminalMod" Type="varchar" MaxLength="1" />
           <Property Name="UsuarioMod" Type="varchar" MaxLength="1" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="VentaBarra">
           <Key>
             <PropertyRef Name="CodVentaBarra" />
@@ -449,7 +460,7 @@
           <End Role="Beneficio_has_Consumicion" Type="Self.Beneficio_has_Consumicion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Consumicion">
-              <PropertyRef Name="DetalleVentaBarraCodConsumicion" />
+              <PropertyRef Name="CodConsumicion" />
             </Principal>
             <Dependent Role="Beneficio_has_Consumicion">
               <PropertyRef Name="Consumicion_DetalleVentaBarraCodConsumicion" />
@@ -473,7 +484,7 @@
           <End Role="Consumicion_Bebida" Type="Self.Consumicion_Bebida" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Consumicion">
-              <PropertyRef Name="DetalleVentaBarraCodConsumicion" />
+              <PropertyRef Name="CodConsumicion" />
             </Principal>
             <Dependent Role="Consumicion_Bebida">
               <PropertyRef Name="DetalleVentaBarraConsumicion_DetalleVentaBarraCodConsumicion" />
@@ -545,10 +556,10 @@
           <End Role="DetalleVentaBarra" Type="Self.DetalleVentaBarra" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Consumicion">
-              <PropertyRef Name="DetalleVentaBarraCodConsumicion" />
+              <PropertyRef Name="CodConsumicion" />
             </Principal>
             <Dependent Role="DetalleVentaBarra">
-              <PropertyRef Name="Consumicion_DetalleVentaBarraCodConsumicion" />
+              <PropertyRef Name="Consumicion_CodConsumicion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -617,7 +628,7 @@
           <End Role="ListaPreciosConsumicion" Type="Self.ListaPreciosConsumicion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Consumicion">
-              <PropertyRef Name="DetalleVentaBarraCodConsumicion" />
+              <PropertyRef Name="CodConsumicion" />
             </Principal>
             <Dependent Role="ListaPreciosConsumicion">
               <PropertyRef Name="DetalleVentaBarraConsumicion_DetalleVentaBarraCodConsumicion" />
@@ -776,6 +787,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Entrada_Consumicion">
+          <End Role="Consumicion" Type="Self.Consumicion" Multiplicity="0..1" />
+          <End Role="Entrada" Type="Self.Entrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consumicion">
+              <PropertyRef Name="CodConsumicion" />
+            </Principal>
+            <Dependent Role="Entrada">
+              <PropertyRef Name="CodConsumicion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="FunClubModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -803,6 +826,7 @@
           <EntitySet Name="Pago" EntityType="Self.Pago" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PrecioConsumicion" EntityType="Self.PrecioConsumicion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PrecioEntrada" EntityType="Self.PrecioEntrada" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VentaBarra" EntityType="Self.VentaBarra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VentaEntrada" EntityType="Self.VentaEntrada" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Beneficio__Benef__1DB06A4F" Association="Self.FK__Beneficio__Benef__1DB06A4F">
@@ -925,6 +949,10 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
+          <AssociationSet Name="FK_Entrada_Consumicion" Association="Self.FK_Entrada_Consumicion">
+            <End Role="Consumicion" EntitySet="Consumicion" />
+            <End Role="Entrada" EntitySet="Entrada" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -956,6 +984,7 @@
           <EntitySet Name="Pagoes" EntityType="FunClubModel.Pago" />
           <EntitySet Name="PrecioConsumicions" EntityType="FunClubModel.PrecioConsumicion" />
           <EntitySet Name="PrecioEntradas" EntityType="FunClubModel.PrecioEntrada" />
+          <EntitySet Name="sysdiagrams" EntityType="FunClubModel.sysdiagram" />
           <EntitySet Name="VentaBarras" EntityType="FunClubModel.VentaBarra" />
           <EntitySet Name="VentaEntradas" EntityType="FunClubModel.VentaEntrada" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="FunClubModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -1009,6 +1038,10 @@
           <AssociationSet Name="FK__ListaPrec__Detal__1AD3FDA4" Association="FunClubModel.FK__ListaPrec__Detal__1AD3FDA4">
             <End Role="Consumicion" EntitySet="Consumicions" />
             <End Role="ListaPreciosConsumicion" EntitySet="ListaPreciosConsumicions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entrada_Consumicion" Association="FunClubModel.FK_Entrada_Consumicion">
+            <End Role="Consumicion" EntitySet="Consumicions" />
+            <End Role="Entrada" EntitySet="Entradas" />
           </AssociationSet>
           <AssociationSet Name="FK__DetallePa__Pago___74AE54BC" Association="FunClubModel.FK__DetallePa__Pago___74AE54BC">
             <End Role="Pago" EntitySet="Pagoes" />
@@ -1223,9 +1256,9 @@
         </EntityType>
         <EntityType Name="Consumicion">
           <Key>
-            <PropertyRef Name="DetalleVentaBarraCodConsumicion" />
+            <PropertyRef Name="CodConsumicion" />
           </Key>
-          <Property Name="DetalleVentaBarraCodConsumicion" Type="Int32" Nullable="false" />
+          <Property Name="CodConsumicion" Type="Int32" Nullable="false" />
           <Property Name="Discoteca_CodDiscoteca" Type="Int32" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="Int32" />
@@ -1240,6 +1273,7 @@
           <NavigationProperty Name="Discoteca" Relationship="FunClubModel.FK__Consumici__Disco__6C190EBB" FromRole="Consumicion" ToRole="Discoteca" />
           <NavigationProperty Name="DetalleVentaBarras" Relationship="FunClubModel.FK__DetalleVe__Consu__3D2915A8" FromRole="Consumicion" ToRole="DetalleVentaBarra" />
           <NavigationProperty Name="ListaPreciosConsumicions" Relationship="FunClubModel.FK__ListaPrec__Detal__1AD3FDA4" FromRole="Consumicion" ToRole="ListaPreciosConsumicion" />
+          <NavigationProperty Name="Entradas" Relationship="FunClubModel.FK_Entrada_Consumicion" FromRole="Consumicion" ToRole="Entrada" />
         </EntityType>
         <EntityType Name="Consumicion_Bebida">
           <Key>
@@ -1319,10 +1353,10 @@
         </EntityType>
         <EntityType Name="DetalleVentaBarra">
           <Key>
-            <PropertyRef Name="Consumicion_DetalleVentaBarraCodConsumicion" />
+            <PropertyRef Name="Consumicion_CodConsumicion" />
             <PropertyRef Name="VentaBarra_CodVentaBarra" />
           </Key>
-          <Property Name="Consumicion_DetalleVentaBarraCodConsumicion" Type="Int32" Nullable="false" />
+          <Property Name="Consumicion_CodConsumicion" Type="Int32" Nullable="false" />
           <Property Name="VentaBarra_CodVentaBarra" Type="Int32" Nullable="false" />
           <Property Name="Cantidad" Type="Int32" />
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
@@ -1361,8 +1395,10 @@
           <Property Name="CodEntrada" Type="Int32" Nullable="false" />
           <Property Name="Discoteca_CodDiscoteca" Type="Int32" Nullable="false" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
-          <Property Name="Descripcion" Type="Int32" />
-          <Property Name="Estado" Type="Boolean" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CodConsumicion" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Consumicion" Relationship="FunClubModel.FK_Entrada_Consumicion" FromRole="Entrada" ToRole="Consumicion" />
           <NavigationProperty Name="Discoteca" Relationship="FunClubModel.FK__Entrada__Discote__66603565" FromRole="Entrada" ToRole="Discoteca" />
           <NavigationProperty Name="Entrada_has_Beneficio" Relationship="FunClubModel.FK__Entrada_h__Entra__160F4887" FromRole="Entrada" ToRole="Entrada_has_Beneficio" />
           <NavigationProperty Name="ListaPreciosEntradas" Relationship="FunClubModel.FK__ListaPrec__Entra__778AC167" FromRole="Entrada" ToRole="ListaPreciosEntrada" />
@@ -1490,6 +1526,16 @@
           <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ListaPreciosEntradas" Relationship="FunClubModel.FK__ListaPrec__Preci__787EE5A0" FromRole="PrecioEntrada" ToRole="ListaPreciosEntrada" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="VentaBarra">
           <Key>
@@ -1621,7 +1667,7 @@
           <End Type="FunClubModel.Beneficio_has_Consumicion" Role="Beneficio_has_Consumicion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Consumicion">
-              <PropertyRef Name="DetalleVentaBarraCodConsumicion" />
+              <PropertyRef Name="CodConsumicion" />
             </Principal>
             <Dependent Role="Beneficio_has_Consumicion">
               <PropertyRef Name="Consumicion_DetalleVentaBarraCodConsumicion" />
@@ -1645,7 +1691,7 @@
           <End Type="FunClubModel.Consumicion_Bebida" Role="Consumicion_Bebida" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Consumicion">
-              <PropertyRef Name="DetalleVentaBarraCodConsumicion" />
+              <PropertyRef Name="CodConsumicion" />
             </Principal>
             <Dependent Role="Consumicion_Bebida">
               <PropertyRef Name="DetalleVentaBarraConsumicion_DetalleVentaBarraCodConsumicion" />
@@ -1669,10 +1715,10 @@
           <End Type="FunClubModel.DetalleVentaBarra" Role="DetalleVentaBarra" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Consumicion">
-              <PropertyRef Name="DetalleVentaBarraCodConsumicion" />
+              <PropertyRef Name="CodConsumicion" />
             </Principal>
             <Dependent Role="DetalleVentaBarra">
-              <PropertyRef Name="Consumicion_DetalleVentaBarraCodConsumicion" />
+              <PropertyRef Name="Consumicion_CodConsumicion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1681,10 +1727,22 @@
           <End Type="FunClubModel.ListaPreciosConsumicion" Role="ListaPreciosConsumicion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Consumicion">
-              <PropertyRef Name="DetalleVentaBarraCodConsumicion" />
+              <PropertyRef Name="CodConsumicion" />
             </Principal>
             <Dependent Role="ListaPreciosConsumicion">
               <PropertyRef Name="DetalleVentaBarraConsumicion_DetalleVentaBarraCodConsumicion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entrada_Consumicion">
+          <End Type="FunClubModel.Consumicion" Role="Consumicion" Multiplicity="0..1" />
+          <End Type="FunClubModel.Entrada" Role="Entrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consumicion">
+              <PropertyRef Name="CodConsumicion" />
+            </Principal>
+            <Dependent Role="Entrada">
+              <PropertyRef Name="CodConsumicion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2025,7 +2083,7 @@
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Discoteca_CodDiscoteca" ColumnName="Discoteca_CodDiscoteca" />
-                <ScalarProperty Name="DetalleVentaBarraCodConsumicion" ColumnName="DetalleVentaBarraCodConsumicion" />
+                <ScalarProperty Name="CodConsumicion" ColumnName="CodConsumicion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2111,7 +2169,7 @@
                 <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="VentaBarra_CodVentaBarra" ColumnName="VentaBarra_CodVentaBarra" />
-                <ScalarProperty Name="Consumicion_DetalleVentaBarraCodConsumicion" ColumnName="Consumicion_DetalleVentaBarraCodConsumicion" />
+                <ScalarProperty Name="Consumicion_CodConsumicion" ColumnName="Consumicion_CodConsumicion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2134,6 +2192,7 @@
             <EntityTypeMapping TypeName="FunClubModel.Entrada">
               <MappingFragment StoreEntitySet="Entrada">
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="CodConsumicion" ColumnName="CodConsumicion" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
                 <ScalarProperty Name="Discoteca_CodDiscoteca" ColumnName="Discoteca_CodDiscoteca" />
@@ -2251,6 +2310,17 @@
                 <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
                 <ScalarProperty Name="CodPrecioEntrada" ColumnName="CodPrecioEntrada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FunClubModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

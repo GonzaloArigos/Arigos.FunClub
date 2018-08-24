@@ -25,9 +25,11 @@ namespace DAL
         public int CodEntrada { get; set; }
         public int Discoteca_CodDiscoteca { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
-        public Nullable<int> Descripcion { get; set; }
-        public Nullable<bool> Estado { get; set; }
+        public string Descripcion { get; set; }
+        public Nullable<int> CodConsumicion { get; set; }
+        public string Estado { get; set; }
     
+        public virtual Consumicion Consumicion { get; set; }
         public virtual Discoteca Discoteca { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Entrada_has_Beneficio> Entrada_has_Beneficio { get; set; }

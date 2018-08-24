@@ -5,19 +5,23 @@
     {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right" >
+        <ul class="nav navbar-nav navbar-right">
             <li>
-                @Html.ActionLink("Gestión de cuenta", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" , style = "color:azure;" })
+             <a style="color:azure;" href="/Manage">Gestión de cuenta</a>
             </li>
-            <li>@Html.ActionLink("Salir", "LogOff", "Account", routeValues: null, htmlAttributes: new { id = "logofflink", style = "color:azure;" })</li>
-        </ul>
 
+            <li>
+               <a style="color:azure;" href="/Account/LogOff">Salir</a>
+                @*<span class="glyphicon glyphicon-log-out"></span>@Html.ActionLink("Salir", "LogOff", "Account", routeValues: null, htmlAttributes: new { id = "logofflink", style = "color:azure;" })*@
+            </li>
+        </ul>
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right" >
+    <ul class="nav navbar-nav navbar-right">
         @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
-        <h4><span class="glyphicon glyphicon-log-in"></span>    @Html.ActionLink("Ingresar a FunClub!", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", style = "color:azure;" })</h4>
+        <a href="/Account/Login"><button style="padding-top:15%; padding-bottom:15%;border-top:0px;border-bottom:0px;background-color:transparent;color:azure;border-right:10px;border-left:10px;border-color:azure;" class="btn"><span class="glyphicon glyphicon-log-in"></span> Acceso clientes</button></a>
+       @*@Html.ActionLink("Ingresar a FunClub!", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", style = "color:azure;" })*@
     </ul>
 }

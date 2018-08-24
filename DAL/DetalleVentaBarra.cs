@@ -14,7 +14,7 @@ namespace DAL
     
     public partial class DetalleVentaBarra
     {
-        public int Consumicion_DetalleVentaBarraCodConsumicion { get; set; }
+        public int Consumicion_CodConsumicion { get; set; }
         public int VentaBarra_CodVentaBarra { get; set; }
         public Nullable<int> Cantidad { get; set; }
         public Nullable<System.DateTime> FechaAlta { get; set; }

@@ -43,7 +43,7 @@ namespace FunClub
             msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html));
 
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", Convert.ToInt32(587));
-            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("gonzaloarigos@gmail.com", "0021118603");
+            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("gonzaloarigos@gmail.com", "0021118603River");
             smtpClient.Credentials = credentials;
             smtpClient.EnableSsl = true;
             smtpClient.Send(msg);

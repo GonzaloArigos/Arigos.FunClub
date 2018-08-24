@@ -91,7 +91,7 @@
     <div class="container-fluid" style="padding-top:2%">
         <div class="row">
             <div class="col-md-12">
-                <div class="jumbotron" style="background:url('../../img/header-bg.jpg');text-align:center;color:azure;padding-top:5%;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
+                <div class="jumbotron" style="background:url('https://media.giphy.com/media/eJs0r95CHD8Xu/giphy.gif');text-align:center;color:azure;padding-top:5%;padding-bottom:5%;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
                    
                         <h1 style="text-shadow:5px 5px black;">
                             Conoce FunClub!
@@ -102,10 +102,11 @@
                         </h2>
               
                     <br />
-                    <a ng-click="VerPlanes = true;">
-                        <button style="font-size:25px;text-shadow:2px 2px black;" class="btn btn-primary parpadea"><span class="glyphicon glyphicon-check"></span> Solicitá tu demo!</button>
+                   
+                    <a ng-click="VerPlanes == false ? VerPlanes = true : VerPlanes = false;">
+                        <button style="font-size:25px;text-shadow:2px 2px black;" class="btn btn-primary"><span class="glyphicon glyphicon-check"></span> Solicitá tu demo!</button>
                     </a>
-                        <br />
+               
                 </div>
             </div>
         </div>
@@ -345,7 +346,7 @@
 
 
     <!-- Team -->
-    <section ng-show="!VerPlanes" id="team" style="padding: 10px 10px;color:azure;">
+    <section ng-show="VerQuienes && !VerPlanes" id="team" style="padding: 10px 10px;color:azure;">
         <div class="container" style="border:12px; ">
             <div class="row">
                 <div class="jumbotron col-lg-12 text-center" style="background-color:#100f0f96;">
@@ -360,7 +361,7 @@
         </div>
     </section>
 
-    <section ng-show="!VerPlanes" id="team" style="padding: 10px 10px;color:azure;">
+    <section ng-show="VerQuienes && !VerPlanes" id="team" style="padding: 10px 10px;color:azure;">
         <div class="container" style="border:12px; ">
             <div class="row">
                 <div style="background-color:#100f0f96;" class="jumbotron col-lg-12 text-center">
