@@ -30,7 +30,6 @@ namespace DAL
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
-        public virtual DbSet<Bebida> Bebidas { get; set; }
         public virtual DbSet<Beneficio> Beneficios { get; set; }
         public virtual DbSet<Beneficio_has_Consumicion> Beneficio_has_Consumicion { get; set; }
         public virtual DbSet<BeneficiosAdquiridosCliente> BeneficiosAdquiridosClientes { get; set; }
@@ -50,6 +49,7 @@ namespace DAL
         public virtual DbSet<Pago> Pagoes { get; set; }
         public virtual DbSet<PrecioConsumicion> PrecioConsumicions { get; set; }
         public virtual DbSet<PrecioEntrada> PrecioEntradas { get; set; }
+        public virtual DbSet<Producto> Productoes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<VentaBarra> VentaBarras { get; set; }
         public virtual DbSet<VentaEntrada> VentaEntradas { get; set; }

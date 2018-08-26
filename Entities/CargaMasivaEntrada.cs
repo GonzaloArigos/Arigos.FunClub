@@ -9,6 +9,8 @@ namespace Entities
     public class CargaMasivaEntrada
     {
         public List<DAL.Entrada> Registradas { get; set; }
+
+        public List<DAL.Entrada> Error { get; set; }
         public List<DAL.Entrada> Excluidas { get; set; }
 
     }

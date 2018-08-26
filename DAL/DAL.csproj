@@ -61,9 +61,6 @@
     <Compile Include="AspNetUserLogin.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Bebida.cs">
-      <DependentUpon>FunClubDb.tt</DependentUpon>
-    </Compile>
     <Compile Include="Beneficio.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
@@ -138,6 +135,9 @@
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
     <Compile Include="PrecioEntrada.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Producto.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

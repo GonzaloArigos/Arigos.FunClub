@@ -1,4 +1,4 @@
-﻿var app = angular.module("app", ['ngRoute']);
+﻿var app = angular.module("app", ['ngRoute', 'ngFileUpload']);
 
 app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -6,6 +6,11 @@ app.config(function ($routeProvider, $locationProvider) {
         {
             templateUrl: 'SPA/Views/Home.html',
             controller: 'HomeController'
+        })
+        .when('/CargaMasiva',
+        {
+            templateUrl: 'SPA/Views/CargaMasiva.html',
+            controller: 'CargaMasivaController'
         })
         .when('/Logoff',
         {

@@ -12,16 +12,16 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Bebida
+    public partial class Producto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Bebida()
+        public Producto()
         {
             this.Consumicion_Bebida = new HashSet<Consumicion_Bebida>();
         }
     
-        public int DetalleVentaBarraCodBebida { get; set; }
-        public Nullable<int> Descripcion { get; set; }
+        public int CodBebida { get; set; }
+        public string Descripcion { get; set; }
         public Nullable<System.DateTime> FechaAlta { get; set; }
         public string TerminalAlta { get; set; }
         public string UsuarioAlta { get; set; }

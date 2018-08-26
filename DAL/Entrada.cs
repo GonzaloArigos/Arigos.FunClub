@@ -17,25 +17,19 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Entrada()
         {
-            this.Entrada_has_Beneficio = new HashSet<Entrada_has_Beneficio>();
-            this.ListaPreciosEntradas = new HashSet<ListaPreciosEntrada>();
-            this.VentaEntradas = new HashSet<VentaEntrada>();
+            this.PrecioEntradas = new HashSet<PrecioEntrada>();
         }
     
         public int CodEntrada { get; set; }
         public int Discoteca_CodDiscoteca { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
         public string Descripcion { get; set; }
-        public Nullable<int> CodConsumicion { get; set; }
+        public int CodConsumicion { get; set; }
         public string Estado { get; set; }
     
         public virtual Consumicion Consumicion { get; set; }
         public virtual Discoteca Discoteca { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Entrada_has_Beneficio> Entrada_has_Beneficio { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ListaPreciosEntrada> ListaPreciosEntradas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VentaEntrada> VentaEntradas { get; set; }
+        public virtual ICollection<PrecioEntrada> PrecioEntradas { get; set; }
     }
 }

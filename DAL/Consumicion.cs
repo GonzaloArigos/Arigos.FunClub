@@ -17,17 +17,14 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Consumicion()
         {
-            this.Beneficio_has_Consumicion = new HashSet<Beneficio_has_Consumicion>();
-            this.Consumicion_Bebida = new HashSet<Consumicion_Bebida>();
-            this.DetalleVentaBarras = new HashSet<DetalleVentaBarra>();
-            this.ListaPreciosConsumicions = new HashSet<ListaPreciosConsumicion>();
             this.Entradas = new HashSet<Entrada>();
+            this.PrecioConsumicions = new HashSet<PrecioConsumicion>();
         }
     
         public int CodConsumicion { get; set; }
         public int Discoteca_CodDiscoteca { get; set; }
         public string Descripcion { get; set; }
-        public Nullable<int> Estado { get; set; }
+        public string Estado { get; set; }
         public Nullable<System.DateTime> FechaAlta { get; set; }
         public string TerminalAlta { get; set; }
         public string UsuarioAlta { get; set; }
@@ -35,16 +32,10 @@ namespace DAL
         public string TerminalMod { get; set; }
         public string UsuarioMod { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Beneficio_has_Consumicion> Beneficio_has_Consumicion { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Consumicion_Bebida> Consumicion_Bebida { get; set; }
         public virtual Discoteca Discoteca { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetalleVentaBarra> DetalleVentaBarras { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ListaPreciosConsumicion> ListaPreciosConsumicions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Entrada> Entradas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PrecioConsumicion> PrecioConsumicions { get; set; }
     }
 }

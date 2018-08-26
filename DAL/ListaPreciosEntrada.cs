@@ -22,8 +22,7 @@ namespace DAL
         public Nullable<System.DateTime> FechaMod { get; set; }
         public string TerminalMod { get; set; }
         public string UsuarioMod { get; set; }
-    
-        public virtual Entrada Entrada { get; set; }
-        public virtual PrecioEntrada PrecioEntrada { get; set; }
+        public Nullable<System.DateTime> FechaVigencia { get; set; }
+        public Nullable<int> Puntos { get; set; }
     }
 }

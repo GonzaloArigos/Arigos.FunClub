@@ -22,8 +22,5 @@ namespace DAL
         public Nullable<System.DateTime> FechaMod { get; set; }
         public string TerminalMod { get; set; }
         public string UsuarioMod { get; set; }
-    
-        public virtual Consumicion Consumicion { get; set; }
-        public virtual PrecioConsumicion PrecioConsumicion { get; set; }
     }
 }

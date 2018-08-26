@@ -14,12 +14,6 @@ namespace DAL
     
     public partial class PrecioEntrada
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PrecioEntrada()
-        {
-            this.ListaPreciosEntradas = new HashSet<ListaPreciosEntrada>();
-        }
-    
         public int CodPrecioEntrada { get; set; }
         public Nullable<decimal> Precio { get; set; }
         public Nullable<System.DateTime> FechaInicio { get; set; }
@@ -31,8 +25,10 @@ namespace DAL
         public Nullable<System.DateTime> FechaMod { get; set; }
         public string TerminalMod { get; set; }
         public string UsuarioMod { get; set; }
+        public Nullable<int> Puntos { get; set; }
+        public int CodEntrada { get; set; }
+        public int CodDiscoteca { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ListaPreciosEntrada> ListaPreciosEntradas { get; set; }
+        public virtual Entrada Entrada { get; set; }
     }
 }

@@ -14,16 +14,16 @@ namespace DAL
     
     public partial class Consumicion_Bebida
     {
-        public int DetalleVentaBarraConsumicion_DetalleVentaBarraCodConsumicion { get; set; }
-        public int DetalleVentaBarraBebida_DetalleVentaBarraCodBebida { get; set; }
+        public int CodConsumicion { get; set; }
+        public int CodBebida { get; set; }
         public Nullable<System.DateTime> FechaAlta { get; set; }
         public string TerminalAlta { get; set; }
         public string UsuarioAlta { get; set; }
         public Nullable<System.DateTime> FechaMod { get; set; }
         public string TerminalMod { get; set; }
         public string UsuarioMod { get; set; }
+        public int Cantidad { get; set; }
     
-        public virtual Bebida Bebida { get; set; }
-        public virtual Consumicion Consumicion { get; set; }
+        public virtual Producto Producto { get; set; }
     }
 }

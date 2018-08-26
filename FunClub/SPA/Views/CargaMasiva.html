@@ -1,0 +1,148 @@
+﻿<br />
+<div class="container">
+    <div class="" style="text-align:center;">
+        <br />
+        <h1>Carga masiva de entradas</h1>
+
+        <div ng-show="!Cargando && !Ok">
+
+            <h3>Selecciona un archivo excel de su ordenador</h3>
+            <br />
+            <button class="btn btn-primary" type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+                    accept="xls" ngf-max-height="3000" ngf-max-size="3MB">
+                <span class="glyphicon glyphicon-search"></span> Buscar Archivo
+            </button>
+            <br>
+            <div ng-show="errorMsg" class="alert alert-danger" role="alert" style="margin-top:2%">
+                {{errorMsg}}
+            </div>
+            <br>
+            <h4>¿No conoces el formato del archivo a cargar? Descarga nuestro archivo de ejemplo!</h4>
+            <h4><button ng-click="DescargarEntradasEjemplo()" class="btn btn-success"> <span class="glyphicon glyphicon-download"></span> Descargar</button></h4>
+        </div>
+
+        <div ng-show="Cargando && !Ok">
+            <span> <img src="https://loading.io/spinners/balls/lg.circle-slack-loading-icon.gif" /></span><h3> Procesando información</h3>
+        </div>
+        <div ng-show="!Cargando && Ok">
+
+            <h4>
+                Archivo cargado:
+                <div style="font:smaller; text-decoration:underline;color:blue;">
+                    {{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+                    <span class="progress" ng-show="f.progress >= 0">
+                        <div style="width:{{f.progress}}%"
+                             ng-bind="f.progress + '%'"></div>
+                    </span>
+                </div>
+            </h4>
+
+
+            <h2><span class="glyphicon glyphicon-ok"></span> Proceso finalizado</h2>
+
+            <div style="background-color:#100f0f96;padding-top:5px;padding-bottom:10px">
+                <h3>Registros correctos</h3>
+                <p>Los siguientes registros fueron guardados correctamente</p>
+                <button ng-click="VerCorrectos != true ? VerCorrectos = true : VerCorrectos = false;" class="btn btn-success"><span class="glyphicon glyphicon-info-sign"></span> Ver detalle ({{Resultado.Registradas.length}})</button>
+                <table class="table" ng-show="VerCorrectos">
+                    <thead>
+                        <tr>
+                            <th>Descripcion</th>
+                            <th>CodConsumicon</th>
+                            <th>CodDiscoteca</th>
+                            <th>Estado</th>
+                            <th>Precio</th>
+                            <th>Puntos</th>
+                            <th>FechaInicioPrecio</th>
+                            <th>FechaFinPrecio</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:left;">
+                        <tr ng-repeat="x in Resultado.Registradas">
+                            <td>{{x.Descripcion}}</td>
+                            <td>{{x.CodConsumicion}}</td>
+                            <td>{{x.Discoteca_CodDiscoteca}}</td>
+                            <td>{{x.Estado}}</td>
+                            <td>{{x.PrecioEntradas[0].Precio}}</td>
+                            <td>{{x.PrecioEntradas[0].Puntos}}</td>
+                            <td>{{x.PrecioEntradas[0].FechaInicio}}</td>
+                            <td>{{x.PrecioEntradas[0].FechaFin}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr />
+            <div style="background-color:#100f0f96;padding-top:5px;padding-bottom:10px">
+                <h3>Registros excluidos</h3>
+                <p>Los siguientes registros no fueron guardados debido que ya se encontraba una entrada con la consumición seleccionada en la base de datos:</p>
+                <button ng-click="VerEx != true ? VerEx = true : VerEx = false;" class="btn btn-primary"><span class="glyphicon glyphicon-info-sign"></span> Ver detalle ({{Resultado.Excluidas.length}})</button>
+                <table ng-show="VerEx" class="table">
+                    <thead>
+                        <tr>
+                            <th>Descripcion</th>
+                            <th>CodConsumicon</th>
+                            <th>CodDiscoteca</th>
+                            <th>Estado</th>
+                            <th>Precio</th>
+                            <th>Puntos</th>
+                            <th>FechaInicioPrecio</th>
+                            <th>FechaFinPrecio</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:left;">
+                        <tr ng-repeat="x in Resultado.Excluidas">
+                            <td>{{x.Descripcion}}</td>
+                            <td>{{x.CodConsumicion}}</td>
+                            <td>{{x.Discoteca_CodDiscoteca}}</td>
+                            <td>{{x.Estado}}</td>
+                            <td>{{x.PrecioEntradas[0].Precio}}</td>
+                            <td>{{x.PrecioEntradas[0].Puntos}}</td>
+                            <td>{{x.PrecioEntradas[0].FechaInicio}}</td>
+                            <td>{{x.PrecioEntradas[0].FechaFin}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <hr />
+            <div style="background-color:#100f0f96;padding-top:5px;padding-bottom:10px">
+                <h3>Registros con error</h3>
+                <p>Los siguientes registros no fueron guardados debido que los datos ingresados no eran correctos:</p>
+                <button ng-click="VerErr != true ? VerErr = true : VerErr = false;" class="btn btn-warning"><span class="glyphicon glyphicon-info-sign"></span> Ver detalle ({{Resultado.Error.length}})</button>
+                <table ng-show="VerErr" class="table">
+                    <thead>
+                        <tr>
+                            <th>Entrada</th>
+                            <th>Consumicon</th>
+                            <th>Discoteca</th>
+                            <th>Estado</th>
+                            <th>Precio</th>
+                            <th>Puntos</th>
+                            <th>FechaInicioPrecio</th>
+                            <th>FechaFinPrecio</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:left;">
+                        <tr ng-repeat="x in Resultado.Error">
+                            <td>{{x.Descripcion}}</td>
+                            <td>{{x.CodConsumicion}}</td>
+                            <td>{{x.Discoteca_CodDiscoteca}}</td>
+                            <td>{{x.Estado}}</td>
+                            <td>{{x.PrecioEntradas[0].Precio}}</td>
+                            <td>{{x.PrecioEntradas[0].Puntos}}</td>
+                            <td>{{x.PrecioEntradas[0].FechaInicio}}</td>
+                            <td>{{x.PrecioEntradas[0].FechaFin}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

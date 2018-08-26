@@ -14,13 +14,7 @@ namespace DAL
     
     public partial class PrecioConsumicion
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PrecioConsumicion()
-        {
-            this.ListaPreciosConsumicions = new HashSet<ListaPreciosConsumicion>();
-        }
-    
-        public int DetalleVentaBarraCodPrecioConsumicion { get; set; }
+        public int CodPrecioConsumicion { get; set; }
         public Nullable<System.DateTime> FechaVigencia { get; set; }
         public Nullable<System.DateTime> FechaFin { get; set; }
         public Nullable<decimal> Precio { get; set; }
@@ -31,8 +25,10 @@ namespace DAL
         public Nullable<System.DateTime> FechaMod { get; set; }
         public string TerminalMod { get; set; }
         public string UsuarioMod { get; set; }
+        public Nullable<int> Puntos { get; set; }
+        public int CodConsumicion { get; set; }
+        public int CodDiscoteca { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ListaPreciosConsumicion> ListaPreciosConsumicions { get; set; }
+        public virtual Consumicion Consumicion { get; set; }
     }
 }

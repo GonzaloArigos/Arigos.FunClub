@@ -9,8 +9,7 @@ namespace Tests
         [TestMethod]
         public void CargarExcel()
         {
-            var excelsl = new SL.Excel();
-            excelsl.Leer(@"C:\users\garigos\Desktop\EL.xls");
+         
         }
     }
 }

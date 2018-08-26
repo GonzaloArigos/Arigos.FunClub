@@ -66,19 +66,6 @@
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
-        <EntityType Name="Bebida">
-          <Key>
-            <PropertyRef Name="DetalleVentaBarraCodBebida" />
-          </Key>
-          <Property Name="DetalleVentaBarraCodBebida" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="int" />
-          <Property Name="FechaAlta" Type="datetime" />
-          <Property Name="TerminalAlta" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioAlta" Type="varchar" MaxLength="1" />
-          <Property Name="FechaMod" Type="datetime" />
-          <Property Name="TerminalMod" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioMod" Type="varchar" MaxLength="1" />
-        </EntityType>
         <EntityType Name="Beneficio">
           <Key>
             <PropertyRef Name="CodBeneficio" />
@@ -146,31 +133,33 @@
         <EntityType Name="Consumicion">
           <Key>
             <PropertyRef Name="CodConsumicion" />
+            <PropertyRef Name="Discoteca_CodDiscoteca" />
           </Key>
           <Property Name="CodConsumicion" Type="int" Nullable="false" />
           <Property Name="Discoteca_CodDiscoteca" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="1" />
-          <Property Name="Estado" Type="int" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
           <Property Name="FechaAlta" Type="datetime" />
-          <Property Name="TerminalAlta" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioAlta" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalAlta" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioAlta" Type="varchar" MaxLength="100" />
           <Property Name="FechaMod" Type="datetime" />
-          <Property Name="TerminalMod" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioMod" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalMod" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioMod" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Consumicion_Bebida">
           <Key>
-            <PropertyRef Name="DetalleVentaBarraConsumicion_DetalleVentaBarraCodConsumicion" />
-            <PropertyRef Name="DetalleVentaBarraBebida_DetalleVentaBarraCodBebida" />
+            <PropertyRef Name="CodConsumicion" />
+            <PropertyRef Name="CodBebida" />
           </Key>
-          <Property Name="DetalleVentaBarraConsumicion_DetalleVentaBarraCodConsumicion" Type="int" Nullable="false" />
-          <Property Name="DetalleVentaBarraBebida_DetalleVentaBarraCodBebida" Type="int" Nullable="false" />
+          <Property Name="CodConsumicion" Type="int" Nullable="false" />
+          <Property Name="CodBebida" Type="int" Nullable="false" />
           <Property Name="FechaAlta" Type="datetime" />
-          <Property Name="TerminalAlta" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioAlta" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalAlta" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioAlta" Type="varchar" MaxLength="100" />
           <Property Name="FechaMod" Type="datetime" />
-          <Property Name="TerminalMod" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioMod" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalMod" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioMod" Type="varchar" MaxLength="100" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="DetallePagoEfectivo">
           <Key>
@@ -249,24 +238,25 @@
             <PropertyRef Name="CodDiscoteca" />
           </Key>
           <Property Name="CodDiscoteca" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="1" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" />
           <Property Name="Productiva" Type="bit" />
           <Property Name="FechaAlta" Type="datetime" />
-          <Property Name="TerminalAlta" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioAlta" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalAlta" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioAlta" Type="varchar" MaxLength="100" />
           <Property Name="FechaMod" Type="datetime" />
-          <Property Name="TerminalMod" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioMod" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalMod" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioMod" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Entrada">
           <Key>
             <PropertyRef Name="CodEntrada" />
+            <PropertyRef Name="Discoteca_CodDiscoteca" />
           </Key>
           <Property Name="CodEntrada" Type="int" Nullable="false" />
           <Property Name="Discoteca_CodDiscoteca" Type="int" Nullable="false" />
           <Property Name="FechaRegistro" Type="date" />
           <Property Name="Descripcion" Type="varchar" MaxLength="255" />
-          <Property Name="CodConsumicion" Type="int" />
+          <Property Name="CodConsumicion" Type="int" Nullable="false" />
           <Property Name="Estado" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Entrada_has_Beneficio">
@@ -306,11 +296,13 @@
           <Property Name="Entrada_CodEntrada" Type="int" Nullable="false" />
           <Property Name="PrecioEntrada_CodPrecioEntrada" Type="int" Nullable="false" />
           <Property Name="FechaAlta" Type="datetime" />
-          <Property Name="TerminalAlta" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioAlta" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalAlta" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioAlta" Type="varchar" MaxLength="100" />
           <Property Name="FechaMod" Type="datetime" />
-          <Property Name="TerminalMod" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioMod" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalMod" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioMod" Type="varchar" MaxLength="100" />
+          <Property Name="FechaVigencia" Type="datetime" />
+          <Property Name="Puntos" Type="int" />
         </EntityType>
         <EntityType Name="Noche">
           <Key>
@@ -348,35 +340,58 @@
         </EntityType>
         <EntityType Name="PrecioConsumicion">
           <Key>
-            <PropertyRef Name="DetalleVentaBarraCodPrecioConsumicion" />
+            <PropertyRef Name="CodPrecioConsumicion" />
+            <PropertyRef Name="CodConsumicion" />
+            <PropertyRef Name="CodDiscoteca" />
           </Key>
-          <Property Name="DetalleVentaBarraCodPrecioConsumicion" Type="int" Nullable="false" />
+          <Property Name="CodPrecioConsumicion" Type="int" Nullable="false" />
           <Property Name="FechaVigencia" Type="date" />
           <Property Name="FechaFin" Type="date" />
           <Property Name="Precio" Type="money" />
-          <Property Name="Observaciones" Type="varchar" MaxLength="1" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="255" />
           <Property Name="FechaAlta" Type="datetime" />
-          <Property Name="TerminalAlta" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioAlta" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalAlta" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioAlta" Type="varchar" MaxLength="100" />
           <Property Name="FechaMod" Type="datetime" />
-          <Property Name="TerminalMod" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioMod" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalMod" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioMod" Type="varchar" MaxLength="100" />
+          <Property Name="Puntos" Type="int" />
+          <Property Name="CodConsumicion" Type="int" Nullable="false" />
+          <Property Name="CodDiscoteca" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PrecioEntrada">
           <Key>
             <PropertyRef Name="CodPrecioEntrada" />
+            <PropertyRef Name="CodEntrada" />
+            <PropertyRef Name="CodDiscoteca" />
           </Key>
           <Property Name="CodPrecioEntrada" Type="int" Nullable="false" />
           <Property Name="Precio" Type="money" />
           <Property Name="FechaInicio" Type="date" />
           <Property Name="FechaFin" Type="date" />
-          <Property Name="Observaciones" Type="varchar" MaxLength="1" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="255" />
           <Property Name="FechaAlta" Type="datetime" />
-          <Property Name="TerminalAlta" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioAlta" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalAlta" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioAlta" Type="varchar" MaxLength="100" />
           <Property Name="FechaMod" Type="datetime" />
-          <Property Name="TerminalMod" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioMod" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalMod" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioMod" Type="varchar" MaxLength="100" />
+          <Property Name="Puntos" Type="int" />
+          <Property Name="CodEntrada" Type="int" Nullable="false" />
+          <Property Name="CodDiscoteca" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="CodBebida" />
+          </Key>
+          <Property Name="CodBebida" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="TerminalAlta" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioAlta" Type="varchar" MaxLength="100" />
+          <Property Name="FechaMod" Type="datetime" />
+          <Property Name="TerminalMod" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioMod" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -455,18 +470,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Beneficio__Consu__22751F6C">
-          <End Role="Consumicion" Type="Self.Consumicion" Multiplicity="1" />
-          <End Role="Beneficio_has_Consumicion" Type="Self.Beneficio_has_Consumicion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Consumicion">
-              <PropertyRef Name="CodConsumicion" />
-            </Principal>
-            <Dependent Role="Beneficio_has_Consumicion">
-              <PropertyRef Name="Consumicion_DetalleVentaBarraCodConsumicion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Beneficio__Disco__6EF57B66">
           <End Role="Discoteca" Type="Self.Discoteca" Multiplicity="1" />
           <End Role="Beneficio" Type="Self.Beneficio" Multiplicity="*" />
@@ -479,27 +482,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Consumici__Detal__25518C17">
-          <End Role="Consumicion" Type="Self.Consumicion" Multiplicity="1" />
-          <End Role="Consumicion_Bebida" Type="Self.Consumicion_Bebida" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Consumicion">
-              <PropertyRef Name="CodConsumicion" />
-            </Principal>
-            <Dependent Role="Consumicion_Bebida">
-              <PropertyRef Name="DetalleVentaBarraConsumicion_DetalleVentaBarraCodConsumicion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Consumici__Detal__2645B050">
-          <End Role="Bebida" Type="Self.Bebida" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
           <End Role="Consumicion_Bebida" Type="Self.Consumicion_Bebida" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Bebida">
-              <PropertyRef Name="DetalleVentaBarraCodBebida" />
+            <Principal Role="Producto">
+              <PropertyRef Name="CodBebida" />
             </Principal>
             <Dependent Role="Consumicion_Bebida">
-              <PropertyRef Name="DetalleVentaBarraBebida_DetalleVentaBarraCodBebida" />
+              <PropertyRef Name="CodBebida" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -551,18 +542,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DetalleVe__Consu__3D2915A8">
-          <End Role="Consumicion" Type="Self.Consumicion" Multiplicity="1" />
-          <End Role="DetalleVentaBarra" Type="Self.DetalleVentaBarra" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Consumicion">
-              <PropertyRef Name="CodConsumicion" />
-            </Principal>
-            <Dependent Role="DetalleVentaBarra">
-              <PropertyRef Name="Consumicion_CodConsumicion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__DetalleVe__Venta__3C34F16F">
           <End Role="VentaBarra" Type="Self.VentaBarra" Multiplicity="1" />
           <End Role="DetalleVentaBarra" Type="Self.DetalleVentaBarra" Multiplicity="*" />
@@ -596,66 +575,6 @@
             </Principal>
             <Dependent Role="Entrada_has_Beneficio">
               <PropertyRef Name="Beneficio_CodBeneficio" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Entrada_h__Entra__160F4887">
-          <End Role="Entrada" Type="Self.Entrada" Multiplicity="1" />
-          <End Role="Entrada_has_Beneficio" Type="Self.Entrada_has_Beneficio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Entrada">
-              <PropertyRef Name="CodEntrada" />
-            </Principal>
-            <Dependent Role="Entrada_has_Beneficio">
-              <PropertyRef Name="Entrada_CodEntrada" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ListaPrec__Detal__19DFD96B">
-          <End Role="PrecioConsumicion" Type="Self.PrecioConsumicion" Multiplicity="1" />
-          <End Role="ListaPreciosConsumicion" Type="Self.ListaPreciosConsumicion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PrecioConsumicion">
-              <PropertyRef Name="DetalleVentaBarraCodPrecioConsumicion" />
-            </Principal>
-            <Dependent Role="ListaPreciosConsumicion">
-              <PropertyRef Name="DetalleVentaBarraPrecioConsumicion_DetalleVentaBarraCodPrecioConsumicion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ListaPrec__Detal__1AD3FDA4">
-          <End Role="Consumicion" Type="Self.Consumicion" Multiplicity="1" />
-          <End Role="ListaPreciosConsumicion" Type="Self.ListaPreciosConsumicion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Consumicion">
-              <PropertyRef Name="CodConsumicion" />
-            </Principal>
-            <Dependent Role="ListaPreciosConsumicion">
-              <PropertyRef Name="DetalleVentaBarraConsumicion_DetalleVentaBarraCodConsumicion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ListaPrec__Entra__778AC167">
-          <End Role="Entrada" Type="Self.Entrada" Multiplicity="1" />
-          <End Role="ListaPreciosEntrada" Type="Self.ListaPreciosEntrada" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Entrada">
-              <PropertyRef Name="CodEntrada" />
-            </Principal>
-            <Dependent Role="ListaPreciosEntrada">
-              <PropertyRef Name="Entrada_CodEntrada" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ListaPrec__Preci__787EE5A0">
-          <End Role="PrecioEntrada" Type="Self.PrecioEntrada" Multiplicity="1" />
-          <End Role="ListaPreciosEntrada" Type="Self.ListaPreciosEntrada" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PrecioEntrada">
-              <PropertyRef Name="CodPrecioEntrada" />
-            </Principal>
-            <Dependent Role="ListaPreciosEntrada">
-              <PropertyRef Name="PrecioEntrada_CodPrecioEntrada" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -704,18 +623,6 @@
             </Principal>
             <Dependent Role="VentaEntrada">
               <PropertyRef Name="Discoteca_CodDiscoteca" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__VentaEntr__Entra__0E6E26BF">
-          <End Role="Entrada" Type="Self.Entrada" Multiplicity="1" />
-          <End Role="VentaEntrada" Type="Self.VentaEntrada" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Entrada">
-              <PropertyRef Name="CodEntrada" />
-            </Principal>
-            <Dependent Role="VentaEntrada">
-              <PropertyRef Name="Entrada_CodEntrada" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -788,14 +695,44 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Entrada_Consumicion">
-          <End Role="Consumicion" Type="Self.Consumicion" Multiplicity="0..1" />
+          <End Role="Consumicion" Type="Self.Consumicion" Multiplicity="1" />
           <End Role="Entrada" Type="Self.Entrada" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Consumicion">
               <PropertyRef Name="CodConsumicion" />
+              <PropertyRef Name="Discoteca_CodDiscoteca" />
             </Principal>
             <Dependent Role="Entrada">
               <PropertyRef Name="CodConsumicion" />
+              <PropertyRef Name="Discoteca_CodDiscoteca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrecioConsumicion_Consumicion">
+          <End Role="Consumicion" Type="Self.Consumicion" Multiplicity="1" />
+          <End Role="PrecioConsumicion" Type="Self.PrecioConsumicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consumicion">
+              <PropertyRef Name="CodConsumicion" />
+              <PropertyRef Name="Discoteca_CodDiscoteca" />
+            </Principal>
+            <Dependent Role="PrecioConsumicion">
+              <PropertyRef Name="CodConsumicion" />
+              <PropertyRef Name="CodDiscoteca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrecioEntrada_Entrada">
+          <End Role="Entrada" Type="Self.Entrada" Multiplicity="1" />
+          <End Role="PrecioEntrada" Type="Self.PrecioEntrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entrada">
+              <PropertyRef Name="CodEntrada" />
+              <PropertyRef Name="Discoteca_CodDiscoteca" />
+            </Principal>
+            <Dependent Role="PrecioEntrada">
+              <PropertyRef Name="CodEntrada" />
+              <PropertyRef Name="CodDiscoteca" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -806,7 +743,6 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Bebida" EntityType="Self.Bebida" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Beneficio" EntityType="Self.Beneficio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Beneficio_has_Consumicion" EntityType="Self.Beneficio_has_Consumicion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BeneficiosAdquiridosCliente" EntityType="Self.BeneficiosAdquiridosCliente" Schema="dbo" store:Type="Tables" />
@@ -826,6 +762,7 @@
           <EntitySet Name="Pago" EntityType="Self.Pago" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PrecioConsumicion" EntityType="Self.PrecioConsumicion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PrecioEntrada" EntityType="Self.PrecioEntrada" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VentaBarra" EntityType="Self.VentaBarra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VentaEntrada" EntityType="Self.VentaEntrada" Schema="dbo" store:Type="Tables" />
@@ -841,20 +778,12 @@
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="BeneficiosAdquiridosCliente" EntitySet="BeneficiosAdquiridosCliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Beneficio__Consu__22751F6C" Association="Self.FK__Beneficio__Consu__22751F6C">
-            <End Role="Consumicion" EntitySet="Consumicion" />
-            <End Role="Beneficio_has_Consumicion" EntitySet="Beneficio_has_Consumicion" />
-          </AssociationSet>
           <AssociationSet Name="FK__Beneficio__Disco__6EF57B66" Association="Self.FK__Beneficio__Disco__6EF57B66">
             <End Role="Discoteca" EntitySet="Discoteca" />
             <End Role="Beneficio" EntitySet="Beneficio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Consumici__Detal__25518C17" Association="Self.FK__Consumici__Detal__25518C17">
-            <End Role="Consumicion" EntitySet="Consumicion" />
-            <End Role="Consumicion_Bebida" EntitySet="Consumicion_Bebida" />
-          </AssociationSet>
           <AssociationSet Name="FK__Consumici__Detal__2645B050" Association="Self.FK__Consumici__Detal__2645B050">
-            <End Role="Bebida" EntitySet="Bebida" />
+            <End Role="Producto" EntitySet="Producto" />
             <End Role="Consumicion_Bebida" EntitySet="Consumicion_Bebida" />
           </AssociationSet>
           <AssociationSet Name="FK__Consumici__Disco__6C190EBB" Association="Self.FK__Consumici__Disco__6C190EBB">
@@ -873,10 +802,6 @@
             <End Role="Pago" EntitySet="Pago" />
             <End Role="DetallePagoTarjetaDebito" EntitySet="DetallePagoTarjetaDebito" />
           </AssociationSet>
-          <AssociationSet Name="FK__DetalleVe__Consu__3D2915A8" Association="Self.FK__DetalleVe__Consu__3D2915A8">
-            <End Role="Consumicion" EntitySet="Consumicion" />
-            <End Role="DetalleVentaBarra" EntitySet="DetalleVentaBarra" />
-          </AssociationSet>
           <AssociationSet Name="FK__DetalleVe__Venta__3C34F16F" Association="Self.FK__DetalleVe__Venta__3C34F16F">
             <End Role="VentaBarra" EntitySet="VentaBarra" />
             <End Role="DetalleVentaBarra" EntitySet="DetalleVentaBarra" />
@@ -888,26 +813,6 @@
           <AssociationSet Name="FK__Entrada_h__Benef__17036CC0" Association="Self.FK__Entrada_h__Benef__17036CC0">
             <End Role="Beneficio" EntitySet="Beneficio" />
             <End Role="Entrada_has_Beneficio" EntitySet="Entrada_has_Beneficio" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Entrada_h__Entra__160F4887" Association="Self.FK__Entrada_h__Entra__160F4887">
-            <End Role="Entrada" EntitySet="Entrada" />
-            <End Role="Entrada_has_Beneficio" EntitySet="Entrada_has_Beneficio" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ListaPrec__Detal__19DFD96B" Association="Self.FK__ListaPrec__Detal__19DFD96B">
-            <End Role="PrecioConsumicion" EntitySet="PrecioConsumicion" />
-            <End Role="ListaPreciosConsumicion" EntitySet="ListaPreciosConsumicion" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ListaPrec__Detal__1AD3FDA4" Association="Self.FK__ListaPrec__Detal__1AD3FDA4">
-            <End Role="Consumicion" EntitySet="Consumicion" />
-            <End Role="ListaPreciosConsumicion" EntitySet="ListaPreciosConsumicion" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ListaPrec__Entra__778AC167" Association="Self.FK__ListaPrec__Entra__778AC167">
-            <End Role="Entrada" EntitySet="Entrada" />
-            <End Role="ListaPreciosEntrada" EntitySet="ListaPreciosEntrada" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ListaPrec__Preci__787EE5A0" Association="Self.FK__ListaPrec__Preci__787EE5A0">
-            <End Role="PrecioEntrada" EntitySet="PrecioEntrada" />
-            <End Role="ListaPreciosEntrada" EntitySet="ListaPreciosEntrada" />
           </AssociationSet>
           <AssociationSet Name="FK__Noche__Discoteca__693CA210" Association="Self.FK__Noche__Discoteca__693CA210">
             <End Role="Discoteca" EntitySet="Discoteca" />
@@ -923,10 +828,6 @@
           </AssociationSet>
           <AssociationSet Name="FK__VentaEntr__Disco__10566F31" Association="Self.FK__VentaEntr__Disco__10566F31">
             <End Role="Discoteca" EntitySet="Discoteca" />
-            <End Role="VentaEntrada" EntitySet="VentaEntrada" />
-          </AssociationSet>
-          <AssociationSet Name="FK__VentaEntr__Entra__0E6E26BF" Association="Self.FK__VentaEntr__Entra__0E6E26BF">
-            <End Role="Entrada" EntitySet="Entrada" />
             <End Role="VentaEntrada" EntitySet="VentaEntrada" />
           </AssociationSet>
           <AssociationSet Name="FK__VentaEntr__Pago___0F624AF8" Association="Self.FK__VentaEntr__Pago___0F624AF8">
@@ -953,6 +854,14 @@
             <End Role="Consumicion" EntitySet="Consumicion" />
             <End Role="Entrada" EntitySet="Entrada" />
           </AssociationSet>
+          <AssociationSet Name="FK_PrecioConsumicion_Consumicion" Association="Self.FK_PrecioConsumicion_Consumicion">
+            <End Role="Consumicion" EntitySet="Consumicion" />
+            <End Role="PrecioConsumicion" EntitySet="PrecioConsumicion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrecioEntrada_Entrada" Association="Self.FK_PrecioEntrada_Entrada">
+            <End Role="Entrada" EntitySet="Entrada" />
+            <End Role="PrecioEntrada" EntitySet="PrecioEntrada" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -964,7 +873,6 @@
           <EntitySet Name="AspNetUserClaims" EntityType="FunClubModel.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="FunClubModel.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="FunClubModel.AspNetUser" />
-          <EntitySet Name="Bebidas" EntityType="FunClubModel.Bebida" />
           <EntitySet Name="Beneficios" EntityType="FunClubModel.Beneficio" />
           <EntitySet Name="Beneficio_has_Consumicion" EntityType="FunClubModel.Beneficio_has_Consumicion" />
           <EntitySet Name="BeneficiosAdquiridosClientes" EntityType="FunClubModel.BeneficiosAdquiridosCliente" />
@@ -984,6 +892,7 @@
           <EntitySet Name="Pagoes" EntityType="FunClubModel.Pago" />
           <EntitySet Name="PrecioConsumicions" EntityType="FunClubModel.PrecioConsumicion" />
           <EntitySet Name="PrecioEntradas" EntityType="FunClubModel.PrecioEntrada" />
+          <EntitySet Name="Productoes" EntityType="FunClubModel.Producto" />
           <EntitySet Name="sysdiagrams" EntityType="FunClubModel.sysdiagram" />
           <EntitySet Name="VentaBarras" EntityType="FunClubModel.VentaBarra" />
           <EntitySet Name="VentaEntradas" EntityType="FunClubModel.VentaEntrada" />
@@ -994,10 +903,6 @@
           <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="FunClubModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Consumici__Detal__2645B050" Association="FunClubModel.FK__Consumici__Detal__2645B050">
-            <End Role="Bebida" EntitySet="Bebidas" />
-            <End Role="Consumicion_Bebida" EntitySet="Consumicion_Bebida" />
           </AssociationSet>
           <AssociationSet Name="FK__Beneficio__Benef__1DB06A4F" Association="FunClubModel.FK__Beneficio__Benef__1DB06A4F">
             <End Role="Beneficio" EntitySet="Beneficios" />
@@ -1015,33 +920,25 @@
             <End Role="Beneficio" EntitySet="Beneficios" />
             <End Role="Entrada_has_Beneficio" EntitySet="Entrada_has_Beneficio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Beneficio__Consu__22751F6C" Association="FunClubModel.FK__Beneficio__Consu__22751F6C">
-            <End Role="Consumicion" EntitySet="Consumicions" />
-            <End Role="Beneficio_has_Consumicion" EntitySet="Beneficio_has_Consumicion" />
-          </AssociationSet>
           <AssociationSet Name="FK__Beneficio__Clien__1EA48E88" Association="FunClubModel.FK__Beneficio__Clien__1EA48E88">
             <End Role="Cliente" EntitySet="Clientes" />
             <End Role="BeneficiosAdquiridosCliente" EntitySet="BeneficiosAdquiridosClientes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Consumici__Detal__25518C17" Association="FunClubModel.FK__Consumici__Detal__25518C17">
-            <End Role="Consumicion" EntitySet="Consumicions" />
-            <End Role="Consumicion_Bebida" EntitySet="Consumicion_Bebida" />
           </AssociationSet>
           <AssociationSet Name="FK__Consumici__Disco__6C190EBB" Association="FunClubModel.FK__Consumici__Disco__6C190EBB">
             <End Role="Discoteca" EntitySet="Discotecas" />
             <End Role="Consumicion" EntitySet="Consumicions" />
           </AssociationSet>
-          <AssociationSet Name="FK__DetalleVe__Consu__3D2915A8" Association="FunClubModel.FK__DetalleVe__Consu__3D2915A8">
-            <End Role="Consumicion" EntitySet="Consumicions" />
-            <End Role="DetalleVentaBarra" EntitySet="DetalleVentaBarras" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ListaPrec__Detal__1AD3FDA4" Association="FunClubModel.FK__ListaPrec__Detal__1AD3FDA4">
-            <End Role="Consumicion" EntitySet="Consumicions" />
-            <End Role="ListaPreciosConsumicion" EntitySet="ListaPreciosConsumicions" />
-          </AssociationSet>
           <AssociationSet Name="FK_Entrada_Consumicion" Association="FunClubModel.FK_Entrada_Consumicion">
             <End Role="Consumicion" EntitySet="Consumicions" />
             <End Role="Entrada" EntitySet="Entradas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrecioConsumicion_Consumicion" Association="FunClubModel.FK_PrecioConsumicion_Consumicion">
+            <End Role="Consumicion" EntitySet="Consumicions" />
+            <End Role="PrecioConsumicion" EntitySet="PrecioConsumicions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consumici__Detal__2645B050" Association="FunClubModel.FK__Consumici__Detal__2645B050">
+            <End Role="Producto" EntitySet="Productoes" />
+            <End Role="Consumicion_Bebida" EntitySet="Consumicion_Bebida" />
           </AssociationSet>
           <AssociationSet Name="FK__DetallePa__Pago___74AE54BC" Association="FunClubModel.FK__DetallePa__Pago___74AE54BC">
             <End Role="Pago" EntitySet="Pagoes" />
@@ -1075,25 +972,9 @@
             <End Role="Discoteca" EntitySet="Discotecas" />
             <End Role="VentaEntrada" EntitySet="VentaEntradas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Entrada_h__Entra__160F4887" Association="FunClubModel.FK__Entrada_h__Entra__160F4887">
+          <AssociationSet Name="FK_PrecioEntrada_Entrada" Association="FunClubModel.FK_PrecioEntrada_Entrada">
             <End Role="Entrada" EntitySet="Entradas" />
-            <End Role="Entrada_has_Beneficio" EntitySet="Entrada_has_Beneficio" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ListaPrec__Entra__778AC167" Association="FunClubModel.FK__ListaPrec__Entra__778AC167">
-            <End Role="Entrada" EntitySet="Entradas" />
-            <End Role="ListaPreciosEntrada" EntitySet="ListaPreciosEntradas" />
-          </AssociationSet>
-          <AssociationSet Name="FK__VentaEntr__Entra__0E6E26BF" Association="FunClubModel.FK__VentaEntr__Entra__0E6E26BF">
-            <End Role="Entrada" EntitySet="Entradas" />
-            <End Role="VentaEntrada" EntitySet="VentaEntradas" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ListaPrec__Detal__19DFD96B" Association="FunClubModel.FK__ListaPrec__Detal__19DFD96B">
-            <End Role="PrecioConsumicion" EntitySet="PrecioConsumicions" />
-            <End Role="ListaPreciosConsumicion" EntitySet="ListaPreciosConsumicions" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ListaPrec__Preci__787EE5A0" Association="FunClubModel.FK__ListaPrec__Preci__787EE5A0">
             <End Role="PrecioEntrada" EntitySet="PrecioEntradas" />
-            <End Role="ListaPreciosEntrada" EntitySet="ListaPreciosEntradas" />
           </AssociationSet>
           <AssociationSet Name="FK__VentaBarr__Pago___2B0A656D" Association="FunClubModel.FK__VentaBarr__Pago___2B0A656D">
             <End Role="Pago" EntitySet="Pagoes" />
@@ -1167,20 +1048,6 @@
           <NavigationProperty Name="AspNetUserLogins" Relationship="FunClubModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
           <NavigationProperty Name="AspNetRoles" Relationship="FunClubModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
         </EntityType>
-        <EntityType Name="Bebida">
-          <Key>
-            <PropertyRef Name="DetalleVentaBarraCodBebida" />
-          </Key>
-          <Property Name="DetalleVentaBarraCodBebida" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="Int32" />
-          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
-          <Property Name="TerminalAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Consumicion_Bebida" Relationship="FunClubModel.FK__Consumici__Detal__2645B050" FromRole="Bebida" ToRole="Consumicion_Bebida" />
-        </EntityType>
         <EntityType Name="Beneficio">
           <Key>
             <PropertyRef Name="CodBeneficio" />
@@ -1217,7 +1084,6 @@
           <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Beneficio" Relationship="FunClubModel.FK__Beneficio__Benef__2180FB33" FromRole="Beneficio_has_Consumicion" ToRole="Beneficio" />
-          <NavigationProperty Name="Consumicion" Relationship="FunClubModel.FK__Beneficio__Consu__22751F6C" FromRole="Beneficio_has_Consumicion" ToRole="Consumicion" />
         </EntityType>
         <EntityType Name="BeneficiosAdquiridosCliente">
           <Key>
@@ -1257,39 +1123,37 @@
         <EntityType Name="Consumicion">
           <Key>
             <PropertyRef Name="CodConsumicion" />
+            <PropertyRef Name="Discoteca_CodDiscoteca" />
           </Key>
           <Property Name="CodConsumicion" Type="Int32" Nullable="false" />
           <Property Name="Discoteca_CodDiscoteca" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
-          <Property Name="TerminalAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TerminalAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Beneficio_has_Consumicion" Relationship="FunClubModel.FK__Beneficio__Consu__22751F6C" FromRole="Consumicion" ToRole="Beneficio_has_Consumicion" />
-          <NavigationProperty Name="Consumicion_Bebida" Relationship="FunClubModel.FK__Consumici__Detal__25518C17" FromRole="Consumicion" ToRole="Consumicion_Bebida" />
+          <Property Name="TerminalMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Discoteca" Relationship="FunClubModel.FK__Consumici__Disco__6C190EBB" FromRole="Consumicion" ToRole="Discoteca" />
-          <NavigationProperty Name="DetalleVentaBarras" Relationship="FunClubModel.FK__DetalleVe__Consu__3D2915A8" FromRole="Consumicion" ToRole="DetalleVentaBarra" />
-          <NavigationProperty Name="ListaPreciosConsumicions" Relationship="FunClubModel.FK__ListaPrec__Detal__1AD3FDA4" FromRole="Consumicion" ToRole="ListaPreciosConsumicion" />
           <NavigationProperty Name="Entradas" Relationship="FunClubModel.FK_Entrada_Consumicion" FromRole="Consumicion" ToRole="Entrada" />
+          <NavigationProperty Name="PrecioConsumicions" Relationship="FunClubModel.FK_PrecioConsumicion_Consumicion" FromRole="Consumicion" ToRole="PrecioConsumicion" />
         </EntityType>
         <EntityType Name="Consumicion_Bebida">
           <Key>
-            <PropertyRef Name="DetalleVentaBarraConsumicion_DetalleVentaBarraCodConsumicion" />
-            <PropertyRef Name="DetalleVentaBarraBebida_DetalleVentaBarraCodBebida" />
+            <PropertyRef Name="CodConsumicion" />
+            <PropertyRef Name="CodBebida" />
           </Key>
-          <Property Name="DetalleVentaBarraConsumicion_DetalleVentaBarraCodConsumicion" Type="Int32" Nullable="false" />
-          <Property Name="DetalleVentaBarraBebida_DetalleVentaBarraCodBebida" Type="Int32" Nullable="false" />
+          <Property Name="CodConsumicion" Type="Int32" Nullable="false" />
+          <Property Name="CodBebida" Type="Int32" Nullable="false" />
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
-          <Property Name="TerminalAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TerminalAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Bebida" Relationship="FunClubModel.FK__Consumici__Detal__2645B050" FromRole="Consumicion_Bebida" ToRole="Bebida" />
-          <NavigationProperty Name="Consumicion" Relationship="FunClubModel.FK__Consumici__Detal__25518C17" FromRole="Consumicion_Bebida" ToRole="Consumicion" />
+          <Property Name="TerminalMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="FunClubModel.FK__Consumici__Detal__2645B050" FromRole="Consumicion_Bebida" ToRole="Producto" />
         </EntityType>
         <EntityType Name="DetallePagoEfectivo">
           <Key>
@@ -1365,7 +1229,6 @@
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
           <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Consumicion" Relationship="FunClubModel.FK__DetalleVe__Consu__3D2915A8" FromRole="DetalleVentaBarra" ToRole="Consumicion" />
           <NavigationProperty Name="VentaBarra" Relationship="FunClubModel.FK__DetalleVe__Venta__3C34F16F" FromRole="DetalleVentaBarra" ToRole="VentaBarra" />
         </EntityType>
         <EntityType Name="Discoteca">
@@ -1373,14 +1236,14 @@
             <PropertyRef Name="CodDiscoteca" />
           </Key>
           <Property Name="CodDiscoteca" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Productiva" Type="Boolean" />
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
-          <Property Name="TerminalAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TerminalAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TerminalMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Beneficios" Relationship="FunClubModel.FK__Beneficio__Disco__6EF57B66" FromRole="Discoteca" ToRole="Beneficio" />
           <NavigationProperty Name="Consumicions" Relationship="FunClubModel.FK__Consumici__Disco__6C190EBB" FromRole="Discoteca" ToRole="Consumicion" />
           <NavigationProperty Name="Entradas" Relationship="FunClubModel.FK__Entrada__Discote__66603565" FromRole="Discoteca" ToRole="Entrada" />
@@ -1391,18 +1254,17 @@
         <EntityType Name="Entrada">
           <Key>
             <PropertyRef Name="CodEntrada" />
+            <PropertyRef Name="Discoteca_CodDiscoteca" />
           </Key>
           <Property Name="CodEntrada" Type="Int32" Nullable="false" />
           <Property Name="Discoteca_CodDiscoteca" Type="Int32" Nullable="false" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
           <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="CodConsumicion" Type="Int32" />
+          <Property Name="CodConsumicion" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Consumicion" Relationship="FunClubModel.FK_Entrada_Consumicion" FromRole="Entrada" ToRole="Consumicion" />
           <NavigationProperty Name="Discoteca" Relationship="FunClubModel.FK__Entrada__Discote__66603565" FromRole="Entrada" ToRole="Discoteca" />
-          <NavigationProperty Name="Entrada_has_Beneficio" Relationship="FunClubModel.FK__Entrada_h__Entra__160F4887" FromRole="Entrada" ToRole="Entrada_has_Beneficio" />
-          <NavigationProperty Name="ListaPreciosEntradas" Relationship="FunClubModel.FK__ListaPrec__Entra__778AC167" FromRole="Entrada" ToRole="ListaPreciosEntrada" />
-          <NavigationProperty Name="VentaEntradas" Relationship="FunClubModel.FK__VentaEntr__Entra__0E6E26BF" FromRole="Entrada" ToRole="VentaEntrada" />
+          <NavigationProperty Name="PrecioEntradas" Relationship="FunClubModel.FK_PrecioEntrada_Entrada" FromRole="Entrada" ToRole="PrecioEntrada" />
         </EntityType>
         <EntityType Name="Entrada_has_Beneficio">
           <Key>
@@ -1419,7 +1281,6 @@
           <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Beneficio" Relationship="FunClubModel.FK__Entrada_h__Benef__17036CC0" FromRole="Entrada_has_Beneficio" ToRole="Beneficio" />
-          <NavigationProperty Name="Entrada" Relationship="FunClubModel.FK__Entrada_h__Entra__160F4887" FromRole="Entrada_has_Beneficio" ToRole="Entrada" />
         </EntityType>
         <EntityType Name="ListaPreciosConsumicion">
           <Key>
@@ -1434,8 +1295,6 @@
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
           <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Consumicion" Relationship="FunClubModel.FK__ListaPrec__Detal__1AD3FDA4" FromRole="ListaPreciosConsumicion" ToRole="Consumicion" />
-          <NavigationProperty Name="PrecioConsumicion" Relationship="FunClubModel.FK__ListaPrec__Detal__19DFD96B" FromRole="ListaPreciosConsumicion" ToRole="PrecioConsumicion" />
         </EntityType>
         <EntityType Name="ListaPreciosEntrada">
           <Key>
@@ -1445,13 +1304,13 @@
           <Property Name="Entrada_CodEntrada" Type="Int32" Nullable="false" />
           <Property Name="PrecioEntrada_CodPrecioEntrada" Type="Int32" Nullable="false" />
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
-          <Property Name="TerminalAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TerminalAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Entrada" Relationship="FunClubModel.FK__ListaPrec__Entra__778AC167" FromRole="ListaPreciosEntrada" ToRole="Entrada" />
-          <NavigationProperty Name="PrecioEntrada" Relationship="FunClubModel.FK__ListaPrec__Preci__787EE5A0" FromRole="ListaPreciosEntrada" ToRole="PrecioEntrada" />
+          <Property Name="TerminalMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaVigencia" Type="DateTime" Precision="3" />
+          <Property Name="Puntos" Type="Int32" />
         </EntityType>
         <EntityType Name="Noche">
           <Key>
@@ -1495,37 +1354,61 @@
         </EntityType>
         <EntityType Name="PrecioConsumicion">
           <Key>
-            <PropertyRef Name="DetalleVentaBarraCodPrecioConsumicion" />
+            <PropertyRef Name="CodPrecioConsumicion" />
+            <PropertyRef Name="CodConsumicion" />
+            <PropertyRef Name="CodDiscoteca" />
           </Key>
-          <Property Name="DetalleVentaBarraCodPrecioConsumicion" Type="Int32" Nullable="false" />
+          <Property Name="CodPrecioConsumicion" Type="Int32" Nullable="false" />
           <Property Name="FechaVigencia" Type="DateTime" Precision="0" />
           <Property Name="FechaFin" Type="DateTime" Precision="0" />
           <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Observaciones" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
-          <Property Name="TerminalAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TerminalAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ListaPreciosConsumicions" Relationship="FunClubModel.FK__ListaPrec__Detal__19DFD96B" FromRole="PrecioConsumicion" ToRole="ListaPreciosConsumicion" />
+          <Property Name="TerminalMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Puntos" Type="Int32" />
+          <Property Name="CodConsumicion" Type="Int32" Nullable="false" />
+          <Property Name="CodDiscoteca" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Consumicion" Relationship="FunClubModel.FK_PrecioConsumicion_Consumicion" FromRole="PrecioConsumicion" ToRole="Consumicion" />
         </EntityType>
         <EntityType Name="PrecioEntrada">
           <Key>
             <PropertyRef Name="CodPrecioEntrada" />
+            <PropertyRef Name="CodEntrada" />
+            <PropertyRef Name="CodDiscoteca" />
           </Key>
           <Property Name="CodPrecioEntrada" Type="Int32" Nullable="false" />
           <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="FechaInicio" Type="DateTime" Precision="0" />
           <Property Name="FechaFin" Type="DateTime" Precision="0" />
-          <Property Name="Observaciones" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
-          <Property Name="TerminalAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TerminalAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ListaPreciosEntradas" Relationship="FunClubModel.FK__ListaPrec__Preci__787EE5A0" FromRole="PrecioEntrada" ToRole="ListaPreciosEntrada" />
+          <Property Name="TerminalMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Puntos" Type="Int32" />
+          <Property Name="CodEntrada" Type="Int32" Nullable="false" />
+          <Property Name="CodDiscoteca" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Entrada" Relationship="FunClubModel.FK_PrecioEntrada_Entrada" FromRole="PrecioEntrada" ToRole="Entrada" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="CodBebida" />
+          </Key>
+          <Property Name="CodBebida" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="TerminalAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaMod" Type="DateTime" Precision="3" />
+          <Property Name="TerminalMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Consumicion_Bebida" Relationship="FunClubModel.FK__Consumici__Detal__2645B050" FromRole="Producto" ToRole="Consumicion_Bebida" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1571,7 +1454,6 @@
           <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Discoteca" Relationship="FunClubModel.FK__VentaEntr__Disco__10566F31" FromRole="VentaEntrada" ToRole="Discoteca" />
-          <NavigationProperty Name="Entrada" Relationship="FunClubModel.FK__VentaEntr__Entra__0E6E26BF" FromRole="VentaEntrada" ToRole="Entrada" />
           <NavigationProperty Name="Pago" Relationship="FunClubModel.FK__VentaEntr__Pago___0F624AF8" FromRole="VentaEntrada" ToRole="Pago" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -1599,18 +1481,6 @@
             </Principal>
             <Dependent Role="AspNetUserLogin">
               <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Consumici__Detal__2645B050">
-          <End Type="FunClubModel.Bebida" Role="Bebida" Multiplicity="1" />
-          <End Type="FunClubModel.Consumicion_Bebida" Role="Consumicion_Bebida" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Bebida">
-              <PropertyRef Name="DetalleVentaBarraCodBebida" />
-            </Principal>
-            <Dependent Role="Consumicion_Bebida">
-              <PropertyRef Name="DetalleVentaBarraBebida_DetalleVentaBarraCodBebida" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1662,18 +1532,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Beneficio__Consu__22751F6C">
-          <End Type="FunClubModel.Consumicion" Role="Consumicion" Multiplicity="1" />
-          <End Type="FunClubModel.Beneficio_has_Consumicion" Role="Beneficio_has_Consumicion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Consumicion">
-              <PropertyRef Name="CodConsumicion" />
-            </Principal>
-            <Dependent Role="Beneficio_has_Consumicion">
-              <PropertyRef Name="Consumicion_DetalleVentaBarraCodConsumicion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Beneficio__Clien__1EA48E88">
           <End Type="FunClubModel.Cliente" Role="Cliente" Multiplicity="1" />
           <End Type="FunClubModel.BeneficiosAdquiridosCliente" Role="BeneficiosAdquiridosCliente" Multiplicity="*" />
@@ -1683,18 +1541,6 @@
             </Principal>
             <Dependent Role="BeneficiosAdquiridosCliente">
               <PropertyRef Name="Cliente_CodCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Consumici__Detal__25518C17">
-          <End Type="FunClubModel.Consumicion" Role="Consumicion" Multiplicity="1" />
-          <End Type="FunClubModel.Consumicion_Bebida" Role="Consumicion_Bebida" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Consumicion">
-              <PropertyRef Name="CodConsumicion" />
-            </Principal>
-            <Dependent Role="Consumicion_Bebida">
-              <PropertyRef Name="DetalleVentaBarraConsumicion_DetalleVentaBarraCodConsumicion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1710,39 +1556,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DetalleVe__Consu__3D2915A8">
-          <End Type="FunClubModel.Consumicion" Role="Consumicion" Multiplicity="1" />
-          <End Type="FunClubModel.DetalleVentaBarra" Role="DetalleVentaBarra" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Consumicion">
-              <PropertyRef Name="CodConsumicion" />
-            </Principal>
-            <Dependent Role="DetalleVentaBarra">
-              <PropertyRef Name="Consumicion_CodConsumicion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ListaPrec__Detal__1AD3FDA4">
-          <End Type="FunClubModel.Consumicion" Role="Consumicion" Multiplicity="1" />
-          <End Type="FunClubModel.ListaPreciosConsumicion" Role="ListaPreciosConsumicion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Consumicion">
-              <PropertyRef Name="CodConsumicion" />
-            </Principal>
-            <Dependent Role="ListaPreciosConsumicion">
-              <PropertyRef Name="DetalleVentaBarraConsumicion_DetalleVentaBarraCodConsumicion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Entrada_Consumicion">
-          <End Type="FunClubModel.Consumicion" Role="Consumicion" Multiplicity="0..1" />
+          <End Type="FunClubModel.Consumicion" Role="Consumicion" Multiplicity="1" />
           <End Type="FunClubModel.Entrada" Role="Entrada" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Consumicion">
               <PropertyRef Name="CodConsumicion" />
+              <PropertyRef Name="Discoteca_CodDiscoteca" />
             </Principal>
             <Dependent Role="Entrada">
               <PropertyRef Name="CodConsumicion" />
+              <PropertyRef Name="Discoteca_CodDiscoteca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrecioConsumicion_Consumicion">
+          <End Type="FunClubModel.Consumicion" Role="Consumicion" Multiplicity="1" />
+          <End Type="FunClubModel.PrecioConsumicion" Role="PrecioConsumicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consumicion">
+              <PropertyRef Name="CodConsumicion" />
+              <PropertyRef Name="Discoteca_CodDiscoteca" />
+            </Principal>
+            <Dependent Role="PrecioConsumicion">
+              <PropertyRef Name="CodConsumicion" />
+              <PropertyRef Name="CodDiscoteca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consumici__Detal__2645B050">
+          <End Type="FunClubModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="FunClubModel.Consumicion_Bebida" Role="Consumicion_Bebida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="CodBebida" />
+            </Principal>
+            <Dependent Role="Consumicion_Bebida">
+              <PropertyRef Name="CodBebida" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1842,63 +1692,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Entrada_h__Entra__160F4887">
+        <Association Name="FK_PrecioEntrada_Entrada">
           <End Type="FunClubModel.Entrada" Role="Entrada" Multiplicity="1" />
-          <End Type="FunClubModel.Entrada_has_Beneficio" Role="Entrada_has_Beneficio" Multiplicity="*" />
+          <End Type="FunClubModel.PrecioEntrada" Role="PrecioEntrada" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Entrada">
               <PropertyRef Name="CodEntrada" />
+              <PropertyRef Name="Discoteca_CodDiscoteca" />
             </Principal>
-            <Dependent Role="Entrada_has_Beneficio">
-              <PropertyRef Name="Entrada_CodEntrada" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ListaPrec__Entra__778AC167">
-          <End Type="FunClubModel.Entrada" Role="Entrada" Multiplicity="1" />
-          <End Type="FunClubModel.ListaPreciosEntrada" Role="ListaPreciosEntrada" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Entrada">
+            <Dependent Role="PrecioEntrada">
               <PropertyRef Name="CodEntrada" />
-            </Principal>
-            <Dependent Role="ListaPreciosEntrada">
-              <PropertyRef Name="Entrada_CodEntrada" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__VentaEntr__Entra__0E6E26BF">
-          <End Type="FunClubModel.Entrada" Role="Entrada" Multiplicity="1" />
-          <End Type="FunClubModel.VentaEntrada" Role="VentaEntrada" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Entrada">
-              <PropertyRef Name="CodEntrada" />
-            </Principal>
-            <Dependent Role="VentaEntrada">
-              <PropertyRef Name="Entrada_CodEntrada" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ListaPrec__Detal__19DFD96B">
-          <End Type="FunClubModel.PrecioConsumicion" Role="PrecioConsumicion" Multiplicity="1" />
-          <End Type="FunClubModel.ListaPreciosConsumicion" Role="ListaPreciosConsumicion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PrecioConsumicion">
-              <PropertyRef Name="DetalleVentaBarraCodPrecioConsumicion" />
-            </Principal>
-            <Dependent Role="ListaPreciosConsumicion">
-              <PropertyRef Name="DetalleVentaBarraPrecioConsumicion_DetalleVentaBarraCodPrecioConsumicion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ListaPrec__Preci__787EE5A0">
-          <End Type="FunClubModel.PrecioEntrada" Role="PrecioEntrada" Multiplicity="1" />
-          <End Type="FunClubModel.ListaPreciosEntrada" Role="ListaPreciosEntrada" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PrecioEntrada">
-              <PropertyRef Name="CodPrecioEntrada" />
-            </Principal>
-            <Dependent Role="ListaPreciosEntrada">
-              <PropertyRef Name="PrecioEntrada_CodPrecioEntrada" />
+              <PropertyRef Name="CodDiscoteca" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1991,20 +1795,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Bebidas">
-            <EntityTypeMapping TypeName="FunClubModel.Bebida">
-              <MappingFragment StoreEntitySet="Bebida">
-                <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
-                <ScalarProperty Name="TerminalMod" ColumnName="TerminalMod" />
-                <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
-                <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
-                <ScalarProperty Name="TerminalAlta" ColumnName="TerminalAlta" />
-                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="DetalleVentaBarraCodBebida" ColumnName="DetalleVentaBarraCodBebida" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Beneficios">
             <EntityTypeMapping TypeName="FunClubModel.Beneficio">
               <MappingFragment StoreEntitySet="Beneficio">
@@ -2090,14 +1880,15 @@
           <EntitySetMapping Name="Consumicion_Bebida">
             <EntityTypeMapping TypeName="FunClubModel.Consumicion_Bebida">
               <MappingFragment StoreEntitySet="Consumicion_Bebida">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
                 <ScalarProperty Name="TerminalMod" ColumnName="TerminalMod" />
                 <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
                 <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
                 <ScalarProperty Name="TerminalAlta" ColumnName="TerminalAlta" />
                 <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
-                <ScalarProperty Name="DetalleVentaBarraBebida_DetalleVentaBarraCodBebida" ColumnName="DetalleVentaBarraBebida_DetalleVentaBarraCodBebida" />
-                <ScalarProperty Name="DetalleVentaBarraConsumicion_DetalleVentaBarraCodConsumicion" ColumnName="DetalleVentaBarraConsumicion_DetalleVentaBarraCodConsumicion" />
+                <ScalarProperty Name="CodBebida" ColumnName="CodBebida" />
+                <ScalarProperty Name="CodConsumicion" ColumnName="CodConsumicion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2232,6 +2023,8 @@
           <EntitySetMapping Name="ListaPreciosEntradas">
             <EntityTypeMapping TypeName="FunClubModel.ListaPreciosEntrada">
               <MappingFragment StoreEntitySet="ListaPreciosEntrada">
+                <ScalarProperty Name="Puntos" ColumnName="Puntos" />
+                <ScalarProperty Name="FechaVigencia" ColumnName="FechaVigencia" />
                 <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
                 <ScalarProperty Name="TerminalMod" ColumnName="TerminalMod" />
                 <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
@@ -2282,6 +2075,9 @@
           <EntitySetMapping Name="PrecioConsumicions">
             <EntityTypeMapping TypeName="FunClubModel.PrecioConsumicion">
               <MappingFragment StoreEntitySet="PrecioConsumicion">
+                <ScalarProperty Name="CodDiscoteca" ColumnName="CodDiscoteca" />
+                <ScalarProperty Name="CodConsumicion" ColumnName="CodConsumicion" />
+                <ScalarProperty Name="Puntos" ColumnName="Puntos" />
                 <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
                 <ScalarProperty Name="TerminalMod" ColumnName="TerminalMod" />
                 <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
@@ -2292,13 +2088,16 @@
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
                 <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
                 <ScalarProperty Name="FechaVigencia" ColumnName="FechaVigencia" />
-                <ScalarProperty Name="DetalleVentaBarraCodPrecioConsumicion" ColumnName="DetalleVentaBarraCodPrecioConsumicion" />
+                <ScalarProperty Name="CodPrecioConsumicion" ColumnName="CodPrecioConsumicion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PrecioEntradas">
             <EntityTypeMapping TypeName="FunClubModel.PrecioEntrada">
               <MappingFragment StoreEntitySet="PrecioEntrada">
+                <ScalarProperty Name="CodDiscoteca" ColumnName="CodDiscoteca" />
+                <ScalarProperty Name="CodEntrada" ColumnName="CodEntrada" />
+                <ScalarProperty Name="Puntos" ColumnName="Puntos" />
                 <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
                 <ScalarProperty Name="TerminalMod" ColumnName="TerminalMod" />
                 <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
@@ -2310,6 +2109,20 @@
                 <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
                 <ScalarProperty Name="CodPrecioEntrada" ColumnName="CodPrecioEntrada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productoes">
+            <EntityTypeMapping TypeName="FunClubModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
+                <ScalarProperty Name="TerminalMod" ColumnName="TerminalMod" />
+                <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+                <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
+                <ScalarProperty Name="TerminalAlta" ColumnName="TerminalAlta" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CodBebida" ColumnName="CodBebida" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

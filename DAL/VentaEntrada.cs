@@ -27,7 +27,6 @@ namespace DAL
         public string UsuarioMod { get; set; }
     
         public virtual Discoteca Discoteca { get; set; }
-        public virtual Entrada Entrada { get; set; }
         public virtual Pago Pago { get; set; }
     }
 }

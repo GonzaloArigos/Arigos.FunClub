@@ -24,7 +24,6 @@ namespace DAL
         public string TerminalMod { get; set; }
         public string UsuarioMod { get; set; }
     
-        public virtual Consumicion Consumicion { get; set; }
         public virtual VentaBarra VentaBarra { get; set; }
     }
 }

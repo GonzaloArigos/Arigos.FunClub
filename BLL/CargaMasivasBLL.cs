@@ -9,14 +9,44 @@ namespace BLL
 {
     public static class CargasMasivasBLL
     {
-        public static Entities.CargaMasivaEntrada  CargaMasivaEntrada(string Ruta)
+        public static Entities.CargaMasivaEntrada CargaMasivaEntrada(string FileName, byte[] Data)
         {
             var excelsl = new SL.Excel();
-            var lectura = excelsl.Leer(Ruta);
-            var objetos = SL.DatarowToObjectMapper.ConvertEntradas(lectura);
+            var lectura = excelsl.Leer(FileName, Data);
+            var objetos = new List<DAL.Entrada>();
+            try
+            {
+                objetos = SL.DatarowToObjectMapper.ConvertEntradas(lectura);
+            }
+            catch
+            {
+                throw new Exception("Error de formato: Por favor verificar que las columnas ingresadas sean correctas y que los tipos de datos ingresados sean los requeridos.");
+            }
+
+
             var excluidas = ExcluirEntradasExistentes(objetos);
-            DAL.EntradaDAL.CargaMasivaEntrada(objetos);
+
+            objetos = objetos.Except(excluidas).ToList();
+
             Entities.CargaMasivaEntrada Resultado = new Entities.CargaMasivaEntrada();
+
+            Resultado.Error = new List<Entrada>();
+
+            foreach (var item in objetos)
+            {
+                try
+                {
+                    DAL.EntradaDAL.CargaMasivaEntrada(item);
+                }
+                catch
+                {
+                    Resultado.Error.Add(item);
+                }
+
+            }
+
+            objetos = objetos.Except(Resultado.Error).ToList();
+
             Resultado.Registradas = objetos;
             Resultado.Excluidas = excluidas;
             return Resultado;
@@ -25,14 +55,14 @@ namespace BLL
         private static List<Entrada> ExcluirEntradasExistentes(List<Entrada> objetos)
         {
             var retorno = new List<Entrada>();
-            foreach(var item in objetos)
+            foreach (var item in objetos)
             {
-                if(DAL.EntradaDAL.GetOne(item.CodEntrada) != null)
+                if (DAL.EntradaDAL.GetEntradaPorConsumicion(item.Discoteca_CodDiscoteca, item.CodConsumicion) != null)
                 {
                     retorno.Add(item);
-                    objetos.Remove(item);
                 }
             }
+
             return retorno;
         }
     }

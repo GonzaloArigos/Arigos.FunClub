@@ -25,6 +25,5 @@ namespace DAL
         public string UsuarioMod { get; set; }
     
         public virtual Beneficio Beneficio { get; set; }
-        public virtual Entrada Entrada { get; set; }
     }
 }

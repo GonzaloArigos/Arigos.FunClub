@@ -12,10 +12,12 @@ namespace SL
 {
     public class Excel
     {
-        public DataRowCollection Leer(string Ruta)
+        public DataRowCollection Leer(string FileName, byte[] Data)
         {
+            string Ruta = @"C:\Users\garigos\Documents\GitHub\Arigos.FunClub\FunClub\CargasMasivas\" + FileName;
+            File.WriteAllBytes(Ruta, Data);
             var ds = new System.Data.DataSet();
-            var extension = Path.GetExtension(Ruta).ToLower();
+            var extension = Path.GetExtension(FileName).ToLower();
             using (var stream = new FileStream(Ruta, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
                 var sw = new Stopwatch();
@@ -35,7 +37,7 @@ namespace SL
                 }
 
                 if (reader == null)
-                    return;
+                    return null;
 
                 var openTiming = sw.ElapsedMilliseconds;
                 // reader.IsFirstRowAsColumnNames = firstRowNamesCheckBox.Checked;
@@ -51,12 +53,12 @@ namespace SL
                     });
                 }
 
-               // toolStripStatusLabel1.Text = "Elapsed: " + sw.ElapsedMilliseconds.ToString() + " ms (" + openTiming.ToString() + " ms to open)";
+                // toolStripStatusLabel1.Text = "Elapsed: " + sw.ElapsedMilliseconds.ToString() + " ms (" + openTiming.ToString() + " ms to open)";
 
                 var tablenames = GetTablenames(ds.Tables);
 
                 return ds.Tables[0].Rows;
-               // sheetCombo.DataSource = tablenames;
+                // sheetCombo.DataSource = tablenames;
 
                 //if (tablenames.Count > 0)
                 //    sheetCombo.SelectedIndex = 0;

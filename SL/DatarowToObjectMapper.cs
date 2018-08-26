@@ -16,12 +16,22 @@ namespace SL
             foreach (DataRow item in rows)
             {
                 var entradaNew = new DAL.Entrada();
-             
+                
                 entradaNew.CodConsumicion = Convert.ToInt32(item["CodConsumicion"].ToString());
                 entradaNew.Descripcion = item["Descripcion"].ToString();
                 entradaNew.Discoteca_CodDiscoteca = Convert.ToInt32(item["CodDiscoteca"].ToString());
                 entradaNew.Estado = item["Estado"].ToString();
                 entradaNew.FechaRegistro = DateTime.Now;
+
+                var precio = new DAL.PrecioEntrada();
+                precio.CodDiscoteca = entradaNew.Discoteca_CodDiscoteca;
+                precio.FechaAlta = DateTime.Now;
+                precio.FechaInicio = Convert.ToDateTime(item["FechaInicioPrecio"].ToString());
+                precio.FechaFin = Convert.ToDateTime(item["FechaFinPrecio"].ToString());
+                precio.Precio = Convert.ToDecimal(item["Precio"].ToString()); 
+                precio.Puntos = Convert.ToInt32(item["Puntos"].ToString());
+
+                entradaNew.PrecioEntradas.Add(precio);
 
                 retorno.Add(entradaNew);
             }
