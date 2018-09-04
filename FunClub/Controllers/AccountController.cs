@@ -80,7 +80,8 @@ namespace FunClub.Controllers
             {
                 if (user.EmailConfirmed == true)
                 {
-                    await SignInManager.SignInAsync(user, model.RememberMe, true); return RedirectToLocal(returnUrl);
+                    await SignInManager.SignInAsync(user, model.RememberMe, true);
+                    return RedirectToLocal("http://localhost:49298/#!/Principal");
                 }
                 else
                 {

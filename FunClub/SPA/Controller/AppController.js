@@ -7,6 +7,11 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: 'SPA/Views/Home.html',
             controller: 'HomeController'
         })
+        .when('/Principal',
+        {
+            templateUrl: 'SPA/Views/Principal.html',
+            controller: 'PrincipalController'
+        })
         .when('/CargaMasiva',
         {
             templateUrl: 'SPA/Views/CargaMasiva.html',
