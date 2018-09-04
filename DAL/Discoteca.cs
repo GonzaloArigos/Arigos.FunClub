@@ -20,7 +20,7 @@ namespace DAL
             this.Beneficios = new HashSet<Beneficio>();
             this.Consumicions = new HashSet<Consumicion>();
             this.Entradas = new HashSet<Entrada>();
-            this.Noches = new HashSet<Noche>();
+            this.Noches = new HashSet<Noch>();
             this.VentaBarras = new HashSet<VentaBarra>();
             this.VentaEntradas = new HashSet<VentaEntrada>();
         }
@@ -42,7 +42,7 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Entrada> Entradas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Noche> Noches { get; set; }
+        public virtual ICollection<Noch> Noches { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VentaBarra> VentaBarras { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

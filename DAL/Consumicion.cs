@@ -17,12 +17,13 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Consumicion()
         {
+            this.DetalleVentaBarras = new HashSet<DetalleVentaBarra>();
             this.Entradas = new HashSet<Entrada>();
             this.PrecioConsumicions = new HashSet<PrecioConsumicion>();
         }
     
         public int CodConsumicion { get; set; }
-        public int Discoteca_CodDiscoteca { get; set; }
+        public int CodDiscoteca { get; set; }
         public string Descripcion { get; set; }
         public string Estado { get; set; }
         public Nullable<System.DateTime> FechaAlta { get; set; }
@@ -33,6 +34,8 @@ namespace DAL
         public string UsuarioMod { get; set; }
     
         public virtual Discoteca Discoteca { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetalleVentaBarra> DetalleVentaBarras { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Entrada> Entradas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -12,17 +12,23 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class ListaPreciosEntrada
+    public partial class Noch
     {
-        public int Entrada_CodEntrada { get; set; }
-        public int PrecioEntrada_CodPrecioEntrada { get; set; }
+        public int DetalleVentaBarraCodNoche { get; set; }
+        public int Discoteca_CodDiscoteca { get; set; }
+        public string Descripcion { get; set; }
+        public string Estado { get; set; }
+        public Nullable<System.DateTime> FechaInicio { get; set; }
+        public string HoraInicio { get; set; }
+        public Nullable<System.DateTime> FechaFin { get; set; }
+        public string HoraFin { get; set; }
         public Nullable<System.DateTime> FechaAlta { get; set; }
         public string TerminalAlta { get; set; }
         public string UsuarioAlta { get; set; }
         public Nullable<System.DateTime> FechaMod { get; set; }
         public string TerminalMod { get; set; }
         public string UsuarioMod { get; set; }
-        public Nullable<System.DateTime> FechaVigencia { get; set; }
-        public Nullable<int> Puntos { get; set; }
+    
+        public virtual Discoteca Discoteca { get; set; }
     }
 }

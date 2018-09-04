@@ -21,8 +21,8 @@ namespace DAL
         }
     
         public int CodVentaBarra { get; set; }
-        public int Discoteca_CodDiscoteca { get; set; }
-        public int Pago_CodPago { get; set; }
+        public int CodDiscoteca { get; set; }
+        public int CodPago { get; set; }
         public string Estado { get; set; }
         public Nullable<System.DateTime> FechaAlta { get; set; }
         public string TerminalAlta { get; set; }

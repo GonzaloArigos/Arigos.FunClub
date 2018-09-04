@@ -57,7 +57,7 @@ namespace BLL
             var retorno = new List<Entrada>();
             foreach (var item in objetos)
             {
-                if (DAL.EntradaDAL.GetEntradaPorConsumicion(item.Discoteca_CodDiscoteca, item.CodConsumicion) != null)
+                if (DAL.EntradaDAL.GetEntradaPorConsumicion(item.CodDiscoteca, item.CodConsumicion) != null)
                 {
                     retorno.Add(item);
                 }

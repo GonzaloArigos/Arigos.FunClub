@@ -17,8 +17,8 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Beneficio()
         {
-            this.BeneficiosAdquiridosClientes = new HashSet<BeneficiosAdquiridosCliente>();
             this.Beneficio_has_Consumicion = new HashSet<Beneficio_has_Consumicion>();
+            this.BeneficiosAdquiridosClientes = new HashSet<BeneficiosAdquiridosCliente>();
             this.Entrada_has_Beneficio = new HashSet<Entrada_has_Beneficio>();
         }
     
@@ -36,9 +36,9 @@ namespace DAL
         public string UsuarioMod { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BeneficiosAdquiridosCliente> BeneficiosAdquiridosClientes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Beneficio_has_Consumicion> Beneficio_has_Consumicion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BeneficiosAdquiridosCliente> BeneficiosAdquiridosClientes { get; set; }
         public virtual Discoteca Discoteca { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Entrada_has_Beneficio> Entrada_has_Beneficio { get; set; }

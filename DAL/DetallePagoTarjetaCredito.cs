@@ -15,7 +15,7 @@ namespace DAL
     public partial class DetallePagoTarjetaCredito
     {
         public int CodPagoTarjetaCredito { get; set; }
-        public int Pago_CodPago { get; set; }
+        public int CodPago { get; set; }
         public Nullable<int> Cuotas { get; set; }
         public Nullable<decimal> PorcentajeInteres { get; set; }
         public Nullable<decimal> MontoInteres { get; set; }

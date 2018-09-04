@@ -19,12 +19,12 @@ namespace SL
                 
                 entradaNew.CodConsumicion = Convert.ToInt32(item["CodConsumicion"].ToString());
                 entradaNew.Descripcion = item["Descripcion"].ToString();
-                entradaNew.Discoteca_CodDiscoteca = Convert.ToInt32(item["CodDiscoteca"].ToString());
+                entradaNew.CodDiscoteca = Convert.ToInt32(item["CodDiscoteca"].ToString());
                 entradaNew.Estado = item["Estado"].ToString();
                 entradaNew.FechaRegistro = DateTime.Now;
 
                 var precio = new DAL.PrecioEntrada();
-                precio.CodDiscoteca = entradaNew.Discoteca_CodDiscoteca;
+                precio.CodDiscoteca = entradaNew.CodDiscoteca;
                 precio.FechaAlta = DateTime.Now;
                 precio.FechaInicio = Convert.ToDateTime(item["FechaInicioPrecio"].ToString());
                 precio.FechaFin = Convert.ToDateTime(item["FechaFinPrecio"].ToString());

@@ -14,8 +14,8 @@ namespace DAL
             {
                 int codigo = 0;
                 int codprecio = 0;
-                int? ultimaEntrada = db.Entradas.Where(a => a.Discoteca_CodDiscoteca == entradas.Discoteca_CodDiscoteca).Max(a => (int?)a.CodEntrada);
-                int? ultimoPrecio = db.PrecioEntradas.Where(a => a.CodEntrada == entradas.CodEntrada && a.CodDiscoteca == entradas.Discoteca_CodDiscoteca).Max(a => (int?)a.CodPrecioEntrada);
+                int? ultimaEntrada = db.Entradas.Where(a => a.CodDiscoteca == entradas.CodDiscoteca).Max(a => (int?)a.CodEntrada);
+                int? ultimoPrecio = db.PrecioEntradas.Where(a => a.CodEntrada == entradas.CodEntrada && a.CodDiscoteca == entradas.CodDiscoteca).Max(a => (int?)a.CodPrecioEntrada);
 
                 codprecio = ultimoPrecio != null ? (int)ultimoPrecio + 1 : 1;
                 codigo = ultimaEntrada != null ? (int)ultimaEntrada + 1 : 1;
@@ -41,7 +41,7 @@ namespace DAL
         {
             using (FunClubEntities db = new FunClubEntities())
             {
-                return db.Entradas.Where(a => a.Discoteca_CodDiscoteca == codDisco && a.CodConsumicion == codCons).FirstOrDefault();
+                return db.Entradas.Where(a => a.CodDiscoteca == codDisco && a.CodConsumicion == codCons).FirstOrDefault();
             }
         }
     }

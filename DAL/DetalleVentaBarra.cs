@@ -14,8 +14,8 @@ namespace DAL
     
     public partial class DetalleVentaBarra
     {
-        public int Consumicion_CodConsumicion { get; set; }
-        public int VentaBarra_CodVentaBarra { get; set; }
+        public int CodConsumicion { get; set; }
+        public int CodVentaBarra { get; set; }
         public Nullable<int> Cantidad { get; set; }
         public Nullable<System.DateTime> FechaAlta { get; set; }
         public string TerminalAlta { get; set; }
@@ -23,7 +23,9 @@ namespace DAL
         public Nullable<System.DateTime> FechaMod { get; set; }
         public string TerminalMod { get; set; }
         public string UsuarioMod { get; set; }
+        public int CodDiscoteca { get; set; }
     
+        public virtual Consumicion Consumicion { get; set; }
         public virtual VentaBarra VentaBarra { get; set; }
     }
 }

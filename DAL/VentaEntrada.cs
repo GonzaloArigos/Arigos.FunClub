@@ -14,10 +14,15 @@ namespace DAL
     
     public partial class VentaEntrada
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public VentaEntrada()
+        {
+            this.DetalleVentaEntradas = new HashSet<DetalleVentaEntrada>();
+        }
+    
         public int CodVentaEntrada { get; set; }
-        public int Discoteca_CodDiscoteca { get; set; }
-        public int Pago_CodPago { get; set; }
-        public int Entrada_CodEntrada { get; set; }
+        public int CodDiscoteca { get; set; }
+        public int CodPago { get; set; }
         public Nullable<int> Estado { get; set; }
         public Nullable<System.DateTime> FechaAlta { get; set; }
         public string TerminalAlta { get; set; }
@@ -26,6 +31,8 @@ namespace DAL
         public string TerminalMod { get; set; }
         public string UsuarioMod { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetalleVentaEntrada> DetalleVentaEntradas { get; set; }
         public virtual Discoteca Discoteca { get; set; }
         public virtual Pago Pago { get; set; }
     }
