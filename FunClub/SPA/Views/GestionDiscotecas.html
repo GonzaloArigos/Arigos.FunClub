@@ -1,0 +1,149 @@
+﻿<style>
+    .jumbotron {
+        text-align: center;
+        width: 50%;
+        border-radius: 0.5rem;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 4rem auto;
+        background-color: #fff;
+        padding: 2rem;
+    }
+
+    .container .glyphicon-check {
+        font-size: 10rem;
+        margin-top: 3rem;
+        color: #f96145;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 1.4rem;
+        padding: 1rem;
+        background-color: #ecf2f4;
+        border-radius: 0.2rem;
+        border: none;
+    }
+
+    h2 {
+        margin-bottom: 3rem;
+        font-weight: bold;
+        color: #ababab;
+    }
+
+    /*.btn {
+        border-radius: 0.2rem;
+    }*/
+
+    /*.btn .glyphicon {
+            font-size: 3rem;
+            color: #fff;
+        }*/
+
+    .full-width {
+        background-color: #8eb5e2;
+        width: 100%;
+        -webkit-border-top-right-radius: 0;
+        -webkit-border-bottom-right-radius: 0;
+        -moz-border-radius-topright: 0;
+        -moz-border-radius-bottomright: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .box {
+        bottom: 0;
+        left: 0;
+        margin-bottom: 3rem;
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+</style>
+<div ng-include="'/SPA/Views/ToolBar.html'"></div>
+<div class="container">
+    <div class="jumbotron">
+        <div ng-show="!NuevaDisco && !GestionDisco">
+            <button class="btn btn-link" ng-click="NuevaDisco = true"><h1 style="color:orangered" class="glyphicon glyphicon-headphones"></h1><br /><h4>Nueva Discoteca</h4></button>
+            <button class="btn btn-link" ng-click="GestionDisco = true"><h1 style="color:orangered" class="glyphicon glyphicon-edit"></h1><br /><h4>Gestión Discoteca</h4></button>
+        </div>
+        <div  ng-show="NuevaDisco || GestionDisco">
+            <button class="btn btn-link" ng-click="GestionDisco = false;NuevaDisco = false">Volver</button>
+        </div>
+        <div ng-show="NuevaDisco && !GestionDisco">
+            <span class="glyphicon glyphicon-check"></span>
+            <h2>Nueva discoteca</h2>
+            <div class="box">
+                <input type="text" placeholder="Nombre">
+                <button class="btn btn-default full-width"><span class="glyphicon glyphicon-ok"></span></button>
+            </div>
+        </div>
+
+        <div ng-show="GestionDisco && !NuevaDisco">
+           
+            <h2>Gestión discotecas</h2>
+            <div class="box">
+                <select style="max-width :100%" class="form-control">
+                    <option value="1">Kika Club!</option>
+                    <option value="2">RoseBar</option>
+                    <option value="3">Vinicius</option>
+                </select>
+                <br />
+                <select style="max-width :100%" class="form-control">
+                    <option value="1">Arigos</option>
+                    <option value="2">Pepe</option>
+                    <option value="3">Pablo</option>
+                </select>
+                <br />
+                <table style="color:black" class="table" id="ventaentradas">
+                    <thead>
+                        <tr>
+                            <th>Permisos</th>
+                            <th>Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        <tr class="">
+
+                            <td>Administrador </td>
+                            <td><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
+                        </tr>
+                        <tr class="info">
+
+                            <td>Cajero Bar </td>
+                            <td><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
+                        </tr>
+
+                        <tr class="info">
+
+                            <td>Cajero Entrada </td>
+                            <td><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
+                        </tr>
+
+                        <tr class="info">
+
+                            <td>Gestor entradas </td>
+                            <td><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
+                        </tr>
+                        <tr class="info">
+
+                            <td>Gestor consumiciones </td>
+                            <td><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
+                        </tr>
+
+                    </tbody>
+
+
+
+                </table>
+
+
+                <button class="btn btn-default full-width"><span class="glyphicon glyphicon-ok"></span></button>
+            </div>
+        </div>
+
+    </div>
+</div>

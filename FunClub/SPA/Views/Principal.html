@@ -37,6 +37,8 @@
         <div class="main-header">Funclub! <span class="destaque">Kika Club!</span></div>
     </div>
 
+    <h2>Estado de situación</h2>
+
 
 
     <div class="col-md-3">
@@ -49,7 +51,7 @@
                     </div>
                     <div class="col-xs-6 text-right">
                         <p class="announcement-heading">4</p>
-                        <p class="announcement-text">Customers</p>
+                        <p class="announcement-text">Entradas vendidas</p>
                     </div>
                 </div>
             </div>
@@ -80,8 +82,8 @@
                         <i class="fa fa-usd fa-5x"></i>
                     </div>
                     <div class="col-xs-6 text-right">
-                        <p class="announcement-heading"> R$ 950 mil</p>
-                        <p class="announcement-text">Revenue</p>
+                        <p class="announcement-heading"> $ARG 60.000</p>
+                        <p class="announcement-text">Facturación entradas</p>
                     </div>
                 </div>
             </div>
@@ -111,8 +113,8 @@
                         <i class="fa fa-line-chart fa-5x"></i>
                     </div>
                     <div class="col-xs-6 text-right">
-                        <p class="announcement-heading"> 2,3 months</p>
-                        <p class="announcement-text">Average time</p>
+                        <p class="announcement-heading"> 33</p>
+                        <p class="announcement-text">Consumiciones Vendidas</p>
                     </div>
                 </div>
             </div>
@@ -143,8 +145,8 @@
                         <i class="fa fa-money fa-5x"></i>
                     </div>
                     <div class="col-xs-6 text-right">
-                        <p class="announcement-heading"> $ 250 k</p>
-                        <p class="announcement-text">Recovered <i class=""></i>  </p>
+                        <p class="announcement-heading"> $7.899</p>
+                        <p class="announcement-text"> Facturación consumiciones <i class=""></i>  </p>
                     </div>
                 </div>
             </div>
@@ -169,12 +171,12 @@
 
     <div class="col-md-6">
 
-        <h3>Main customers</h3>
+        <h3>Venta de entradas en tiempo real</h3>
 
-        <table class="table table-condensed table-bordered table-hover small">
+        <table class="table" id="ventaentradas">
             <thead>
                 <tr>
-                    <th style="width:80px;">.</th>
+
                     <th>Name</th>
                     <th>Revenue</th>
                     <th>Tax</th>
@@ -186,11 +188,7 @@
             <tbody>
 
                 <tr>
-                    <td>
-                        <a href="#"> <i class="glyphicon glyphicon-dashboard"></i></a>
-                        <a href="#"> <i class="glyphicon glyphicon-eye-open"></i></a>
-                        <a href="#"> <i class="glyphicon glyphicon-warning-sign"></i></a>
-                    </td>
+
                     <td>
                         Company 1
                     </td>
@@ -210,12 +208,7 @@
 
                 </tr>
 
-                <tr class="danger">
-                    <td>
-                        <a href="#"> <i class="glyphicon glyphicon-dashboard"></i> </a>
-                        <a href="#"> <i class="glyphicon glyphicon-eye-open"></i> </a>
-                        <a href="#"> <i class="glyphicon glyphicon-warning-sign"></i></a>
-                    </td>
+                <tr class="">
 
                     <td>
                         Customer 2
@@ -227,11 +220,6 @@
                     <td>8,45%</td>
                 </tr>
                 <tr class="info">
-                    <td>
-                        <a href="#"> <i class="glyphicon glyphicon-dashboard"></i> </a>
-                        <a href="#"> <i class="glyphicon glyphicon-eye-open"></i> </a>
-                        <a href="#"> <i class="glyphicon glyphicon-warning-sign"></i></a>
-                    </td>
 
                     <td>
                         Customer 3
@@ -243,11 +231,6 @@
                     <td>2,5%</td>
                 </tr>
                 <tr>
-                    <td>
-                        <a href="#"> <i class="glyphicon glyphicon-dashboard"></i> </a>
-                        <a href="#"> <i class="glyphicon glyphicon-eye-open"></i> </a>
-                        <a href="#"> <i class="glyphicon glyphicon-warning-sign"></i></a>
-                    </td>
 
                     <td>
                         Customer 4
@@ -261,83 +244,93 @@
 
             </tbody>
 
+            
+
         </table>
 
+        <button class="btn btn-success" ng-click="exportToExcel('#ventaentradas')">
+            <span class="glyphicon glyphicon-share"></span> Export to Excel
+        </button>
+
     </div>
 
     <div class="col-md-6">
-        <div id='grafico1' class="grafico"></div>
-    </div>
 
-    <div class="col-md-6">
-        <div id='grafico2' class="grafico"></div>
-    </div>
-    <div class="col-md-6">
-        <div id='grafico3' class="grafico"></div>
-    </div>
+        <h3>Venta de consumiciones en tiempo real</h3>
 
-
-
-    <div class="col-md-8">
-
-        <h3>Messages</h3>
-
-        <table class="table table-condensed table-bordered table-hover small">
+        <table class="table" id="ventabarra">
             <thead>
                 <tr>
-                    <th style="width:30px;">.</th>
-                    <th>From</th>
-                    <th>Subject</th>
-                    <th>Actions</th>
+                    <th>Name</th>
+                    <th>Revenue</th>
+                    <th>Tax</th>
+                    <th>Cap</th>
+                    <th>ROI</th>
+                    <th>Interest</th>
                 </tr>
             </thead>
             <tbody>
 
+                <tr>
+                    <td>
+                        Company 1
+                    </td>
+                    <td>
+                        $ 350 k
+                    </td>
+                    <td>
+                        4
+                    </td>
+                    <td>
+                        $ 291,75
+                    </td>
+                    <td>3,72</td>
+                    <td>
+                        3,65%
+                    </td>
 
-
-
-                <tr class="text-info">
-                    <td>
-                        <i class="glyphicon glyphicon-info-sign"></i>
-                    </td>
-                    <td>
-                        John Doe
-                    </td>
-                    <td>
-                        Complaint
-                    </td>
-                    <td>
-                        <a href="#"> <i class="glyphicon glyphicon-eye-open"></i></a>
-                        <a href="#"> <i class="glyphicon glyphicon-arrow-right"></i> </a>
-                    </td>
                 </tr>
 
-                <tr class="text-info">
+                <tr class="">
+                  
                     <td>
-                        <i class="glyphicon glyphicon-user"></i>
+                        Customer 2
                     </td>
-                    <td>
-                        Mr Joe
-                    </td>
-                    <td>
-                        Congrats
-                    </td>
-                    <td>
-                        <a href="#"> <i class="glyphicon glyphicon-eye-open"></i></a>
-                        <a href="#"> <i class="glyphicon glyphicon-arrow-right"></i> </a>
-                    </td>
+                    <td>$ 270 k</td>
+                    <td>7,8 </td>
+                    <td>$ 1307.32</td>
+                    <td>2,61</td>
+                    <td>8,45%</td>
                 </tr>
-
+                <tr class="info">
+                  
+                    <td>
+                        Customer 3
+                    </td>
+                    <td>$ 125 k</td>
+                    <td>2,5 </td>
+                    <td>$ 312.45</td>
+                    <td>9,21</td>
+                    <td>2,5%</td>
+                </tr>
+                <tr>
+               <td>
+                        Customer 4
+                    </td>
+                    <td>$ 205 k</td>
+                    <td>7,1 </td>
+                    <td>$ 115,75</td>
+                    <td>6,27</td>
+                    <td>(n/d)</td>
+                </tr>
 
             </tbody>
 
         </table>
 
-    </div>
-
-
-    <div class="col-md-6">
-        <div id='grafico4' class="grafico" style="height: 400px;"></div>
+        <button class="btn btn-success" ng-click="exportToExcel('#ventabarra')">
+            <span class="glyphicon glyphicon-share"></span> Export to Excel
+        </button>
     </div>
 
 </div>
