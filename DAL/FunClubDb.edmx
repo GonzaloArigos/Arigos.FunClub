@@ -235,7 +235,7 @@
           <Property Name="UsuarioMod" Type="varchar" MaxLength="100" />
           <Property Name="CodDiscoteca" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="DetalleVentaEntrada">
+        <EntityType Name="DetalleVentaEntradas">
           <Key>
             <PropertyRef Name="CodDiscoteca" />
             <PropertyRef Name="CodVentaEntrada" />
@@ -391,6 +391,20 @@
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Usuario_Discotecas">
+          <Key>
+            <PropertyRef Name="CodDiscoteca" />
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="CodDiscoteca" Type="int" Nullable="false" />
+          <Property Name="IdUsuario" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="TerminalAlta" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioAlta" Type="varchar" MaxLength="100" />
+          <Property Name="FechaMod" Type="datetime" />
+          <Property Name="TerminalMod" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioMod" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="VentaBarras">
           <Key>
@@ -695,13 +709,13 @@
         </Association>
         <Association Name="FK_DetalleVentaEntrada_Entradas">
           <End Role="Entradas" Type="Self.Entradas" Multiplicity="1" />
-          <End Role="DetalleVentaEntrada" Type="Self.DetalleVentaEntrada" Multiplicity="*" />
+          <End Role="DetalleVentaEntradas" Type="Self.DetalleVentaEntradas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Entradas">
               <PropertyRef Name="CodEntrada" />
               <PropertyRef Name="CodDiscoteca" />
             </Principal>
-            <Dependent Role="DetalleVentaEntrada">
+            <Dependent Role="DetalleVentaEntradas">
               <PropertyRef Name="CodEntrada" />
               <PropertyRef Name="CodDiscoteca" />
             </Dependent>
@@ -709,13 +723,13 @@
         </Association>
         <Association Name="FK_DetalleVentaEntrada_Entradas1">
           <End Role="Entradas" Type="Self.Entradas" Multiplicity="1" />
-          <End Role="DetalleVentaEntrada" Type="Self.DetalleVentaEntrada" Multiplicity="*" />
+          <End Role="DetalleVentaEntradas" Type="Self.DetalleVentaEntradas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Entradas">
               <PropertyRef Name="CodEntrada" />
               <PropertyRef Name="CodDiscoteca" />
             </Principal>
-            <Dependent Role="DetalleVentaEntrada">
+            <Dependent Role="DetalleVentaEntradas">
               <PropertyRef Name="CodEntrada" />
               <PropertyRef Name="CodDiscoteca" />
             </Dependent>
@@ -723,13 +737,13 @@
         </Association>
         <Association Name="FK_DetalleVentaEntrada_VentaEntradas">
           <End Role="VentaEntradas" Type="Self.VentaEntradas" Multiplicity="1" />
-          <End Role="DetalleVentaEntrada" Type="Self.DetalleVentaEntrada" Multiplicity="*" />
+          <End Role="DetalleVentaEntradas" Type="Self.DetalleVentaEntradas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="VentaEntradas">
               <PropertyRef Name="CodVentaEntrada" />
               <PropertyRef Name="CodDiscoteca" />
             </Principal>
-            <Dependent Role="DetalleVentaEntrada">
+            <Dependent Role="DetalleVentaEntradas">
               <PropertyRef Name="CodVentaEntrada" />
               <PropertyRef Name="CodDiscoteca" />
             </Dependent>
@@ -777,6 +791,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Usuario_Discotecas_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Usuario_Discotecas" Type="Self.Usuario_Discotecas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario_Discotecas">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Discotecas_Discotecas">
+          <End Role="Discotecas" Type="Self.Discotecas" Multiplicity="1" />
+          <End Role="Usuario_Discotecas" Type="Self.Usuario_Discotecas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discotecas">
+              <PropertyRef Name="CodDiscoteca" />
+            </Principal>
+            <Dependent Role="Usuario_Discotecas">
+              <PropertyRef Name="CodDiscoteca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="FunClubModelStoreContainer">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
@@ -794,7 +832,7 @@
           <EntitySet Name="DetallePagoTarjetaCreditoes" EntityType="Self.DetallePagoTarjetaCreditoes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetallePagoTarjetaDebitoes" EntityType="Self.DetallePagoTarjetaDebitoes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetalleVentaBarras" EntityType="Self.DetalleVentaBarras" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DetalleVentaEntrada" EntityType="Self.DetalleVentaEntrada" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleVentaEntradas" EntityType="Self.DetalleVentaEntradas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Discotecas" EntityType="Self.Discotecas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Entrada_has_Beneficio" EntityType="Self.Entrada_has_Beneficio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Entradas" EntityType="Self.Entradas" Schema="dbo" store:Type="Tables" />
@@ -804,6 +842,7 @@
           <EntitySet Name="PrecioEntradas" EntityType="Self.PrecioEntradas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario_Discotecas" EntityType="Self.Usuario_Discotecas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VentaBarras" EntityType="Self.VentaBarras" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VentaEntradas" EntityType="Self.VentaEntradas" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Beneficio__Benef__1DB06A4F" Association="Self.FK__Beneficio__Benef__1DB06A4F">
@@ -896,15 +935,15 @@
           </AssociationSet>
           <AssociationSet Name="FK_DetalleVentaEntrada_Entradas" Association="Self.FK_DetalleVentaEntrada_Entradas">
             <End Role="Entradas" EntitySet="Entradas" />
-            <End Role="DetalleVentaEntrada" EntitySet="DetalleVentaEntrada" />
+            <End Role="DetalleVentaEntradas" EntitySet="DetalleVentaEntradas" />
           </AssociationSet>
           <AssociationSet Name="FK_DetalleVentaEntrada_Entradas1" Association="Self.FK_DetalleVentaEntrada_Entradas1">
             <End Role="Entradas" EntitySet="Entradas" />
-            <End Role="DetalleVentaEntrada" EntitySet="DetalleVentaEntrada" />
+            <End Role="DetalleVentaEntradas" EntitySet="DetalleVentaEntradas" />
           </AssociationSet>
           <AssociationSet Name="FK_DetalleVentaEntrada_VentaEntradas" Association="Self.FK_DetalleVentaEntrada_VentaEntradas">
             <End Role="VentaEntradas" EntitySet="VentaEntradas" />
-            <End Role="DetalleVentaEntrada" EntitySet="DetalleVentaEntrada" />
+            <End Role="DetalleVentaEntradas" EntitySet="DetalleVentaEntradas" />
           </AssociationSet>
           <AssociationSet Name="FK_Entrada_Consumicion" Association="Self.FK_Entrada_Consumicion">
             <End Role="Consumicions" EntitySet="Consumicions" />
@@ -918,12 +957,24 @@
             <End Role="Entradas" EntitySet="Entradas" />
             <End Role="PrecioEntradas" EntitySet="PrecioEntradas" />
           </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Discotecas_AspNetUsers" Association="Self.FK_Usuario_Discotecas_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Usuario_Discotecas" EntitySet="Usuario_Discotecas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Discotecas_Discotecas" Association="Self.FK_Usuario_Discotecas_Discotecas">
+            <End Role="Discotecas" EntitySet="Discotecas" />
+            <End Role="Usuario_Discotecas" EntitySet="Usuario_Discotecas" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FunClubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="FunClubEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="FunClubEntities" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="AspNetRoles" EntityType="FunClubModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="FunClubModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="FunClubModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="FunClubModel.AspNetUser" />
           <EntitySet Name="Beneficio_has_Consumicion" EntityType="FunClubModel.Beneficio_has_Consumicion" />
           <EntitySet Name="Beneficios" EntityType="FunClubModel.Beneficio" />
           <EntitySet Name="BeneficiosAdquiridosClientes" EntityType="FunClubModel.BeneficiosAdquiridosCliente" />
@@ -947,6 +998,14 @@
           <EntitySet Name="sysdiagrams" EntityType="FunClubModel.sysdiagram" />
           <EntitySet Name="VentaBarras" EntityType="FunClubModel.VentaBarra" />
           <EntitySet Name="VentaEntradas" EntityType="FunClubModel.VentaEntrada" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="FunClubModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="FunClubModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
           <AssociationSet Name="FK__Beneficio__Benef__2180FB33" Association="FunClubModel.FK__Beneficio__Benef__2180FB33">
             <End Role="Beneficio" EntitySet="Beneficios" />
             <End Role="Beneficio_has_Consumicion" EntitySet="Beneficio_has_Consumicion" />
@@ -1043,23 +1102,70 @@
             <End Role="Pago" EntitySet="Pagoes" />
             <End Role="VentaEntrada" EntitySet="VentaEntradas" />
           </AssociationSet>
-          <EntitySet Name="AspNetRoles" EntityType="FunClubModel.AspNetRole" />
-          <EntitySet Name="AspNetUserClaims" EntityType="FunClubModel.AspNetUserClaim" />
-          <EntitySet Name="AspNetUserLogins" EntityType="FunClubModel.AspNetUserLogin" />
-          <EntitySet Name="AspNetUsers" EntityType="FunClubModel.AspNetUser" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="FunClubModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="FunClubModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="FunClubModel.AspNetUserRoles">
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="Usuario_Discotecas" EntityType="FunClubModel.Usuario_Discotecas" />
+          <AssociationSet Name="FK_Usuario_Discotecas_AspNetUsers" Association="FunClubModel.FK_Usuario_Discotecas_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Usuario_Discotecas" EntitySet="Usuario_Discotecas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Discotecas_Discotecas" Association="FunClubModel.FK_Usuario_Discotecas_Discotecas">
+            <End Role="Discoteca" EntitySet="Discotecas" />
+            <End Role="Usuario_Discotecas" EntitySet="Usuario_Discotecas" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="FunClubModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="FunClubModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="FunClubModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="FunClubModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="FunClubModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="FunClubModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+          <NavigationProperty Name="Usuario_Discotecas" Relationship="FunClubModel.FK_Usuario_Discotecas_AspNetUsers" FromRole="AspNetUser" ToRole="Usuario_Discotecas" />
+        </EntityType>
         <EntityType Name="Beneficio_has_Consumicion">
           <Key>
             <PropertyRef Name="Beneficio_CodBeneficio" />
@@ -1296,6 +1402,7 @@
           <NavigationProperty Name="Noches" Relationship="FunClubModel.FK__Noche__Discoteca__693CA210" FromRole="Discoteca" ToRole="Noch" />
           <NavigationProperty Name="VentaBarras" Relationship="FunClubModel.FK__VentaBarr__Disco__2BFE89A6" FromRole="Discoteca" ToRole="VentaBarra" />
           <NavigationProperty Name="VentaEntradas" Relationship="FunClubModel.FK__VentaEntr__Disco__10566F31" FromRole="Discoteca" ToRole="VentaEntrada" />
+          <NavigationProperty Name="Usuario_Discotecas" Relationship="FunClubModel.FK_Usuario_Discotecas_Discotecas" FromRole="Discoteca" ToRole="Usuario_Discotecas" />
         </EntityType>
         <EntityType Name="Entrada_has_Beneficio">
           <Key>
@@ -1475,6 +1582,34 @@
           <NavigationProperty Name="Discoteca" Relationship="FunClubModel.FK__VentaEntr__Disco__10566F31" FromRole="VentaEntrada" ToRole="Discoteca" />
           <NavigationProperty Name="Pago" Relationship="FunClubModel.FK__VentaEntr__Pago___0F624AF8" FromRole="VentaEntrada" ToRole="Pago" />
         </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="FunClubModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FunClubModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="FunClubModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FunClubModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Beneficio__Benef__2180FB33">
           <End Type="FunClubModel.Beneficio" Role="Beneficio" Multiplicity="1" />
           <End Type="FunClubModel.Beneficio_has_Consumicion" Role="Beneficio_has_Consumicion" Multiplicity="*" />
@@ -1777,93 +1912,101 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="AspNetRole">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="FunClubModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
-        </EntityType>
-        <EntityType Name="AspNetUserClaim">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="FunClubModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
-        </EntityType>
-        <EntityType Name="AspNetUserLogin">
-          <Key>
-            <PropertyRef Name="LoginProvider" />
-            <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="FunClubModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
-        </EntityType>
-        <EntityType Name="AspNetUser">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUserClaims" Relationship="FunClubModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
-          <NavigationProperty Name="AspNetUserLogins" Relationship="FunClubModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
-          <NavigationProperty Name="AspNetRoles" Relationship="FunClubModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
-        </EntityType>
-        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Type="FunClubModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="FunClubModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserClaim">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Type="FunClubModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="FunClubModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserLogin">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="AspNetUserRoles">
           <End Type="FunClubModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="FunClubModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
-      </Schema>
+        <EntityType Name="Usuario_Discotecas">
+          <Key>
+            <PropertyRef Name="CodDiscoteca" />
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="CodDiscoteca" Type="Int32" Nullable="false" />
+          <Property Name="IdUsuario" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="TerminalAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaMod" Type="DateTime" Precision="3" />
+          <Property Name="TerminalMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="FunClubModel.FK_Usuario_Discotecas_AspNetUsers" FromRole="Usuario_Discotecas" ToRole="AspNetUser" />
+          <NavigationProperty Name="Discoteca" Relationship="FunClubModel.FK_Usuario_Discotecas_Discotecas" FromRole="Usuario_Discotecas" ToRole="Discoteca" />
+        </EntityType>
+        <Association Name="FK_Usuario_Discotecas_AspNetUsers">
+          <End Type="FunClubModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="FunClubModel.Usuario_Discotecas" Role="Usuario_Discotecas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario_Discotecas">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Discotecas_Discotecas">
+          <End Type="FunClubModel.Discoteca" Role="Discoteca" Multiplicity="1" />
+          <End Type="FunClubModel.Usuario_Discotecas" Role="Usuario_Discotecas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discoteca">
+              <PropertyRef Name="CodDiscoteca" />
+            </Principal>
+            <Dependent Role="Usuario_Discotecas">
+              <PropertyRef Name="CodDiscoteca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="FunClubModelStoreContainer" CdmEntityContainer="FunClubEntities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="FunClubModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="FunClubModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="FunClubModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="FunClubModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Beneficio_has_Consumicion">
             <EntityTypeMapping TypeName="FunClubModel.Beneficio_has_Consumicion">
               <MappingFragment StoreEntitySet="Beneficio_has_Consumicion">
@@ -2046,7 +2189,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="DetalleVentaEntradas">
             <EntityTypeMapping TypeName="FunClubModel.DetalleVentaEntrada">
-              <MappingFragment StoreEntitySet="DetalleVentaEntrada">
+              <MappingFragment StoreEntitySet="DetalleVentaEntradas">
                 <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
                 <ScalarProperty Name="TerminalMod" ColumnName="TerminalMod" />
                 <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
@@ -2235,51 +2378,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="FunClubModel.AspNetRole">
-              <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="FunClubModel.AspNetUserClaim">
-              <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="FunClubModel.AspNetUserLogin">
-              <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="FunClubModel.AspNetUser">
-              <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="FunClubModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetUser">
               <ScalarProperty Name="Id" ColumnName="UserId" />
@@ -2288,6 +2386,20 @@
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Usuario_Discotecas">
+            <EntityTypeMapping TypeName="FunClubModel.Usuario_Discotecas">
+              <MappingFragment StoreEntitySet="Usuario_Discotecas">
+                <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
+                <ScalarProperty Name="TerminalMod" ColumnName="TerminalMod" />
+                <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+                <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
+                <ScalarProperty Name="TerminalAlta" ColumnName="TerminalAlta" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="CodDiscoteca" ColumnName="CodDiscoteca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -18,6 +18,7 @@ namespace DAL
         public FunClubEntities()
             : base("name=FunClubEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -25,6 +26,10 @@ namespace DAL
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Beneficio_has_Consumicion> Beneficio_has_Consumicion { get; set; }
         public virtual DbSet<Beneficio> Beneficios { get; set; }
         public virtual DbSet<BeneficiosAdquiridosCliente> BeneficiosAdquiridosClientes { get; set; }
@@ -48,9 +53,6 @@ namespace DAL
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<VentaBarra> VentaBarras { get; set; }
         public virtual DbSet<VentaEntrada> VentaEntradas { get; set; }
-        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Usuario_Discotecas> Usuario_Discotecas { get; set; }
     }
 }

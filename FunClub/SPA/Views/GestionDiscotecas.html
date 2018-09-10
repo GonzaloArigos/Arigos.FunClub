@@ -66,9 +66,9 @@
     <div class="jumbotron">
         <div ng-show="!NuevaDisco && !GestionDisco">
             <button class="btn btn-link" ng-click="NuevaDisco = true"><h1 style="color:orangered" class="glyphicon glyphicon-headphones"></h1><br /><h4>Nueva Discoteca</h4></button>
-            <button class="btn btn-link" ng-click="GestionDisco = true"><h1 style="color:orangered" class="glyphicon glyphicon-edit"></h1><br /><h4>Gestión Discoteca</h4></button>
+            <button class="btn btn-link" ng-click="GestionDisco = true"><h1 style="color:orangered" class="glyphicon glyphicon-edit"></h1><br /><h4>Gestión Discotecas</h4></button>
         </div>
-        <div  ng-show="NuevaDisco || GestionDisco">
+        <div ng-show="NuevaDisco || GestionDisco">
             <button class="btn btn-link" ng-click="GestionDisco = false;NuevaDisco = false">Volver</button>
         </div>
         <div ng-show="NuevaDisco && !GestionDisco">
@@ -81,21 +81,18 @@
         </div>
 
         <div ng-show="GestionDisco && !NuevaDisco">
-           
+
             <h2>Gestión discotecas</h2>
             <div class="box">
-                <select style="max-width :100%" class="form-control">
-                    <option value="1">Kika Club!</option>
-                    <option value="2">RoseBar</option>
-                    <option value="3">Vinicius</option>
+                <select ng-model="DiscotecaSeleccionada" style="max-width :100%" class="form-control">
+                    <option ng-repeat="x in Discotecas" ng-value="x">{{x.Descripcion}}</option>
                 </select>
                 <br />
-                <select style="max-width :100%" class="form-control">
-                    <option value="1">Arigos</option>
-                    <option value="2">Pepe</option>
-                    <option value="3">Pablo</option>
+                <select ng-model="UsuarioSeleccionado" ng-change="VerificarPermisos()" style="max-width :100%" class="form-control">
+                    <option ng-repeat="x in DiscotecaSeleccionada.Usuario_Discotecas" ng-value="x.AspNetUser">{{x.AspNetUser.Email}}</option>
                 </select>
                 <br />
+                {{UsuarioSeleccionado.Email}}
                 <table style="color:black" class="table" id="ventaentradas">
                     <thead>
                         <tr>
@@ -109,29 +106,35 @@
                         <tr class="">
 
                             <td>Administrador </td>
-                            <td><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
+                            
+                            <td ng-show="Administrador"><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
+                            <td ng-show="!Administrador"><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
                         </tr>
                         <tr class="info">
 
                             <td>Cajero Bar </td>
-                            <td><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
+                            <td ng-show="CajeroBar"><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
+                            <td ng-show="!CajeroBar"><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
                         </tr>
 
                         <tr class="info">
 
                             <td>Cajero Entrada </td>
-                            <td><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
+                            <td ng-show="CajeroEntrada"><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
+                            <td ng-show="!CajeroEntrada"><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
                         </tr>
 
                         <tr class="info">
 
                             <td>Gestor entradas </td>
-                            <td><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
+                            <td ng-show="GestorEntrada"><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
+                            <td ng-show="!GestorEntrada"><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
                         </tr>
                         <tr class="info">
 
                             <td>Gestor consumiciones </td>
-                            <td><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
+                            <td ng-show="GestorConsumicion"><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
+                            <td ng-show="!GestorConsumicion"><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
                         </tr>
 
                     </tbody>

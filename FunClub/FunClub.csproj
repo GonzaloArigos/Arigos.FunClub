@@ -191,6 +191,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CargaMasivaController.cs" />
+    <Compile Include="Controllers\DiscotecaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1091,6 +1092,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\CargaMasiva\" />
+    <Folder Include="Views\Discoteca\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1109,6 +1111,10 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{5b459351-2bac-478c-a951-22c8dad21b86}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{CAE8625F-A5F6-4688-A51B-03553086A2A3}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{4381f023-7dec-46fc-957e-616e82b22593}</Project>

@@ -5,11 +5,10 @@
 
 
 
-    service.GetAll = function (skip) {
+    service.GetDiscotecasUsuario = function () {
         var promise = $http({
             method: 'get',
-            url: '/Product/GetAll',
-            params: {skip: skip}
+            url: '/Discoteca/GetDiscotecasUsuario'
         });
 
 

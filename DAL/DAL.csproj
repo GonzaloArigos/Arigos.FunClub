@@ -101,6 +101,7 @@
     <Compile Include="Discoteca.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="DiscotecaDAL.cs" />
     <Compile Include="Entrada.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
@@ -139,6 +140,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sysdiagram.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario_Discotecas.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
     <Compile Include="VentaBarra.cs">
