@@ -12,12 +12,12 @@ namespace DAL
         {
             using (FunClubEntities db = new FunClubEntities())
             {
-                var usuario_discotecas = db.Usuario_Discotecas.Where(a => a.AspNetUser.Email == userid).ToList();
+                var usuario_discotecas = db.Usuario_Discotecas.Where(a => a.EmailUsuario == userid).ToList();
                 var discotecas = db.Discotecas
                     .Include("Usuario_Discotecas")
                     .Include("Usuario_Discotecas.AspNetUser")
                     .Include("Usuario_Discotecas.AspNetUser.AspNetRoles")
-                    .Where(a => a.Usuario_Discotecas.Where(i => i.AspNetUser.Email == userid).Any());
+                    .Where(a =>a.Usuario_Discotecas.Where(i => i.EmailUsuario == userid).Any());
                 return discotecas.ToList();
             }
         }

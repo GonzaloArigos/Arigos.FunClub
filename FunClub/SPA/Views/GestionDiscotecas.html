@@ -69,31 +69,36 @@
             <button class="btn btn-link" ng-click="GestionDisco = true"><h1 style="color:orangered" class="glyphicon glyphicon-edit"></h1><br /><h4>Gestión Discotecas</h4></button>
         </div>
         <div ng-show="NuevaDisco || GestionDisco">
-            <button class="btn btn-link" ng-click="GestionDisco = false;NuevaDisco = false">Volver</button>
+            <button class="btn btn-link" ng-click="GestionDisco = false;NuevaDisco = false;Ok = false">Volver</button>
         </div>
-        <div ng-show="NuevaDisco && !GestionDisco">
+        <div ng-show="NuevaDisco && !GestionDisco && !Ok">
             <span class="glyphicon glyphicon-check"></span>
             <h2>Nueva discoteca</h2>
             <div class="box">
                 <input type="text" placeholder="Nombre">
-                <button class="btn btn-default full-width"><span class="glyphicon glyphicon-ok"></span></button>
+                <button ng-click="GuardarNuevaDisco()" class="btn btn-default full-width"><span class="glyphicon glyphicon-ok"></span></button>
             </div>
         </div>
+        <div ng-show="Ok" style="text-align:center">
+            <img width="100" height="100" src="https://openclipart.org/image/2400px/svg_to_png/212394/rodentia-icons_ok.png"/>
+            <h3 style="color:black">Discoteca guardada.</h3>
+        </div>
 
-        <div ng-show="GestionDisco && !NuevaDisco">
+        <div ng-show="GestionDisco && !NuevaDisco" >
 
-            <h2>Gestión discotecas</h2>
+            <h2 style="color:black">Gestión discotecas</h2>
             <div class="box">
                 <select ng-model="DiscotecaSeleccionada" style="max-width :100%" class="form-control">
                     <option ng-repeat="x in Discotecas" ng-value="x">{{x.Descripcion}}</option>
                 </select>
+                <button ng-show="DiscotecaSeleccionada" ng-click="editarDisco()" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span>Editar discoteca</button>
                 <br />
                 <select ng-model="UsuarioSeleccionado" ng-change="VerificarPermisos()" style="max-width :100%" class="form-control">
-                    <option ng-repeat="x in DiscotecaSeleccionada.Usuario_Discotecas" ng-value="x.AspNetUser">{{x.AspNetUser.Email}}</option>
+                    <option ng-repeat="x in DiscotecaSeleccionada.Usuario_Discotecas" ng-value="x.AspNetUser">{{x.EmailUsuario}}</option>
                 </select>
                 <br />
-                {{UsuarioSeleccionado.Email}}
-                <table style="color:black" class="table" id="ventaentradas">
+
+                <table ng-show="UsuarioSeleccionado" style="color:black;font-size:12px;" class="table" id="ventaentradas">
                     <thead>
                         <tr>
                             <th>Permisos</th>
@@ -106,7 +111,7 @@
                         <tr class="">
 
                             <td>Administrador </td>
-                            
+
                             <td ng-show="Administrador"><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
                             <td ng-show="!Administrador"><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
                         </tr>
@@ -142,9 +147,6 @@
 
 
                 </table>
-
-
-                <button class="btn btn-default full-width"><span class="glyphicon glyphicon-ok"></span></button>
             </div>
         </div>
 

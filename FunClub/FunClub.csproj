@@ -210,6 +210,9 @@
     <Content Include="Content\Footer.css" />
     <Content Include="Content\Logo.css" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\ngDialog-theme-default.css" />
+    <Content Include="Content\ngDialog.css" />
+    <Content Include="Content\ngDialog.min.css" />
     <Content Include="Content\Planes.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1036,6 +1039,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ng-file-upload-all.js" />
     <Content Include="Scripts\ng-file-upload.js" />
+    <Content Include="Scripts\ngDialog.js" />
+    <Content Include="Scripts\ngDialog.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sitemap.xml" />
@@ -1051,6 +1056,7 @@
     <Content Include="SPA\Views\CargaMasiva.html" />
     <Content Include="SPA\Views\GestionDiscotecas.html" />
     <Content Include="SPA\Views\Home.html" />
+    <Content Include="SPA\Views\modalEditarDisco.html" />
     <Content Include="SPA\Views\Principal.html" />
     <Content Include="SPA\Views\ToolBar.html" />
     <Content Include="Web.config" />

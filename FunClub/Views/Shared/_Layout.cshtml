@@ -9,18 +9,20 @@
     <link href="~/Content/Logo.css" rel="stylesheet" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="~/Content/Footer.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/1.0.1/css/ngDialog.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/1.0.1/css/ngDialog-theme-default.min.css">
 </head>
 <body ng-app="app" style="padding:0;margin:0;">
 
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #1f1b35ba;border-color: #00fff7;color:azure;padding-bottom:15px;margin-bottom:6%;padding-top:2%;">
         @*<div class="navbar" style="background-color:black;">
 
-            <div class="container">
-                <div class="navbar-header">
+                <div class="container">
+                    <div class="navbar-header">
 
+                    </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="color:azure" ;>
@@ -57,8 +59,8 @@
         @RenderBody()
 
     </div>
-        <!-- Footer -->
-    <footer class="footer" >
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
@@ -113,8 +115,8 @@
 
     </footer>
 
-        <!-- Footer -->
-   
+    <!-- Footer -->
+
 
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-animate.min.js"></script>
@@ -138,6 +140,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/ngDialog.min.js"></script>
     @RenderSection("scripts", required: false)
 
     <script>

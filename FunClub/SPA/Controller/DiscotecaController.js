@@ -1,4 +1,4 @@
-﻿angular.module('app').controller("DiscotecaController", ["$scope", "DiscotecaService", 'Excel', '$timeout', 'Upload', "$q", function ($scope, DiscotecaService, Excel, $timeout,Upload, $q) {
+﻿angular.module('app').controller("DiscotecaController", ["$scope", "DiscotecaService", "ngDialog", 'Excel', '$timeout', 'Upload', "$q", function ($scope, DiscotecaService, ngDialog, Excel, $timeout, Upload, $q) {
 
     $scope.Cargando = false;
     $scope.Ok = false;
@@ -31,28 +31,32 @@
         $scope.GestorEntrada = false;
         $scope.GestorConsumicion = false;
 
-        if ($scope.UsuarioSeleccionado){
-        var permisos = $scope.UsuarioSeleccionado.AspNetRoles;        
-        for (var i = 0; i < permisos.length; i++) {
+        if ($scope.UsuarioSeleccionado) {
+            var permisos = $scope.UsuarioSeleccionado.AspNetRoles;
+            for (var i = 0; i < permisos.length; i++) {
 
-            if (permisos[i].Id == 1){
-                $scope.Administrador = true;
+                if (permisos[i].Id == 1) {
+                    $scope.Administrador = true;
+                }
+                if (permisos[i].Id == 2) {
+                    $scope.CajeroBar = true;
+                }
+                if (permisos[i].Id == 3) {
+                    $scope.CajeroEntrada = true;
+                }
+                if (permisos[i].Id == 4) {
+                    $scope.GestorEntrada = true;
+                }
+                if (permisos[i].Id == 5) {
+                    $scope.GestorConsumicion = true;
+                }
             }
-            if (permisos[i].Id == 2) {
-                $scope.CajeroBar = true;
-            }
-            if (permisos[i].Id == 3) {
-                $scope.CajeroEntrada = true;
-            }
-            if (permisos[i].Id == 4) {
-                $scope.GestorEntrada = true;
-            }
-            if (permisos[i].Id == 5) {
-                $scope.GestorConsumicion = true;
-            }
+
         }
-   
-        }
+    }
+
+    $scope.GuardarNuevaDisco = function () {
+        $scope.Ok = true;
     }
 
     $scope.GetDiscotecas();
@@ -62,6 +66,30 @@
         $timeout(function () { location.href = $scope.exportHref; }, 100); // trigger download
     }
 
+    $scope.NuevoUsuario = "";
+
+    $scope.AgregarUsuario = function (email,disco) {
+        var usuario_nuevo = { EmailUsuario: email , CodDiscoteca: disco};
+        $scope.DiscotecaSeleccionada.Usuario_Discotecas.push(usuario_nuevo);
+    }
+
+    $scope.EliminarUsuario = function (email) {
+        for (var i = 0; i < $scope.DiscotecaSeleccionada.Usuario_Discotecas.length; i++) {
+            if ($scope.DiscotecaSeleccionada.Usuario_Discotecas[i].EmailUsuario == email){
+                $scope.DiscotecaSeleccionada.Usuario_Discotecas.splice(i, 1);
+            }
+        }
+    }
+
+    $scope.editarDisco = function () {
+            ngDialog.open({
+                template: 'SPA/Views/modalEditarDisco.html',
+                className: 'ngdialog-theme-default',
+                scope: $scope,
+
+            });
+        };
     
+
 
 }])

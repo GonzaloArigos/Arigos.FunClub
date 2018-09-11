@@ -15,7 +15,7 @@ namespace DAL
     public partial class Usuario_Discotecas
     {
         public int CodDiscoteca { get; set; }
-        public string IdUsuario { get; set; }
+        public string EmailUsuario { get; set; }
         public Nullable<System.DateTime> FechaAlta { get; set; }
         public string TerminalAlta { get; set; }
         public string UsuarioAlta { get; set; }
