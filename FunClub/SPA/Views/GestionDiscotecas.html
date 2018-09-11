@@ -75,7 +75,7 @@
             <span class="glyphicon glyphicon-check"></span>
             <h2>Nueva discoteca</h2>
             <div class="box">
-                <input type="text" placeholder="Nombre">
+                <input ng-model="NuevaDiscotecaNombre" type="text" placeholder="Nombre">
                 <button ng-click="GuardarNuevaDisco()" class="btn btn-default full-width"><span class="glyphicon glyphicon-ok"></span></button>
             </div>
         </div>
@@ -91,7 +91,8 @@
                 <select ng-model="DiscotecaSeleccionada" style="max-width :100%" class="form-control">
                     <option ng-repeat="x in Discotecas" ng-value="x">{{x.Descripcion}}</option>
                 </select>
-                <button ng-show="DiscotecaSeleccionada" ng-click="editarDisco()" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span>Editar discoteca</button>
+              
+                <button style="margin-top:3px;float:right;" ng-show="DiscotecaSeleccionada" ng-click="editarDisco()" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span>Editar</button>
                 <br />
                 <select ng-model="UsuarioSeleccionado" ng-change="VerificarPermisos()" style="max-width :100%" class="form-control">
                     <option ng-repeat="x in DiscotecaSeleccionada.Usuario_Discotecas" ng-value="x.AspNetUser">{{x.EmailUsuario}}</option>
@@ -112,34 +113,33 @@
 
                             <td>Administrador </td>
 
-                            <td ng-show="Administrador"><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
-                            <td ng-show="!Administrador"><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
+                            <td ng-show="Administrador"><button ng-click="EliminarRol(1)" class="btn btn-danger glyphicon glyphicon-remove"></button></td>
+                            <td ng-show="!Administrador"><button ng-click="AsignarRol(1)" class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
                         </tr>
                         <tr class="info">
 
                             <td>Cajero Bar </td>
-                            <td ng-show="CajeroBar"><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
-                            <td ng-show="!CajeroBar"><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
+                            <td ng-show="CajeroBar"><button ng-click="EliminarRol(2)" class="btn btn-danger glyphicon glyphicon-remove"></button></td>
+                            <td ng-show="!CajeroBar"><button ng-click="AsignarRol(2)" class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
                         </tr>
 
                         <tr class="info">
 
                             <td>Cajero Entrada </td>
-                            <td ng-show="CajeroEntrada"><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
-                            <td ng-show="!CajeroEntrada"><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
+                            <td ng-show="CajeroEntrada"><button ng-click="EliminarRol(3)" class="btn btn-danger glyphicon glyphicon-remove"></button></td>
+                            <td ng-show="!CajeroEntrada"><button ng-click="AsignarRol(3)" class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
                         </tr>
 
                         <tr class="info">
 
                             <td>Gestor entradas </td>
-                            <td ng-show="GestorEntrada"><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
-                            <td ng-show="!GestorEntrada"><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
+                            <td ng-show="GestorEntrada"><button ng-click="EliminarRol(4)" class="btn btn-danger glyphicon glyphicon-remove"></button></td>
+                            <td ng-show="!GestorEntrada"><button ng-click="AsignarRol(4)" class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
                         </tr>
                         <tr class="info">
-
                             <td>Gestor consumiciones </td>
-                            <td ng-show="GestorConsumicion"><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
-                            <td ng-show="!GestorConsumicion"><button class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
+                            <td ng-show="GestorConsumicion"><button ng-click="EliminarRol(5)" class="btn btn-danger glyphicon glyphicon-remove"></button></td>
+                            <td ng-show="!GestorConsumicion"><button ng-click="AsignarRol(5)" class="btn btn-success glyphicon glyphicon-plus-sign"></button></td>
                         </tr>
 
                     </tbody>

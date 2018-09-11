@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="FunClubModel.C__MigrationHistory" Width="1.5" PointX="2.75" PointY="4.75" />
         <EntityTypeShape EntityType="FunClubModel.Cliente" Width="1.5" PointX="6" PointY="41.625" />
         <EntityTypeShape EntityType="FunClubModel.Consumicion_Bebida" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="FunClubModel.Consumicion" Width="1.5" PointX="3" PointY="42.125" />
+        <EntityTypeShape EntityType="FunClubModel.Consumicion" Width="1.5" PointX="3" PointY="55.875" />
         <EntityTypeShape EntityType="FunClubModel.DetallePagoEfectivo" Width="1.5" PointX="3" PointY="47.25" />
         <EntityTypeShape EntityType="FunClubModel.DetallePagoTarjetaCredito" Width="1.5" PointX="3" PointY="10.375" />
         <EntityTypeShape EntityType="FunClubModel.DetallePagoTarjetaDebito" Width="1.5" PointX="3" PointY="51.125" />
@@ -32,7 +32,7 @@
         <EntityTypeShape EntityType="FunClubModel.Usuario_Discotecas" Width="1.5" PointX="3" PointY="20.25" />
         <EntityTypeShape EntityType="FunClubModel.VentaBarra" Width="1.5" PointX="3" PointY="24" />
         <EntityTypeShape EntityType="FunClubModel.VentaEntrada" Width="1.5" PointX="6" PointY="24" />
-        <EntityTypeShape EntityType="FunClubModel.AspNetUserLogin" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="FunClubModel.AspNetUserLogin" Width="1.5" PointX="5.375" PointY="0.75" />
         <AssociationConnector Association="FunClubModel.FK_Usuario_Discotecas_AspNetUsers" />
         <AssociationConnector Association="FunClubModel.FK__Beneficio__Benef__2180FB33" />
         <AssociationConnector Association="FunClubModel.FK__Beneficio__Benef__1DB06A4F" />

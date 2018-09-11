@@ -142,6 +142,7 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="UsuarioDAL.cs" />
     <Compile Include="Usuario_Discotecas.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>

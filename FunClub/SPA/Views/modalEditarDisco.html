@@ -59,12 +59,12 @@
 </style>
 <h3>Modificar Discoteca</h3>
 <label>Nombre</label>
-<input type="text" value="{{DiscotecaSeleccionada.Descripcion}}" />
+<input ng-model="DiscotecaSeleccionada.Descripcion" type="text" />
 <label>¿Es productiva?</label>
 <br />
 <!--<input type="checkbox" checked="{{DiscotecaSeleccionada.Productiva}}"/>-->
 <label class="switch">
-    <input type="checkbox" ng-checked="{{DiscotecaSeleccionada.Productiva}}">
+    <input ng-model="DiscotecaSeleccionada.Productiva" type="checkbox" ng-checked="{{DiscotecaSeleccionada.Productiva}}">
     <span class="slider round"></span>
 </label>
 <br />
@@ -89,4 +89,4 @@
     </tbody>
 </table>
 <br />
-<button class="btn btn-success">Confirmar</button>
+<button ng-click="SolicitudEditar()" class="btn btn-success">Confirmar</button>

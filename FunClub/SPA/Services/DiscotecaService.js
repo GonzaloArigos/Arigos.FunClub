@@ -53,22 +53,55 @@
 
     };
 
-    service.AgregarAlCarrito = function (item) {
+    service.NuevaDiscoteca = function (nombre) {
         var promise = $http({
             method: 'post',
-            url: '/Product/AgregarAlCarrito',
-            data: { item: item }
+            url: '/Discoteca/NuevaDiscoteca',
+            params: { nombre: nombre }
         });
 
         return $q.when(promise);
 
     };
 
-    service.PublicarProducto = function (file,product) {
+    service.AsignarRol = function (roleid, email) {
+        var promise = $http({
+            method: 'post',
+            url: '/Discoteca/AsignarRol',
+            params: { roleid: roleid, email: email }
+        });
+
+        return $q.when(promise);
+
+    };
+    service.EliminarRol = function (roleid, email) {
+        var promise = $http({
+            method: 'post',
+            url: '/Discoteca/EliminarRol',
+            params: { roleid: roleid, email: email }
+        });
+
+        return $q.when(promise);
+
+    };
+    
+
+    service.EditarDisco = function (cod, nombre,prod) {
+        var promise = $http({
+            method: 'post',
+            url: '/Discoteca/EditarDisco',
+            params: { cod: cod, nombre: nombre, prod: prod }
+        });
+
+        return $q.when(promise);
+
+    };
+
+    service.PublicarProducto = function (file, product) {
         var promise = $http({
             method: 'post',
             url: '/Product/PublicarProducto',
-            data: { file: file, product: product}
+            data: { file: file, product: product }
         });
 
         return $q.when(promise);

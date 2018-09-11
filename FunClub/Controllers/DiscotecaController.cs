@@ -23,5 +23,29 @@ namespace FunClub.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public void NuevaDiscoteca(string nombre)
+        {
+            BLL.DiscotecaBLL.NuevaDiscoteca(nombre, User.Identity.Name);
+        }
+
+        [HttpPost]
+        public void AsignarRol(string roleid,string email)
+        {
+            BLL.UsuarioBLL.AsignarRol(roleid, email);
+        }
+
+        [HttpPost]
+        public void EliminarRol(string roleid, string email)
+        {
+            BLL.UsuarioBLL.EliminarRol(roleid, email);
+        }
+
+        [HttpPost]
+        public void EditarDisco(string cod, string nombre,bool prod)
+        {
+            BLL.DiscotecaBLL.EditarDisco(cod, nombre, prod);
+        }
     }
 }

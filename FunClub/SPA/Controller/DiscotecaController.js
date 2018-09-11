@@ -54,9 +54,14 @@
 
         }
     }
+    $scope.NuevaDiscotecaNombre = "";
 
     $scope.GuardarNuevaDisco = function () {
-        $scope.Ok = true;
+
+        DiscotecaService.NuevaDiscoteca($scope.NuevaDiscotecaNombre).then(function (response) {
+            $scope.GetDiscotecas();
+            $scope.Ok = true;
+        });
     }
 
     $scope.GetDiscotecas();
@@ -68,28 +73,53 @@
 
     $scope.NuevoUsuario = "";
 
-    $scope.AgregarUsuario = function (email,disco) {
-        var usuario_nuevo = { EmailUsuario: email , CodDiscoteca: disco};
+    $scope.AgregarUsuario = function (email, disco) {
+        var usuario_nuevo = { EmailUsuario: email, CodDiscoteca: disco };
         $scope.DiscotecaSeleccionada.Usuario_Discotecas.push(usuario_nuevo);
     }
 
     $scope.EliminarUsuario = function (email) {
         for (var i = 0; i < $scope.DiscotecaSeleccionada.Usuario_Discotecas.length; i++) {
-            if ($scope.DiscotecaSeleccionada.Usuario_Discotecas[i].EmailUsuario == email){
+            if ($scope.DiscotecaSeleccionada.Usuario_Discotecas[i].EmailUsuario == email) {
                 $scope.DiscotecaSeleccionada.Usuario_Discotecas.splice(i, 1);
             }
         }
     }
 
-    $scope.editarDisco = function () {
-            ngDialog.open({
-                template: 'SPA/Views/modalEditarDisco.html',
-                className: 'ngdialog-theme-default',
-                scope: $scope,
+    $scope.AsignarRol = function (cod) {
+        DiscotecaService.AsignarRol(cod,$scope.UsuarioSeleccionado.Email).then(function (response) {
+            var rolnuevo = { Id: cod };
+            $scope.UsuarioSeleccionado.AspNetRoles.push(rolnuevo);
+            $scope.VerificarPermisos();
+        });
+    }
 
-            });
-        };
-    
+    $scope.EliminarRol = function (cod) {
+        DiscotecaService.EliminarRol(cod, $scope.UsuarioSeleccionado.Email).then(function (response) {
+            var rolnuevo = { Id: cod };
+            $scope.UsuarioSeleccionado.AspNetRoles.push(rolnuevo);
+            $scope.VerificarPermisos();
+        });
+    }
+
+    $scope.SolicitudEditar = function () {
+        DiscotecaService.EditarDisco($scope.DiscotecaSeleccionada.CodDiscoteca, $scope.DiscotecaSeleccionada.Descripcion, $scope.DiscotecaSeleccionada.Productiva).then(function (response) {
+            var aux = $scope.DiscotecaSeleccionada;
+            $scope.GetDiscotecas();
+            ngDialog.close();
+            $scope.DiscotecaSeleccionada = aux;
+        });
+    }
+
+    $scope.editarDisco = function () {
+        ngDialog.open({
+            template: 'SPA/Views/modalEditarDisco.html',
+            className: 'ngdialog-theme-default',
+            scope: $scope,
+
+        });
+    };
+
 
 
 }])
