@@ -40,7 +40,7 @@ namespace FunClub.Controllers
         [HttpGet]
         public FileResult DescargarEntradasEjemplo()
         {
-            string Ruta = @"C:\Users\garigos\Documents\GitHub\Arigos.FunClub\FunClub\CargasMasivas\ArchivoEjemploEntradas.xlsx";
+            string Ruta = @"C:\Users\Daniel Arigos\Documents\GitHub\Arigos.FunClub\CargasMasivas\ArchivoEjemploEntradas.xlsx";
             
             var retorno = File(System.IO.File.ReadAllBytes(Ruta), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "ArchivoEjemploEntradas.xlsx");
 

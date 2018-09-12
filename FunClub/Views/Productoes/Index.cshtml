@@ -1,0 +1,72 @@
+﻿@model IEnumerable<DAL.Producto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaAlta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TerminalAlta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuarioAlta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaMod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TerminalMod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuarioMod)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaAlta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TerminalAlta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuarioAlta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaMod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TerminalMod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuarioMod)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CodBebida }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CodBebida }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CodBebida })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -1,0 +1,76 @@
+﻿<style>
+    .jumbotron {
+        text-align: center;
+        width: 50%;
+        border-radius: 0.5rem;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 4rem auto;
+        background-color: #fff;
+        padding: 2rem;
+    }
+
+    .container .glyphicon-check {
+        font-size: 10rem;
+        margin-top: 3rem;
+        color: #f96145;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 1.4rem;
+        padding: 1rem;
+        background-color: #ecf2f4;
+        border-radius: 0.2rem;
+        border: none;
+    }
+
+    h2 {
+        margin-bottom: 3rem;
+        font-weight: bold;
+        color: #ababab;
+    }
+
+    /*.btn {
+        border-radius: 0.2rem;
+    }*/
+
+    /*.btn .glyphicon {
+            font-size: 3rem;
+            color: #fff;
+        }*/
+
+    .full-width {
+       
+        width: 100%;
+      
+    }
+
+    .box {
+        bottom: 0;
+        left: 0;
+        margin-bottom: 3rem;
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+</style>
+<div ng-include="'/SPA/Views/ToolBar.html'"></div>
+<div class="container">
+    <div class="jumbotron">
+         <div ng-show="NuevaDisco && !GestionDisco && !Ok">
+            <span class="glyphicon glyphicon-check"></span>
+            <h2>Nuevo producto</h2>
+            <div class="box">
+                <input ng-model="NuevaDiscotecaNombre" type="text" placeholder="Descripcion">
+                <button ng-click="GuardarNuevaDisco()" class="btn btn-success full-width"><span class="glyphicon glyphicon-ok"></span></button>
+            </div>
+        </div>
+        <!--<div ng-show="Ok" style="text-align:center">
+            <img width="100" height="100" src="https://openclipart.org/image/2400px/svg_to_png/212394/rodentia-icons_ok.png"/>
+            <h3 style="color:black">Discoteca guardada.</h3>
+        </div>-->
+
+    </div>
+</div>

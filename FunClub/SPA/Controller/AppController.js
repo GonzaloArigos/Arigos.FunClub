@@ -32,6 +32,11 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: 'SPA/Views/GestionDiscotecas.html',
             controller: 'DiscotecaController'
         })
+        .when('/ProductoManager',
+        {
+            templateUrl: 'SPA/Views/GestionProductos.html',
+            controller: 'ProductoaController'
+        })
         .when('/CargaMasiva',
         {
             templateUrl: 'SPA/Views/CargaMasiva.html',

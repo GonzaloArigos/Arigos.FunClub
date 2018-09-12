@@ -194,6 +194,7 @@
     <Compile Include="Controllers\DiscotecaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductoesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1045,15 +1046,18 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sitemap.xml" />
     <Content Include="SPA\Controller\AppController.js" />
+    <Content Include="SPA\Controller\ProductoController.js" />
     <Content Include="SPA\Controller\DiscotecaController.js" />
     <Content Include="SPA\Controller\PrincipalController.js" />
     <Content Include="SPA\Controller\CargaMasivaController.js" />
     <Content Include="SPA\Controller\HomeController.js" />
+    <Content Include="SPA\Services\ProductoService.js" />
     <Content Include="SPA\Services\DiscotecaService.js" />
     <Content Include="SPA\Services\PrincipalService .js" />
     <Content Include="SPA\Services\CargaMasivaService.js" />
     <Content Include="SPA\Services\HomeService.js" />
     <Content Include="SPA\Views\CargaMasiva.html" />
+    <Content Include="SPA\Views\GestionProductos.html" />
     <Content Include="SPA\Views\GestionDiscotecas.html" />
     <Content Include="SPA\Views\Home.html" />
     <Content Include="SPA\Views\modalEditarDisco.html" />
@@ -1094,6 +1098,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Productoes\Create.cshtml" />
+    <Content Include="Views\Productoes\Delete.cshtml" />
+    <Content Include="Views\Productoes\Details.cshtml" />
+    <Content Include="Views\Productoes\Edit.cshtml" />
+    <Content Include="Views\Productoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

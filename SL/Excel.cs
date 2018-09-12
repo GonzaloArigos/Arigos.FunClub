@@ -14,7 +14,7 @@ namespace SL
     {
         public DataRowCollection Leer(string FileName, byte[] Data)
         {
-            string Ruta = @"C:\Users\garigos\Documents\GitHub\Arigos.FunClub\FunClub\CargasMasivas\" + FileName;
+            string Ruta =  @"C:\Users\Daniel Arigos\Documents\GitHub\Arigos.FunClub\CargasMasivas\" + FileName;
             File.WriteAllBytes(Ruta, Data);
             var ds = new System.Data.DataSet();
             var extension = Path.GetExtension(FileName).ToLower();
