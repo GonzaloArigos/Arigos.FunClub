@@ -3,12 +3,12 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<div ng-include="'/SPA/Views/ToolBar.html'"></div>
 <div class="container">
-    <h2>Index</h2>
+    <h2>Gestión de productos</h2>
 
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Nuevo producto", "Create")
     </p>
     <table class="table">
         <tr>
@@ -61,9 +61,9 @@
                     @Html.DisplayFor(modelItem => item.UsuarioMod)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CodBebida }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CodBebida }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CodBebida })
+                    @Html.ActionLink("Modificar", "Edit", new { id = item.CodBebida }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.CodBebida }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.CodBebida })
                 </td>
             </tr>
         }
