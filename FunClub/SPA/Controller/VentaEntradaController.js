@@ -9,22 +9,40 @@
     $scope.VerErr = false;
 
     $scope.Entradas = {};
+    var EntradasAux = {};
 
     $scope.Venta = [];
 
     function GetEntradas() {
+        $scope.Cargando = true;
         VentaEntradaService.GetEntradas().then(function (response) {
             $scope.Entradas = response.data;
+            EntradasAux = response.data;
+            $scope.Cargando = false;
 
         });
-    };
+    }
+
+    function EliminarEntradaLista(entrada) {
+        for (var i = 0; i < $scope.Entradas.length; i++) {
+            if ($scope.Entradas[i].CodEntrada == entrada.CodEntrada) {
+                $scope.Entradas.splice(i, 1);
+            }
+        }
+    }
 
     $scope.Agregar = function (entrada) {
         if (entrada.Cantidad > 0) {
             $scope.Venta.push(entrada);
-            entrada = null;
+            entrada.Agregado = true;
+            //EliminarEntradaLista(entrada);
         }
     };
+
+    $scope.CancelarTicket = function () {
+        $scope.Venta = [];
+        GetEntradas();
+    }
 
     GetEntradas();
 

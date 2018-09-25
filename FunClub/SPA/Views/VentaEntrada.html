@@ -36,39 +36,43 @@
     <h3>Subtotal: $ARG 699</h3>
     <div class="form-inline">
         <button ng-click="verTicket()" class="btn btn-success"><span class="glyphicon glyphicon-info-sign"></span> Ver Ticket</button>
-        <button class="btn btn-warning"><span class="glyphicon glyphicon-remove"></span> Cancelar Venta</button>
+        <button ng-click="CancelarTicket()" class="btn btn-warning"><span class="glyphicon glyphicon-remove"></span> Cancelar Venta</button>
     </div>
-        <br />
+    <br />
     <br />
     <div class="row">
-        <div ng-repeat="x in Entradas" class="col-md-3">
+        <div ng-show="Cargando" style="text-align:center">
+            <img width="250" height="250" src="http://essperu.com.pe/images/preloaders/cargando1.gif" />
+        </div>
+        <div ng-show="!Cargando" ng-repeat="x in Entradas" class="col-md-3">
 
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row" style="text-align:center;">
-                  
-                            <h2 class="glyphicon glyphicon-glass"></h2>                
-                       
-                            <h4> $ARG 500</h4>
-                            <h5>{{x.Descripcion}}</h5>
-                            <input ng-model="x.Cantidad" class="form-control" type="number" placeholder="Cantidad" />
+
+                        <h2 class="glyphicon glyphicon-glass"></h2>
+
+                        <h4> $ARG 500</h4>
+                        <h5>{{x.Descripcion}}</h5>
+                        <input ng-model="x.Cantidad" class="form-control" type="number" placeholder="Cantidad" />
                     </div>
                 </div>
-              
-                    <div class="panel-footer announcement-bottom">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <button class="btn btn-success" ng-click=""> Ver contenido</button>
-                            </div>
-                            <div class="col-xs-6 text-right">
-                                
-                                <button class="btn btn-primary" ng-click="Agregar(x)"> Agregar</button>
-                            </div>
+
+                <div class="panel-footer announcement-bottom">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button class="btn btn-success" ng-click=""> Ver contenido</button>
+                        </div>
+                        <div class="col-xs-6 text-right">
+
+                            <button ng-show="!x.Agregado" class="btn btn-primary" ng-click="Agregar(x)"> Agregar</button>
+                            <button class="btn btn-primary" ng-show="x.Agregado"> <span class="glyphicon glyphicon-ok-sign"></span> </button>
                         </div>
                     </div>
-            
+                </div>
+
             </div>
 
         </div>
-      
-</div>
+
+    </div>
