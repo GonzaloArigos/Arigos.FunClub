@@ -16,7 +16,7 @@ namespace BLL
 
         public static void NuevaDiscoteca(string nombre,string usuario)
         {
-            DAL.DiscotecaDAL.NuevaDiscoteca(nombre, usuario);
+            DAL.DiscotecaDAL.NuevaDiscoteca(nombre, usuario);          
         }
 
         public static void EditarDisco(string cod, string nombre, bool prod)

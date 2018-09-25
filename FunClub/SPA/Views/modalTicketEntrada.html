@@ -1,0 +1,16 @@
+﻿<div>
+    <h1>Detalle de venta</h1>
+
+    <div class="col-md-12">
+        <div ng-repeat="x in Venta" class="row" style="border:3px solid white;border-style:dashed;">
+            <div class="col-md-8">
+                <h4>{{x.Descripcion}}</h4>
+                <h5>Cantidad: {{x.Cantidad}}</h5>
+            </div>
+            <div class="col-md-4">
+                <br />
+               <button class="btn btn-danger">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>

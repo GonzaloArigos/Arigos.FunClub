@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public static class EntradaDAL
+    public static class CargaMasivaDAL
     {
         public static void CargaMasivaEntrada(Entrada entradas)
         {

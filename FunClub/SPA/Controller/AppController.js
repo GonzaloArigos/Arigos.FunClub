@@ -13,7 +13,7 @@ app.factory('Excel', function ($window) {
             return href;
         }
     };
-})
+}),
 
 app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -32,6 +32,11 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: 'SPA/Views/GestionDiscotecas.html',
             controller: 'DiscotecaController'
         })
+        .when('/VentaEntrada',
+            {
+                templateUrl: 'SPA/Views/VentaEntrada.html',
+                controller: 'VentaEntradaController'
+            })
         .when('/ProductoManager',
         {
             templateUrl: 'SPA/Views/GestionProductos.html',
