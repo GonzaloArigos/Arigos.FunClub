@@ -2,15 +2,15 @@
     <h1>Detalle de venta</h1>
 
     <div class="col-md-12">
-        <div ng-repeat="x in Venta" class="row" style="border:3px solid white;border-style:dashed;">
+        <div ng-repeat="x in Venta" class="row" style="border:3px solid black;border-style:dashed;margin-bottom:2%;">
             <div class="col-md-8">
                 <h4>{{x.Descripcion}}</h4>
                 <h5>Cantidad: {{x.Cantidad}}</h5>
+                <h5>Subtotal: $ARG {{x.PrecioEntradas[0].Precio * x.Cantidad}}</h5>
             </div>
-            <div class="col-md-4">
-                <br />
-               <button class="btn btn-danger">Eliminar</button>
-            </div>
+           
         </div>
     </div>
+    <hr style="color:black" />
+    <button style="width:100%" class="btn btn-success">Continuar</button>
 </div>

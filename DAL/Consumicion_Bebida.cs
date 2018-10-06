@@ -23,7 +23,9 @@ namespace DAL
         public string TerminalMod { get; set; }
         public string UsuarioMod { get; set; }
         public int Cantidad { get; set; }
+        public int CodDiscoteca { get; set; }
     
+        public virtual Consumicion Consumicion { get; set; }
         public virtual Producto Producto { get; set; }
     }
 }

@@ -34,7 +34,6 @@ namespace DAL
         public virtual DbSet<BeneficiosAdquiridosCliente> BeneficiosAdquiridosClientes { get; set; }
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<Cliente> Clientes { get; set; }
-        public virtual DbSet<Consumicion_Bebida> Consumicion_Bebida { get; set; }
         public virtual DbSet<Consumicion> Consumicions { get; set; }
         public virtual DbSet<DetallePagoEfectivo> DetallePagoEfectivoes { get; set; }
         public virtual DbSet<DetallePagoTarjetaCredito> DetallePagoTarjetaCreditoes { get; set; }
@@ -47,12 +46,12 @@ namespace DAL
         public virtual DbSet<Noch> Noches { get; set; }
         public virtual DbSet<Pago> Pagoes { get; set; }
         public virtual DbSet<PrecioConsumicion> PrecioConsumicions { get; set; }
-        public virtual DbSet<PrecioEntrada> PrecioEntradas { get; set; }
-        public virtual DbSet<Producto> Productos { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Usuario_Discotecas> Usuario_Discotecas { get; set; }
         public virtual DbSet<VentaBarra> VentaBarras { get; set; }
         public virtual DbSet<VentaEntrada> VentaEntradas { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<PrecioEntrada> PrecioEntradas { get; set; }
+        public virtual DbSet<Consumicion_Bebida> Consumicion_Bebida { get; set; }
+        public virtual DbSet<Producto> Productos { get; set; }
     }
 }

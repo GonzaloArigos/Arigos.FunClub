@@ -52,6 +52,7 @@ namespace FunClub.Views
         {
             if (ModelState.IsValid)
             {
+                precioEntrada.CodDiscoteca = 1;
                 db.PrecioEntradas.Add(precioEntrada);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -95,13 +96,13 @@ namespace FunClub.Views
         }
 
         // GET: PrecioEntradas/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? disco,int? entrada, DateTime? fecha )
         {
-            if (id == null)
+            if (disco == null || entrada == null || fecha == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PrecioEntrada precioEntrada = db.PrecioEntradas.Find(id);
+            PrecioEntrada precioEntrada = db.PrecioEntradas.Where(a => a.CodDiscoteca == disco && a.CodEntrada == entrada && a.FechaInicio == fecha).FirstOrDefault();
             if (precioEntrada == null)
             {
                 return HttpNotFound();
@@ -112,9 +113,9 @@ namespace FunClub.Views
         // POST: PrecioEntradas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? disco, int? entrada, DateTime? fecha)
         {
-            PrecioEntrada precioEntrada = db.PrecioEntradas.Find(id);
+            PrecioEntrada precioEntrada = db.PrecioEntradas.Where(a => a.CodDiscoteca == disco && a.CodEntrada == entrada && a.FechaInicio == fecha).FirstOrDefault();
             db.PrecioEntradas.Remove(precioEntrada);
             db.SaveChanges();
             return RedirectToAction("Index");

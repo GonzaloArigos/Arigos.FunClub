@@ -14,9 +14,8 @@ namespace DAL
     
     public partial class PrecioEntrada
     {
-        public int CodPrecioEntrada { get; set; }
         public Nullable<decimal> Precio { get; set; }
-        public Nullable<System.DateTime> FechaInicio { get; set; }
+        public System.DateTime FechaInicio { get; set; }
         public Nullable<System.DateTime> FechaFin { get; set; }
         public string Observaciones { get; set; }
         public Nullable<System.DateTime> FechaAlta { get; set; }

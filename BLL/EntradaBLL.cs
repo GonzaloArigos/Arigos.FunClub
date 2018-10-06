@@ -10,7 +10,21 @@ namespace BLL
     {
         public static List<DAL.Entrada> GetAllFromDisco(string mail)
         {
-            return DAL.EntradaDAL.GetAllFromDisco(mail);
+            var retorno = DAL.EntradaDAL.GetAllFromDisco(mail);
+
+            ObtenerUltimoPrecio(retorno);
+
+            return retorno;
+        }
+
+        private static void ObtenerUltimoPrecio(List<DAL.Entrada> retorno)
+        {
+            foreach (var x in retorno)
+            {
+                var ultimo_precio = DAL.PrecioEntradaDAL.GetUltimoPrecio(x);
+                x.PrecioEntradas = new List<DAL.PrecioEntrada>();
+                x.PrecioEntradas.Add(ultimo_precio);
+            }
         }
     }
 }

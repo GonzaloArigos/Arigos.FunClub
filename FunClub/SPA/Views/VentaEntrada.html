@@ -44,15 +44,15 @@
         <div ng-show="Cargando" style="text-align:center">
             <img width="250" height="250" src="http://essperu.com.pe/images/preloaders/cargando1.gif" />
         </div>
-        <div ng-show="!Cargando" ng-repeat="x in Entradas" class="col-md-3">
+        <div  ng-show="!Cargando" ng-repeat="x in Entradas" class="col-md-3">
 
-            <div class="panel panel-default">
+            <div style="border:2px solid gold;" class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row" style="text-align:center;">
 
                         <h2 class="glyphicon glyphicon-glass"></h2>
 
-                        <h4> $ARG 500</h4>
+                        <h4> $ARG {{x.PrecioEntradas[0].Precio}}</h4>
                         <h5>{{x.Descripcion}}</h5>
                         <input ng-model="x.Cantidad" class="form-control" type="number" placeholder="Cantidad" />
                     </div>
@@ -61,7 +61,7 @@
                 <div class="panel-footer announcement-bottom">
                     <div class="row">
                         <div class="col-xs-6">
-                            <button class="btn btn-success" ng-click=""> Ver contenido</button>
+                            <button ng-click="Seleccionar(x);verEntrada();" class="btn btn-success"> Ver contenido</button>
                         </div>
                         <div class="col-xs-6 text-right">
 

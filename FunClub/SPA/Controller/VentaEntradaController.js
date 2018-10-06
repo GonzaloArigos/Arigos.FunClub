@@ -7,6 +7,7 @@
     $scope.VerCorrectos = false;
     $scope.VerEx = false;
     $scope.VerErr = false;
+    $scope.EntradaSeleccionada = {};
 
     $scope.Entradas = {};
     var EntradasAux = {};
@@ -44,11 +45,23 @@
         GetEntradas();
     }
 
+    $scope.Seleccionar = function (entrada) {
+        $scope.EntradaSeleccionada = entrada;
+    }
+
     GetEntradas();
 
     $scope.verTicket = function () {
         ngDialog.open({
             template: 'SPA/Views/modalTicketEntrada.html',
+            className: 'ngdialog-theme-default',
+            scope: $scope
+        });
+    };
+
+    $scope.verEntrada = function () {
+        ngDialog.open({
+            template: 'SPA/Views/modalDetalleEntrada.html',
             className: 'ngdialog-theme-default',
             scope: $scope
         });

@@ -20,6 +20,7 @@ namespace DAL
             this.DetalleVentaBarras = new HashSet<DetalleVentaBarra>();
             this.Entradas = new HashSet<Entrada>();
             this.PrecioConsumicions = new HashSet<PrecioConsumicion>();
+            this.Consumicion_Bebida = new HashSet<Consumicion_Bebida>();
         }
     
         public int CodConsumicion { get; set; }
@@ -40,5 +41,7 @@ namespace DAL
         public virtual ICollection<Entrada> Entradas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PrecioConsumicion> PrecioConsumicions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Consumicion_Bebida> Consumicion_Bebida { get; set; }
     }
 }

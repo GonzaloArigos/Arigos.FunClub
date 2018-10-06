@@ -13,7 +13,6 @@
         <EntityTypeShape EntityType="FunClubModel.BeneficiosAdquiridosCliente" Width="1.5" PointX="8.25" PointY="31.625" />
         <EntityTypeShape EntityType="FunClubModel.C__MigrationHistory" Width="1.5" PointX="2.75" PointY="4.75" />
         <EntityTypeShape EntityType="FunClubModel.Cliente" Width="1.5" PointX="6" PointY="41.625" />
-        <EntityTypeShape EntityType="FunClubModel.Consumicion_Bebida" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="FunClubModel.Consumicion" Width="1.5" PointX="3" PointY="55.875" />
         <EntityTypeShape EntityType="FunClubModel.DetallePagoEfectivo" Width="1.5" PointX="3" PointY="47.25" />
         <EntityTypeShape EntityType="FunClubModel.DetallePagoTarjetaCredito" Width="1.5" PointX="3" PointY="10.375" />
@@ -26,9 +25,6 @@
         <EntityTypeShape EntityType="FunClubModel.Noch" Width="1.5" PointX="3" PointY="37.375" />
         <EntityTypeShape EntityType="FunClubModel.Pago" Width="1.5" PointX="0.75" PointY="28.75" />
         <EntityTypeShape EntityType="FunClubModel.PrecioConsumicion" Width="1.5" PointX="5.25" PointY="50.75" />
-        <EntityTypeShape EntityType="FunClubModel.PrecioEntrada" Width="1.5" PointX="10.5" PointY="31" />
-        <EntityTypeShape EntityType="FunClubModel.Producto" Width="1.5" PointX="0.75" PointY="1.125" />
-        <EntityTypeShape EntityType="FunClubModel.sysdiagram" Width="1.5" PointX="4.75" PointY="4.75" />
         <EntityTypeShape EntityType="FunClubModel.Usuario_Discotecas" Width="1.5" PointX="3" PointY="20.25" />
         <EntityTypeShape EntityType="FunClubModel.VentaBarra" Width="1.5" PointX="3" PointY="24" />
         <EntityTypeShape EntityType="FunClubModel.VentaEntrada" Width="1.5" PointX="6" PointY="24" />
@@ -39,7 +35,6 @@
         <AssociationConnector Association="FunClubModel.FK__Beneficio__Disco__6EF57B66" />
         <AssociationConnector Association="FunClubModel.FK__Entrada_h__Benef__17036CC0" />
         <AssociationConnector Association="FunClubModel.FK__Beneficio__Clien__1EA48E88" />
-        <AssociationConnector Association="FunClubModel.FK__Consumici__Detal__2645B050" />
         <AssociationConnector Association="FunClubModel.FK__Consumici__Disco__6C190EBB" />
         <AssociationConnector Association="FunClubModel.FK_DetalleVentaBarras_Consumicions" />
         <AssociationConnector Association="FunClubModel.FK_Entrada_Consumicion" />
@@ -56,10 +51,16 @@
         <AssociationConnector Association="FunClubModel.FK__VentaBarr__Disco__2BFE89A6" />
         <AssociationConnector Association="FunClubModel.FK__VentaEntr__Disco__10566F31" />
         <AssociationConnector Association="FunClubModel.FK_Usuario_Discotecas_Discotecas" />
-        <AssociationConnector Association="FunClubModel.FK_PrecioEntrada_Entrada" />
         <AssociationConnector Association="FunClubModel.FK__VentaBarr__Pago___2B0A656D" />
         <AssociationConnector Association="FunClubModel.FK__VentaEntr__Pago___0F624AF8" />
         <AssociationConnector Association="FunClubModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="FunClubModel.PrecioEntrada" Width="1.5" PointX="10.5" PointY="29.875" />
+        <AssociationConnector Association="FunClubModel.FK_PrecioEntrada_Entrada" />
+        <EntityTypeShape EntityType="FunClubModel.Consumicion_Bebida" Width="1.5" PointX="5.25" PointY="46.375" />
+        <EntityTypeShape EntityType="FunClubModel.Producto" Width="1.5" PointX="3" PointY="42.25" />
+        <AssociationConnector Association="FunClubModel.FK_Consumicion_Bebida_Consumicions" />
+        <AssociationConnector Association="FunClubModel.FK_Consumicion_Bebida_Productos" />
+        <AssociationConnector Association="FunClubModel.FK_Productos_Discotecas" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
