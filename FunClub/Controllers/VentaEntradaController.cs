@@ -28,6 +28,7 @@ namespace FunClub.Controllers
         [HttpPost]
         public void ProcesarPago(object item,int mediopago,object pago)
         {
+            System.Threading.Thread.Sleep(4000);
             List<DAL.DetalleVentaEntrada> detalleVenta = Newtonsoft.Json.JsonConvert.DeserializeObject<List<DAL.DetalleVentaEntrada>>(item.ToString());
 
             if (mediopago == 1)
