@@ -102,17 +102,15 @@
                     <div class="form-group">
                         <label for="cardNumber">Monto pagado</label>
                         <div class="input-group">
-                            <input ng-model="EfectivoPagado" style="max-width:100%;width:100%" type="tel"
-                                   class="form-control"
-                                   name="cardNumber"
+                            <input ng-model="MontoEfectivoPagado" style="max-width:100%;width:100%" type="number"
                                    placeholder="Monto pagado por el cliente"
-                                   required autofocus />
+                                   required />
                             <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
                         </div>
                     </div>
                     <hr />
                     <h3>Subtotal: $ARG {{SubTotal}}</h3>
-                    <h3>Vuelto: {{EfectivoPagado - SubTotal >= 0 ? '$ARG ' + (EfectivoPagado - SubTotal) : 'Ingresar monto válido'}}</h3>
+                    <h3>Vuelto: {{MontoEfectivoPagado - SubTotal >= 0 ? '$ARG ' + (MontoEfectivoPagado - SubTotal) : 'Ingresar monto válido'}}</h3>
                 </div>
             </div>
 
@@ -121,8 +119,8 @@
                 <br />
                 <div class="form-inline">
                     <h4>Medio de pago: Efectivo</h4>
-                    <h4>Monto entregado: $ARG {{EfectivoPagado}}</h4>
-                    <h4>Vuelto entregado: $ARG {{EfectivoPagado - SubTotal}}</h4>
+                    <h4>Monto entregado: $ARG {{MontoEfectivoPagado}}</h4>
+                    <h4>Vuelto entregado: $ARG {{MontoEfectivoPagado - SubTotal}}</h4>
                     <h4>Total venta: $ARG {{SubTotal}}</h4>
                 </div>
             </div>
@@ -229,15 +227,15 @@
 <div ng-show="!CargandoPago && Continuar" class="form-inline" style="text-align:center">
     <div ng-show="!EfectivoConfirmado">
         <button ng-click="Continuar = false;" class="btn btn-primary" style="width:40%">Ver ticket</button>
-        <button ng-click="EfectivoConfirmado = true;ProcesarPago();" class="btn btn-success" style="width:40%">Confirmar</button>
+        <button ng-click="EfectivoConfirmado = true;ProcesarPago(MontoEfectivoPagado);" class="btn btn-success" style="width:40%">Confirmar</button>
     </div>
     <div ng-show="EfectivoConfirmado">
         <button class="btn btn-primary"><span class="glyphicon glyphicon-print"></span> Imprimir ticket</button>
-        <button class="btn btn-success">Nueva venta <span class="glyphicon glyphicon-arrow-right"></span></button>
+        <button ng-click="Inicializar()" class="btn btn-success">Nueva venta <span class="glyphicon glyphicon-arrow-right"></span></button>
     </div>
 </div>
 
-<div ng-show="CargandoPago && Continuar" style="text-align:center" >
+<div ng-show="CargandoPago" style="text-align:center">
     <h1>Medio de pago</h1>
     <hr />
     <img width="300" height="250" src="https://www.aeonsolutionsllc.com/images/mobile_payment.gif" />

@@ -9,8 +9,6 @@
     $scope.TD = false;
     $scope.TC = false;
 
-    $scope.EfectivoPagado = 0;
-
     $scope.VerCorrectos = false;
     $scope.VerEx = false;
     $scope.VerErr = false;
@@ -19,13 +17,47 @@
     $scope.EfectivoConfirmado = false;
 
     $scope.Entradas = {};
+
     var EntradasAux = {};
 
     $scope.Venta = [];
 
     $scope.SubTotal = 0;
+    $scope.MontoEfectivoPagado = 0;
 
-    $scope.ProcesarPago = function () {
+    //.---------------------
+    $scope.Inicializar = function () {
+        $scope.Cargando = false;
+        $scope.Ok = false;
+        $scope.Resultado = [];
+
+        $scope.Continuar = false;
+        $scope.Efectivo = true;
+        $scope.TD = false;
+        $scope.TC = false;
+
+       
+        $scope.VerCorrectos = false;
+        $scope.VerEx = false;
+        $scope.VerErr = false;
+        $scope.EntradaSeleccionada = {};
+        $scope.CargandoPago = false;
+        $scope.EfectivoConfirmado = false;
+
+        $scope.Entradas = {};
+
+        var EntradasAux = {};
+
+        $scope.Venta = [];
+
+        $scope.SubTotal = 0;
+        $scope.MontoEfectivoPagado = 0;
+        ngDialog.close();
+        GetEntradas();
+    }
+
+    $scope.ProcesarPago = function (montoEfectivoPag) {
+      
         $scope.CargandoPago = true;
         var detalleVenta = [];
 
@@ -36,17 +68,23 @@
             };
             detalleVenta.push(detalle);
         }
-        $scope.CargandoPago = false;
+       
 
         var pago = {};
 
+        $scope.MontoEfectivoPagado;
+
         if ($scope.Efectivo) {
-            pago.MontoPagado = $scope.EfectivoPagado;
-            pago.vuelto = $scope.EfectivoPagado - $scope.SubTotal;
+            pago.MontoPagado = montoEfectivoPag;
+            pago.vuelto = montoEfectivoPag - $scope.SubTotal;
         }
 
-        VentaEntradaService.ProcesarPago(JSON.stringify(detalleVenta), 1, JSON.stringify(pago));
-        $scope.EfectivoConfirmado = true;
+        VentaEntradaService.ProcesarPago(JSON.stringify(detalleVenta), 1, JSON.stringify(pago)).then(function (response) {
+            $scope.CargandoPago = false;
+            $scope.EfectivoConfirmado = true;
+        });
+
+    
     }
 
     function GetEntradas() {
