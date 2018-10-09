@@ -66,9 +66,17 @@
             @Html.DisplayFor(model => model.UsuarioMod)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Discoteca.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discoteca.Descripcion)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CodBebida }) |
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

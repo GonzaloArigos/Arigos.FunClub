@@ -25,6 +25,18 @@ namespace FunClub.Controllers
              });
 
         }
+        [HttpPost]
+        public void ProcesarPago(object item,int mediopago,object pago)
+        {
+            List<DAL.DetalleVentaEntrada> detalleVenta = Newtonsoft.Json.JsonConvert.DeserializeObject<List<DAL.DetalleVentaEntrada>>(item.ToString());
+
+            if (mediopago == 1)
+            {
+                DAL.DetallePagoEfectivo detallepago = Newtonsoft.Json.JsonConvert.DeserializeObject<DAL.DetallePagoEfectivo>(pago.ToString());
+                BLL.VentaEntradaBLL.ConfirmarVentaEfectivo(detalleVenta, detallepago, User.Identity.Name);
+            }
+
+        }
 
     }
 }

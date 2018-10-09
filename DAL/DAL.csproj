@@ -154,6 +154,7 @@
     <Compile Include="VentaEntrada.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="VentaEntradaDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="FunClubDb.edmx">

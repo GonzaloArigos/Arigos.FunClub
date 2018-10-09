@@ -4,15 +4,50 @@
     $scope.Ok = false;
     $scope.Resultado = [];
 
+    $scope.Continuar = false;
+    $scope.Efectivo = true;
+    $scope.TD = false;
+    $scope.TC = false;
+
+    $scope.EfectivoPagado = 0;
+
     $scope.VerCorrectos = false;
     $scope.VerEx = false;
     $scope.VerErr = false;
     $scope.EntradaSeleccionada = {};
+    $scope.CargandoPago = false;
+    $scope.EfectivoConfirmado = false;
 
     $scope.Entradas = {};
     var EntradasAux = {};
 
     $scope.Venta = [];
+
+    $scope.SubTotal = 0;
+
+    $scope.ProcesarPago = function () {
+        $scope.CargandoPago = true;
+        var detalleVenta = [];
+
+        for (var i = 0; i < $scope.Venta.length; i++) {
+            var detalle = {
+                CodEntrada: $scope.Venta[i].CodEntrada,
+                Cantidad: $scope.Venta[i].Cantidad
+            };
+            detalleVenta.push(detalle);
+        }
+        $scope.CargandoPago = false;
+
+        var pago = {};
+
+        if ($scope.Efectivo) {
+            pago.MontoPagado = $scope.EfectivoPagado;
+            pago.vuelto = $scope.EfectivoPagado - $scope.SubTotal;
+        }
+
+        VentaEntradaService.ProcesarPago(JSON.stringify(detalleVenta), 1, JSON.stringify(pago));
+        $scope.EfectivoConfirmado = true;
+    }
 
     function GetEntradas() {
         $scope.Cargando = true;
@@ -40,8 +75,13 @@
         }
     };
 
+    $scope.CalcularSubTotalVenta = function (cantidad, precio) {
+        $scope.SubTotal = $scope.SubTotal + (cantidad * precio);
+    }
+
     $scope.CancelarTicket = function () {
         $scope.Venta = [];
+        $scope.SubTotal = 0;
         GetEntradas();
     }
 

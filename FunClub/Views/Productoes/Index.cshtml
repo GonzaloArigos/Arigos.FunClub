@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
+
 <div ng-include="'/SPA/Views/ToolBar.html'"></div>
 <div class="container">
     <h2>Gestión de productos</h2>
@@ -15,23 +16,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Descripcion)
             </th>
+
             <th>
-                @Html.DisplayNameFor(model => model.FechaAlta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TerminalAlta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UsuarioAlta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaMod)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TerminalMod)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UsuarioMod)
+                @Html.DisplayNameFor(model => model.Discoteca.Descripcion)
             </th>
             <th></th>
         </tr>
@@ -43,27 +30,11 @@
                     @Html.DisplayFor(modelItem => item.Descripcion)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.FechaAlta)
+                    @Html.DisplayFor(modelItem => item.Discoteca.Descripcion)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TerminalAlta)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UsuarioAlta)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FechaMod)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TerminalMod)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UsuarioMod)
-                </td>
-                <td>
-                    @Html.ActionLink("Modificar", "Edit", new { id = item.CodBebida }) |
-                    @Html.ActionLink("Detalles", "Details", new { id = item.CodBebida }) |
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.CodBebida })
+                    @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ })
                 </td>
             </tr>
         }

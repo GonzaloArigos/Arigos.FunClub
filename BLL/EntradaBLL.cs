@@ -19,11 +19,13 @@ namespace BLL
 
         private static void ObtenerUltimoPrecio(List<DAL.Entrada> retorno)
         {
+            if(retorno != null) { 
             foreach (var x in retorno)
             {
                 var ultimo_precio = DAL.PrecioEntradaDAL.GetUltimoPrecio(x);
                 x.PrecioEntradas = new List<DAL.PrecioEntrada>();
                 x.PrecioEntradas.Add(ultimo_precio);
+            }
             }
         }
     }

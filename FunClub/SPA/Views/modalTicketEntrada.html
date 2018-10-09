@@ -1,16 +1,249 @@
-﻿<div>
-    <h1>Detalle de venta</h1>
+﻿<style>
+    .red {
+        background-color: #ac1b1b;
+        color: white;
+        font-weight: bold;
+    }
 
-    <div class="col-md-12">
-        <div ng-repeat="x in Venta" class="row" style="border:3px solid black;border-style:dashed;margin-bottom:2%;">
-            <div class="col-md-8">
-                <h4>{{x.Descripcion}}</h4>
-                <h5>Cantidad: {{x.Cantidad}}</h5>
-                <h5>Subtotal: $ARG {{x.PrecioEntradas[0].Precio * x.Cantidad}}</h5>
+    #medioPago .btn:hover, .btn:focus {
+        /* color: #333333; */
+        color: white;
+        background-color: #ac1b1b;
+        text-decoration: none;
+    }
+
+    .credit-card-box .panel-title {
+        display: inline;
+        font-weight: bold;
+    }
+
+    .credit-card-box .form-control.error {
+        border-color: red;
+        outline: 0;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(255,0,0,0.6);
+    }
+
+    .credit-card-box label.error {
+        font-weight: bold;
+        color: red;
+        padding: 2px 8px;
+        margin-top: 2px;
+    }
+
+    .credit-card-box .payment-errors {
+        font-weight: bold;
+        color: red;
+        padding: 2px 8px;
+        margin-top: 2px;
+    }
+
+    .credit-card-box label {
+        display: block;
+    }
+    /* The old "center div vertically" hack */
+    .credit-card-box .display-table {
+        display: table;
+    }
+
+    .credit-card-box .display-tr {
+        display: table-row;
+    }
+
+    .credit-card-box .display-td {
+        display: table-cell;
+        vertical-align: middle;
+        width: 50%;
+    }
+    /* Just looks nicer */
+    .credit-card-box .panel-heading img {
+        min-width: 180px;
+    }
+</style>
+<div ng-show="!CargandoPago">
+    <div ng-show="!Continuar">
+        <h1>Detalle de venta</h1>
+        <hr />
+        <div class="col-md-12">
+            <div ng-repeat="x in Venta" class="row" style="border:2px solid black;border-style:dashed;margin-bottom:2%;">
+                <div class="col-md-8">
+                    <h4>{{x.Descripcion}}</h4>
+                    <h5>Cantidad: {{x.Cantidad}}</h5>
+                    <h5>Subtotal: $ARG {{x.PrecioEntradas[0].Precio * x.Cantidad}}</h5>
+                </div>
+
             </div>
-           
+        </div>
+        <hr style="color:black" />
+        <button ng-click="Continuar = true;" style="width:100%" class="btn btn-success">Continuar</button>
+    </div>
+
+    <div ng-show="Continuar">
+        <h1>Medio de pago</h1>
+        <hr />
+        <div class="form-inline">
+            <button id="medioPago" ng-click="Efectivo = true;TD = false;TC = false;" ng-class="Efectivo ? 'red' : ''" class="btn">Efectivo</button>
+            <button id="medioPago" ng-click="Efectivo = false;TD = true;TC = false;" ng-class="TD ? 'red' : ''" class="btn">Tarjeta de débito</button>
+            <button id="medioPago" ng-click="Efectivo = false;TD = false;TC = true;" ng-class="TC ? 'red' : ''" class="btn">Tarjeta de crédito</button>
+            <hr />
+        </div>
+
+        <div ng-show="Efectivo">
+            <div ng-show="Efectivo && !EfectivoConfirmado" class="panel panel-default credit-card-box">
+                <div class="panel-heading display-table">
+                    <div class="row display-tr">
+                        <h3 class="panel-title display-td">Pago efectivo</h3>
+                        <div class="display-td">
+                            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        <label for="cardNumber">Monto pagado</label>
+                        <div class="input-group">
+                            <input ng-model="EfectivoPagado" style="max-width:100%;width:100%" type="tel"
+                                   class="form-control"
+                                   name="cardNumber"
+                                   placeholder="Monto pagado por el cliente"
+                                   required autofocus />
+                            <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                        </div>
+                    </div>
+                    <hr />
+                    <h3>Subtotal: $ARG {{SubTotal}}</h3>
+                    <h3>Vuelto: {{EfectivoPagado - SubTotal >= 0 ? '$ARG ' + (EfectivoPagado - SubTotal) : 'Ingresar monto válido'}}</h3>
+                </div>
+            </div>
+
+            <div ng-show="EfectivoConfirmado">
+                <h3>Ticket finalizado correctamente!</h3>
+                <br />
+                <div class="form-inline">
+                    <h4>Medio de pago: Efectivo</h4>
+                    <h4>Monto entregado: $ARG {{EfectivoPagado}}</h4>
+                    <h4>Vuelto entregado: $ARG {{EfectivoPagado - SubTotal}}</h4>
+                    <h4>Total venta: $ARG {{SubTotal}}</h4>
+                </div>
+            </div>
+            <hr />
+        </div>
+        <!-- If you're using Stripe for payments -->
+        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+        <div ng-show="TC || TD" class="container">
+            <div class="row">
+                <!-- You can make it whatever width you want. I'm making it full width
+                 on <= small devices and 4/12 page width on >= medium devices -->
+                <div>
+
+
+                    <!-- CREDIT CARD FORM STARTS HERE -->
+                    <div class="panel panel-default credit-card-box">
+                        <div class="panel-heading display-table">
+                            <div class="row display-tr">
+                                <h3 class="panel-title display-td">Payment Details</h3>
+                                <div class="display-td">
+                                    <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <label for="cardNumber">CARD NUMBER</label>
+                                            <div class="input-group">
+                                                <input style="max-width:100%;width:100%" type="tel"
+                                                       class="form-control"
+                                                       name="cardNumber"
+                                                       placeholder="Valid Card Number"
+                                                       autocomplete="cc-number"
+                                                       required autofocus />
+                                                <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-7 col-md-7">
+                                        <div class="form-group">
+                                            <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span></label>
+                                            <input type="tel"
+                                                   class="form-control"
+                                                   name="cardExpiry"
+                                                   placeholder="MM / YY"
+                                                   autocomplete="cc-exp"
+                                                   required />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-5 col-md-5 pull-right">
+                                        <div class="form-group">
+                                            <label for="cardCVC">CV CODE</label>
+                                            <input type="tel"
+                                                   class="form-control"
+                                                   name="cardCVC"
+                                                   placeholder="CVC"
+                                                   autocomplete="cc-csc"
+                                                   required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-7 col-md-7">
+                                        <div class="form-group">
+                                            <label for="cardExpiry"><span class="hidden-xs">NOM/APE</span></label>
+                                            <input type="tel"
+                                                   class="form-control"
+                                                   name="cardExpiry"
+                                                   placeholder="NOMBRE Y APELLIDO"
+                                                   autocomplete="cc-exp"
+                                                   required />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-5 col-md-5 pull-right">
+                                        <div class="form-group">
+                                            <label for="cardCVC">DNI</label>
+                                            <input type="tel"
+                                                   class="form-control"
+                                                   name="cardCVC"
+                                                   placeholder="DNI"
+                                                   autocomplete="cc-csc"
+                                                   required />
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- CREDIT CARD FORM ENDS HERE -->
+
+
+                </div>
+
+            </div>
         </div>
     </div>
-    <hr style="color:black" />
-    <button style="width:100%" class="btn btn-success">Continuar</button>
 </div>
+
+<div ng-show="!CargandoPago && Continuar" class="form-inline" style="text-align:center">
+    <div ng-show="!EfectivoConfirmado">
+        <button ng-click="Continuar = false;" class="btn btn-primary" style="width:40%">Ver ticket</button>
+        <button ng-click="EfectivoConfirmado = true;ProcesarPago();" class="btn btn-success" style="width:40%">Confirmar</button>
+    </div>
+    <div ng-show="EfectivoConfirmado">
+        <button class="btn btn-primary"><span class="glyphicon glyphicon-print"></span> Imprimir ticket</button>
+        <button class="btn btn-success">Nueva venta <span class="glyphicon glyphicon-arrow-right"></span></button>
+    </div>
+</div>
+
+<div ng-show="CargandoPago && Continuar" style="text-align:center" >
+    <h1>Medio de pago</h1>
+    <hr />
+    <img width="300" height="250" src="https://www.aeonsolutionsllc.com/images/mobile_payment.gif" />
+    <h3>Procesando pago...</h3>
+    <hr />
+</div>
+
+
+

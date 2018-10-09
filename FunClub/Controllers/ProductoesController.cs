@@ -17,7 +17,8 @@ namespace FunClub.Controllers
         // GET: Productoes
         public ActionResult Index()
         {
-            return View(db.Productos.ToList());
+            var productos = db.Productos.Include(p => p.Discoteca);
+            return View(productos.ToList());
         }
 
         // GET: Productoes/Details/5
@@ -38,6 +39,8 @@ namespace FunClub.Controllers
         // GET: Productoes/Create
         public ActionResult Create()
         {
+
+            ViewBag.CodDiscoteca = new SelectList(db.Discotecas.Where(a=> a.Usuario_Discotecas.Any(k=> k.EmailUsuario == User.Identity.Name)), "CodDiscoteca", "Descripcion");
             return View();
         }
 
@@ -46,15 +49,21 @@ namespace FunClub.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CodBebida,Descripcion,FechaAlta,TerminalAlta,UsuarioAlta,FechaMod,TerminalMod,UsuarioMod")] Producto producto)
+        public ActionResult Create([Bind(Include = "Descripcion,CodDiscoteca")] Producto producto)
         {
             if (ModelState.IsValid)
             {
+
+                int? id = db.Productos.Any(a => a.CodDiscoteca == producto.CodDiscoteca) ? db.Productos.Where(a => a.CodDiscoteca == producto.CodDiscoteca).Max(a => a.CodBebida) : 1;
+                producto.CodBebida = id != 1 ? (int)id + 1 : 1;
+                producto.TerminalAlta = "Servidor";
+                producto.UsuarioAlta = User.Identity.Name;
                 db.Productos.Add(producto);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CodDiscoteca = new SelectList(db.Discotecas, "CodDiscoteca", "Descripcion", producto.CodDiscoteca);
             return View(producto);
         }
 
@@ -70,6 +79,7 @@ namespace FunClub.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CodDiscoteca = new SelectList(db.Discotecas, "CodDiscoteca", "Descripcion", producto.CodDiscoteca);
             return View(producto);
         }
 
@@ -78,7 +88,7 @@ namespace FunClub.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CodBebida,Descripcion,FechaAlta,TerminalAlta,UsuarioAlta,FechaMod,TerminalMod,UsuarioMod")] Producto producto)
+        public ActionResult Edit([Bind(Include = "CodBebida,Descripcion,FechaAlta,TerminalAlta,UsuarioAlta,FechaMod,TerminalMod,UsuarioMod,CodDiscoteca")] Producto producto)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +96,7 @@ namespace FunClub.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CodDiscoteca = new SelectList(db.Discotecas, "CodDiscoteca", "Descripcion", producto.CodDiscoteca);
             return View(producto);
         }
 

@@ -1109,11 +1109,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\version.json" />
-    <Content Include="Views\Productoes\Create.cshtml" />
-    <Content Include="Views\Productoes\Delete.cshtml" />
-    <Content Include="Views\Productoes\Details.cshtml" />
-    <Content Include="Views\Productoes\Edit.cshtml" />
-    <Content Include="Views\Productoes\Index.cshtml" />
     <Content Include="Views\Entradas\Create.cshtml" />
     <Content Include="Views\Entradas\Delete.cshtml" />
     <Content Include="Views\Entradas\Details.cshtml" />
@@ -1124,6 +1119,11 @@
     <Content Include="Views\PrecioEntradas\Details.cshtml" />
     <Content Include="Views\PrecioEntradas\Edit.cshtml" />
     <Content Include="Views\PrecioEntradas\Index.cshtml" />
+    <Content Include="Views\Productoes\Create.cshtml" />
+    <Content Include="Views\Productoes\Delete.cshtml" />
+    <Content Include="Views\Productoes\Details.cshtml" />
+    <Content Include="Views\Productoes\Edit.cshtml" />
+    <Content Include="Views\Productoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
