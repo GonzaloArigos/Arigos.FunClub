@@ -50,8 +50,8 @@ namespace DAL
             venta.Estado = 1;
             venta.DetalleVentaEntradas = detalle;
             venta.FechaAlta = DateTime.Now;
-            venta.UsuarioAlta = "1";
-            venta.TerminalAlta = "1";
+            venta.UsuarioAlta =null;
+            venta.TerminalAlta =null;
 
             using (FunClubEntities db = new FunClubEntities())
             {
