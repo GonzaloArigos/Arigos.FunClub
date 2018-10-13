@@ -133,6 +133,7 @@
     <Compile Include="Pago.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="PagoDAL.cs" />
     <Compile Include="PrecioConsumicion.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>

@@ -175,11 +175,11 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           <Property Name="MontoPagado" Type="decimal" Precision="19" Scale="4" />
           <Property Name="Vuelto" Type="decimal" Precision="19" Scale="4" />
           <Property Name="FechaAlta" Type="datetime" />
-          <Property Name="TerminalAlta" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioAlta" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalAlta" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioAlta" Type="varchar" MaxLength="100" />
           <Property Name="FechaMod" Type="datetime" />
-          <Property Name="TerminalMod" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioMod" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalMod" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioMod" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="DetallePagoTarjetaCreditoes">
           <Key>
@@ -191,16 +191,16 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           <Property Name="Cuotas" Type="int" />
           <Property Name="PorcentajeInteres" Type="decimal" Precision="19" Scale="4" />
           <Property Name="MontoInteres" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="NumeroDocumento" Type="varchar" MaxLength="1" />
-          <Property Name="TarjetaNro" Type="varchar" MaxLength="1" />
-          <Property Name="CodigoSeguridad" Type="varchar" MaxLength="1" />
+          <Property Name="NumeroDocumento" Type="varchar" MaxLength="100" />
+          <Property Name="TarjetaNro" Type="varchar" MaxLength="100" />
+          <Property Name="CodigoSeguridad" Type="varchar" MaxLength="100" />
           <Property Name="FechaVencimiento" Type="datetime" />
           <Property Name="FechaAlta" Type="datetime" />
-          <Property Name="TerminalAlta" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioAlta" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalAlta" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioAlta" Type="varchar" MaxLength="100" />
           <Property Name="FechaMod" Type="datetime" />
-          <Property Name="TerminalMod" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioMod" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalMod" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioMod" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="DetallePagoTarjetaDebitoes">
           <Key>
@@ -209,18 +209,16 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           </Key>
           <Property Name="CodPagoTarjetaDebito" Type="int" Nullable="false" />
           <Property Name="Pago_CodPago" Type="int" Nullable="false" />
-          <Property Name="Cuotas" Type="int" />
-          <Property Name="PorcetajeInteres" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="MontoInteres" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="NumeroDocumento" Type="varchar" MaxLength="1" />
-          <Property Name="TarjetaNro" Type="varchar" MaxLength="1" />
+          <Property Name="NumeroDocumento" Type="varchar" MaxLength="100" />
+          <Property Name="TarjetaNro" Type="varchar" MaxLength="100" />
           <Property Name="CodigoSeguridad" Type="int" />
+          <Property Name="FechaVencimiento" Type="datetime" />
           <Property Name="FechaAlta" Type="datetime" />
-          <Property Name="TerminalAlta" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioAlta" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalAlta" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioAlta" Type="varchar" MaxLength="100" />
           <Property Name="FechaMod" Type="datetime" />
-          <Property Name="TerminalMod" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioMod" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalMod" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioMod" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="DetalleVentaBarras">
           <Key>
@@ -322,14 +320,14 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           </Key>
           <Property Name="CodPago" Type="int" Nullable="false" />
           <Property Name="FechaPago" Type="datetime" />
-          <Property Name="Estado" Type="varchar" MaxLength="1" />
+          <Property Name="Estado" Type="varchar" MaxLength="100" />
           <Property Name="Monto" Type="decimal" Precision="19" Scale="4" />
           <Property Name="FechaAlta" Type="datetime" />
-          <Property Name="TerminalAlta" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioAlta" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalAlta" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioAlta" Type="varchar" MaxLength="100" />
           <Property Name="FechaMod" Type="datetime" />
-          <Property Name="TerminalMod" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioMod" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalMod" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioMod" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="PrecioConsumicions">
           <Key>
@@ -426,11 +424,11 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           <Property Name="CodPago" Type="int" Nullable="false" />
           <Property Name="Estado" Type="int" />
           <Property Name="FechaAlta" Type="datetime" />
-          <Property Name="TerminalAlta" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioAlta" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalAlta" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioAlta" Type="varchar" MaxLength="100" />
           <Property Name="FechaMod" Type="datetime" />
-          <Property Name="TerminalMod" Type="varchar" MaxLength="1" />
-          <Property Name="UsuarioMod" Type="varchar" MaxLength="1" />
+          <Property Name="TerminalMod" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioMod" Type="varchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK__Beneficio__Benef__1DB06A4F">
           <End Role="Beneficios" Type="Self.Beneficios" Multiplicity="1" />
@@ -980,16 +978,12 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           <EntitySet Name="C__MigrationHistory" EntityType="FunClubModel.C__MigrationHistory" />
           <EntitySet Name="Clientes" EntityType="FunClubModel.Cliente" />
           <EntitySet Name="Consumicions" EntityType="FunClubModel.Consumicion" />
-          <EntitySet Name="DetallePagoEfectivoes" EntityType="FunClubModel.DetallePagoEfectivo" />
-          <EntitySet Name="DetallePagoTarjetaCreditoes" EntityType="FunClubModel.DetallePagoTarjetaCredito" />
-          <EntitySet Name="DetallePagoTarjetaDebitoes" EntityType="FunClubModel.DetallePagoTarjetaDebito" />
           <EntitySet Name="DetalleVentaBarras" EntityType="FunClubModel.DetalleVentaBarra" />
           <EntitySet Name="DetalleVentaEntradas" EntityType="FunClubModel.DetalleVentaEntrada" />
           <EntitySet Name="Discotecas" EntityType="FunClubModel.Discoteca" />
           <EntitySet Name="Entrada_has_Beneficio" EntityType="FunClubModel.Entrada_has_Beneficio" />
           <EntitySet Name="Entradas" EntityType="FunClubModel.Entrada" />
           <EntitySet Name="Noches" EntityType="FunClubModel.Noch" />
-          <EntitySet Name="Pagoes" EntityType="FunClubModel.Pago" />
           <EntitySet Name="PrecioConsumicions" EntityType="FunClubModel.PrecioConsumicion" />
           <EntitySet Name="Usuario_Discotecas" EntityType="FunClubModel.Usuario_Discotecas" />
           <EntitySet Name="VentaBarras" EntityType="FunClubModel.VentaBarra" />
@@ -1035,18 +1029,6 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
             <End Role="Consumicion" EntitySet="Consumicions" />
             <End Role="PrecioConsumicion" EntitySet="PrecioConsumicions" />
           </AssociationSet>
-          <AssociationSet Name="FK__DetallePa__Pago___74AE54BC" Association="FunClubModel.FK__DetallePa__Pago___74AE54BC">
-            <End Role="Pago" EntitySet="Pagoes" />
-            <End Role="DetallePagoEfectivo" EntitySet="DetallePagoEfectivoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DetallePa__Pago___71D1E811" Association="FunClubModel.FK__DetallePa__Pago___71D1E811">
-            <End Role="Pago" EntitySet="Pagoes" />
-            <End Role="DetallePagoTarjetaCredito" EntitySet="DetallePagoTarjetaCreditoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DetalleTa__Pago___6383C8BA" Association="FunClubModel.FK__DetalleTa__Pago___6383C8BA">
-            <End Role="Pago" EntitySet="Pagoes" />
-            <End Role="DetallePagoTarjetaDebito" EntitySet="DetallePagoTarjetaDebitoes" />
-          </AssociationSet>
           <AssociationSet Name="FK__DetalleVe__Venta__3C34F16F" Association="FunClubModel.FK__DetalleVe__Venta__3C34F16F">
             <End Role="VentaBarra" EntitySet="VentaBarras" />
             <End Role="DetalleVentaBarra" EntitySet="DetalleVentaBarras" />
@@ -1083,14 +1065,6 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
             <End Role="Discoteca" EntitySet="Discotecas" />
             <End Role="Usuario_Discotecas" EntitySet="Usuario_Discotecas" />
           </AssociationSet>
-          <AssociationSet Name="FK__VentaBarr__Pago___2B0A656D" Association="FunClubModel.FK__VentaBarr__Pago___2B0A656D">
-            <End Role="Pago" EntitySet="Pagoes" />
-            <End Role="VentaBarra" EntitySet="VentaBarras" />
-          </AssociationSet>
-          <AssociationSet Name="FK__VentaEntr__Pago___0F624AF8" Association="FunClubModel.FK__VentaEntr__Pago___0F624AF8">
-            <End Role="Pago" EntitySet="Pagoes" />
-            <End Role="VentaEntrada" EntitySet="VentaEntradas" />
-          </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="FunClubModel.AspNetUserRoles">
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
@@ -1113,6 +1087,30 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           <AssociationSet Name="FK_Productos_Discotecas" Association="FunClubModel.FK_Productos_Discotecas">
             <End Role="Discoteca" EntitySet="Discotecas" />
             <End Role="Producto" EntitySet="Productos" />
+          </AssociationSet>
+          <EntitySet Name="DetallePagoEfectivoes" EntityType="FunClubModel.DetallePagoEfectivo" />
+          <EntitySet Name="DetallePagoTarjetaCreditoes" EntityType="FunClubModel.DetallePagoTarjetaCredito" />
+          <EntitySet Name="DetallePagoTarjetaDebitoes" EntityType="FunClubModel.DetallePagoTarjetaDebito" />
+          <EntitySet Name="Pagoes" EntityType="FunClubModel.Pago" />
+          <AssociationSet Name="FK__DetallePa__Pago___74AE54BC" Association="FunClubModel.FK__DetallePa__Pago___74AE54BC">
+            <End Role="Pago" EntitySet="Pagoes" />
+            <End Role="DetallePagoEfectivo" EntitySet="DetallePagoEfectivoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallePa__Pago___71D1E811" Association="FunClubModel.FK__DetallePa__Pago___71D1E811">
+            <End Role="Pago" EntitySet="Pagoes" />
+            <End Role="DetallePagoTarjetaCredito" EntitySet="DetallePagoTarjetaCreditoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleTa__Pago___6383C8BA" Association="FunClubModel.FK__DetalleTa__Pago___6383C8BA">
+            <End Role="Pago" EntitySet="Pagoes" />
+            <End Role="DetallePagoTarjetaDebito" EntitySet="DetallePagoTarjetaDebitoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VentaBarr__Pago___2B0A656D" Association="FunClubModel.FK__VentaBarr__Pago___2B0A656D">
+            <End Role="Pago" EntitySet="Pagoes" />
+            <End Role="VentaBarra" EntitySet="VentaBarras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VentaEntr__Pago___0F624AF8" Association="FunClubModel.FK__VentaEntr__Pago___0F624AF8">
+            <End Role="Pago" EntitySet="Pagoes" />
+            <End Role="VentaEntrada" EntitySet="VentaEntradas" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AspNetRole">
@@ -1254,66 +1252,6 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           <NavigationProperty Name="PrecioConsumicions" Relationship="FunClubModel.FK_PrecioConsumicion_Consumicion" FromRole="Consumicion" ToRole="PrecioConsumicion" />
           <NavigationProperty Name="Consumicion_Bebida" Relationship="FunClubModel.FK_Consumicion_Bebida_Consumicions" FromRole="Consumicion" ToRole="Consumicion_Bebida" />
         </EntityType>
-        <EntityType Name="DetallePagoEfectivo">
-          <Key>
-            <PropertyRef Name="CodPagoEfectivo" />
-            <PropertyRef Name="Pago_CodPago" />
-          </Key>
-          <Property Name="CodPagoEfectivo" Type="Int32" Nullable="false" />
-          <Property Name="Pago_CodPago" Type="Int32" Nullable="false" />
-          <Property Name="MontoPagado" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Vuelto" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
-          <Property Name="TerminalAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Pago" Relationship="FunClubModel.FK__DetallePa__Pago___74AE54BC" FromRole="DetallePagoEfectivo" ToRole="Pago" />
-        </EntityType>
-        <EntityType Name="DetallePagoTarjetaCredito">
-          <Key>
-            <PropertyRef Name="CodPagoTarjetaCredito" />
-            <PropertyRef Name="CodPago" />
-          </Key>
-          <Property Name="CodPagoTarjetaCredito" Type="Int32" Nullable="false" />
-          <Property Name="CodPago" Type="Int32" Nullable="false" />
-          <Property Name="Cuotas" Type="Int32" />
-          <Property Name="PorcentajeInteres" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="MontoInteres" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="NumeroDocumento" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="TarjetaNro" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="CodigoSeguridad" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
-          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
-          <Property Name="TerminalAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Pago" Relationship="FunClubModel.FK__DetallePa__Pago___71D1E811" FromRole="DetallePagoTarjetaCredito" ToRole="Pago" />
-        </EntityType>
-        <EntityType Name="DetallePagoTarjetaDebito">
-          <Key>
-            <PropertyRef Name="CodPagoTarjetaDebito" />
-            <PropertyRef Name="Pago_CodPago" />
-          </Key>
-          <Property Name="CodPagoTarjetaDebito" Type="Int32" Nullable="false" />
-          <Property Name="Pago_CodPago" Type="Int32" Nullable="false" />
-          <Property Name="Cuotas" Type="Int32" />
-          <Property Name="PorcetajeInteres" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="MontoInteres" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="NumeroDocumento" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="TarjetaNro" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="CodigoSeguridad" Type="Int32" />
-          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
-          <Property Name="TerminalAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Pago" Relationship="FunClubModel.FK__DetalleTa__Pago___6383C8BA" FromRole="DetallePagoTarjetaDebito" ToRole="Pago" />
-        </EntityType>
         <EntityType Name="DetalleVentaBarra">
           <Key>
             <PropertyRef Name="CodConsumicion" />
@@ -1428,26 +1366,6 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Discoteca" Relationship="FunClubModel.FK__Noche__Discoteca__693CA210" FromRole="Noch" ToRole="Discoteca" />
         </EntityType>
-        <EntityType Name="Pago">
-          <Key>
-            <PropertyRef Name="CodPago" />
-          </Key>
-          <Property Name="CodPago" Type="Int32" Nullable="false" />
-          <Property Name="FechaPago" Type="DateTime" Precision="3" />
-          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
-          <Property Name="TerminalAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DetallePagoEfectivoes" Relationship="FunClubModel.FK__DetallePa__Pago___74AE54BC" FromRole="Pago" ToRole="DetallePagoEfectivo" />
-          <NavigationProperty Name="DetallePagoTarjetaCreditoes" Relationship="FunClubModel.FK__DetallePa__Pago___71D1E811" FromRole="Pago" ToRole="DetallePagoTarjetaCredito" />
-          <NavigationProperty Name="DetallePagoTarjetaDebitoes" Relationship="FunClubModel.FK__DetalleTa__Pago___6383C8BA" FromRole="Pago" ToRole="DetallePagoTarjetaDebito" />
-          <NavigationProperty Name="VentaBarras" Relationship="FunClubModel.FK__VentaBarr__Pago___2B0A656D" FromRole="Pago" ToRole="VentaBarra" />
-          <NavigationProperty Name="VentaEntradas" Relationship="FunClubModel.FK__VentaEntr__Pago___0F624AF8" FromRole="Pago" ToRole="VentaEntrada" />
-        </EntityType>
         <EntityType Name="PrecioConsumicion">
           <Key>
             <PropertyRef Name="CodPrecioConsumicion" />
@@ -1514,11 +1432,11 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           <Property Name="CodPago" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="Int32" />
           <Property Name="FechaAlta" Type="DateTime" Precision="3" />
-          <Property Name="TerminalAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioAlta" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TerminalAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FechaMod" Type="DateTime" Precision="3" />
-          <Property Name="TerminalMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioMod" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TerminalMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DetalleVentaEntradas" Relationship="FunClubModel.FK_DetalleVentaEntrada_VentaEntradas" FromRole="VentaEntrada" ToRole="DetalleVentaEntrada" />
           <NavigationProperty Name="Discoteca" Relationship="FunClubModel.FK__VentaEntr__Disco__10566F31" FromRole="VentaEntrada" ToRole="Discoteca" />
           <NavigationProperty Name="Pago" Relationship="FunClubModel.FK__VentaEntr__Pago___0F624AF8" FromRole="VentaEntrada" ToRole="Pago" />
@@ -1659,42 +1577,6 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DetallePa__Pago___74AE54BC">
-          <End Type="FunClubModel.Pago" Role="Pago" Multiplicity="1" />
-          <End Type="FunClubModel.DetallePagoEfectivo" Role="DetallePagoEfectivo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pago">
-              <PropertyRef Name="CodPago" />
-            </Principal>
-            <Dependent Role="DetallePagoEfectivo">
-              <PropertyRef Name="Pago_CodPago" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DetallePa__Pago___71D1E811">
-          <End Type="FunClubModel.Pago" Role="Pago" Multiplicity="1" />
-          <End Type="FunClubModel.DetallePagoTarjetaCredito" Role="DetallePagoTarjetaCredito" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pago">
-              <PropertyRef Name="CodPago" />
-            </Principal>
-            <Dependent Role="DetallePagoTarjetaCredito">
-              <PropertyRef Name="CodPago" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DetalleTa__Pago___6383C8BA">
-          <End Type="FunClubModel.Pago" Role="Pago" Multiplicity="1" />
-          <End Type="FunClubModel.DetallePagoTarjetaDebito" Role="DetallePagoTarjetaDebito" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pago">
-              <PropertyRef Name="CodPago" />
-            </Principal>
-            <Dependent Role="DetallePagoTarjetaDebito">
-              <PropertyRef Name="Pago_CodPago" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__DetalleVe__Venta__3C34F16F">
           <End Type="FunClubModel.VentaBarra" Role="VentaBarra" Multiplicity="1" />
           <End Type="FunClubModel.DetalleVentaBarra" Role="DetalleVentaBarra" Multiplicity="*" />
@@ -1806,30 +1688,6 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
             </Principal>
             <Dependent Role="Usuario_Discotecas">
               <PropertyRef Name="CodDiscoteca" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__VentaBarr__Pago___2B0A656D">
-          <End Type="FunClubModel.Pago" Role="Pago" Multiplicity="1" />
-          <End Type="FunClubModel.VentaBarra" Role="VentaBarra" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pago">
-              <PropertyRef Name="CodPago" />
-            </Principal>
-            <Dependent Role="VentaBarra">
-              <PropertyRef Name="CodPago" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__VentaEntr__Pago___0F624AF8">
-          <End Type="FunClubModel.Pago" Role="Pago" Multiplicity="1" />
-          <End Type="FunClubModel.VentaEntrada" Role="VentaEntrada" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pago">
-              <PropertyRef Name="CodPago" />
-            </Principal>
-            <Dependent Role="VentaEntrada">
-              <PropertyRef Name="CodPago" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1945,6 +1803,144 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
             </Principal>
             <Dependent Role="Producto">
               <PropertyRef Name="CodDiscoteca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DetallePagoEfectivo">
+          <Key>
+            <PropertyRef Name="CodPagoEfectivo" />
+            <PropertyRef Name="Pago_CodPago" />
+          </Key>
+          <Property Name="CodPagoEfectivo" Type="Int32" Nullable="false" />
+          <Property Name="Pago_CodPago" Type="Int32" Nullable="false" />
+          <Property Name="MontoPagado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Vuelto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="TerminalAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaMod" Type="DateTime" Precision="3" />
+          <Property Name="TerminalMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pago" Relationship="FunClubModel.FK__DetallePa__Pago___74AE54BC" FromRole="DetallePagoEfectivo" ToRole="Pago" />
+        </EntityType>
+        <EntityType Name="DetallePagoTarjetaCredito">
+          <Key>
+            <PropertyRef Name="CodPagoTarjetaCredito" />
+            <PropertyRef Name="CodPago" />
+          </Key>
+          <Property Name="CodPagoTarjetaCredito" Type="Int32" Nullable="false" />
+          <Property Name="CodPago" Type="Int32" Nullable="false" />
+          <Property Name="Cuotas" Type="Int32" />
+          <Property Name="PorcentajeInteres" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MontoInteres" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NumeroDocumento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TarjetaNro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoSeguridad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="TerminalAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaMod" Type="DateTime" Precision="3" />
+          <Property Name="TerminalMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pago" Relationship="FunClubModel.FK__DetallePa__Pago___71D1E811" FromRole="DetallePagoTarjetaCredito" ToRole="Pago" />
+        </EntityType>
+        <EntityType Name="DetallePagoTarjetaDebito">
+          <Key>
+            <PropertyRef Name="CodPagoTarjetaDebito" />
+            <PropertyRef Name="Pago_CodPago" />
+          </Key>
+          <Property Name="CodPagoTarjetaDebito" Type="Int32" Nullable="false" />
+          <Property Name="Pago_CodPago" Type="Int32" Nullable="false" />
+          <Property Name="NumeroDocumento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TarjetaNro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoSeguridad" Type="Int32" />
+          <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="TerminalAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaMod" Type="DateTime" Precision="3" />
+          <Property Name="TerminalMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pago" Relationship="FunClubModel.FK__DetalleTa__Pago___6383C8BA" FromRole="DetallePagoTarjetaDebito" ToRole="Pago" />
+        </EntityType>
+        <EntityType Name="Pago">
+          <Key>
+            <PropertyRef Name="CodPago" />
+          </Key>
+          <Property Name="CodPago" Type="Int32" Nullable="false" />
+          <Property Name="FechaPago" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="TerminalAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioAlta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaMod" Type="DateTime" Precision="3" />
+          <Property Name="TerminalMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioMod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DetallePagoEfectivoes" Relationship="FunClubModel.FK__DetallePa__Pago___74AE54BC" FromRole="Pago" ToRole="DetallePagoEfectivo" />
+          <NavigationProperty Name="DetallePagoTarjetaCreditoes" Relationship="FunClubModel.FK__DetallePa__Pago___71D1E811" FromRole="Pago" ToRole="DetallePagoTarjetaCredito" />
+          <NavigationProperty Name="DetallePagoTarjetaDebitoes" Relationship="FunClubModel.FK__DetalleTa__Pago___6383C8BA" FromRole="Pago" ToRole="DetallePagoTarjetaDebito" />
+          <NavigationProperty Name="VentaBarras" Relationship="FunClubModel.FK__VentaBarr__Pago___2B0A656D" FromRole="Pago" ToRole="VentaBarra" />
+          <NavigationProperty Name="VentaEntradas" Relationship="FunClubModel.FK__VentaEntr__Pago___0F624AF8" FromRole="Pago" ToRole="VentaEntrada" />
+        </EntityType>
+        <Association Name="FK__DetallePa__Pago___74AE54BC">
+          <End Type="FunClubModel.Pago" Role="Pago" Multiplicity="1" />
+          <End Type="FunClubModel.DetallePagoEfectivo" Role="DetallePagoEfectivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pago">
+              <PropertyRef Name="CodPago" />
+            </Principal>
+            <Dependent Role="DetallePagoEfectivo">
+              <PropertyRef Name="Pago_CodPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallePa__Pago___71D1E811">
+          <End Type="FunClubModel.Pago" Role="Pago" Multiplicity="1" />
+          <End Type="FunClubModel.DetallePagoTarjetaCredito" Role="DetallePagoTarjetaCredito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pago">
+              <PropertyRef Name="CodPago" />
+            </Principal>
+            <Dependent Role="DetallePagoTarjetaCredito">
+              <PropertyRef Name="CodPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleTa__Pago___6383C8BA">
+          <End Type="FunClubModel.Pago" Role="Pago" Multiplicity="1" />
+          <End Type="FunClubModel.DetallePagoTarjetaDebito" Role="DetallePagoTarjetaDebito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pago">
+              <PropertyRef Name="CodPago" />
+            </Principal>
+            <Dependent Role="DetallePagoTarjetaDebito">
+              <PropertyRef Name="Pago_CodPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VentaBarr__Pago___2B0A656D">
+          <End Type="FunClubModel.Pago" Role="Pago" Multiplicity="1" />
+          <End Type="FunClubModel.VentaBarra" Role="VentaBarra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pago">
+              <PropertyRef Name="CodPago" />
+            </Principal>
+            <Dependent Role="VentaBarra">
+              <PropertyRef Name="CodPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VentaEntr__Pago___0F624AF8">
+          <End Type="FunClubModel.Pago" Role="Pago" Multiplicity="1" />
+          <End Type="FunClubModel.VentaEntrada" Role="VentaEntrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pago">
+              <PropertyRef Name="CodPago" />
+            </Principal>
+            <Dependent Role="VentaEntrada">
+              <PropertyRef Name="CodPago" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2082,63 +2078,6 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DetallePagoEfectivoes">
-            <EntityTypeMapping TypeName="FunClubModel.DetallePagoEfectivo">
-              <MappingFragment StoreEntitySet="DetallePagoEfectivoes">
-                <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
-                <ScalarProperty Name="TerminalMod" ColumnName="TerminalMod" />
-                <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
-                <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
-                <ScalarProperty Name="TerminalAlta" ColumnName="TerminalAlta" />
-                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
-                <ScalarProperty Name="Vuelto" ColumnName="Vuelto" />
-                <ScalarProperty Name="MontoPagado" ColumnName="MontoPagado" />
-                <ScalarProperty Name="Pago_CodPago" ColumnName="Pago_CodPago" />
-                <ScalarProperty Name="CodPagoEfectivo" ColumnName="CodPagoEfectivo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DetallePagoTarjetaCreditoes">
-            <EntityTypeMapping TypeName="FunClubModel.DetallePagoTarjetaCredito">
-              <MappingFragment StoreEntitySet="DetallePagoTarjetaCreditoes">
-                <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
-                <ScalarProperty Name="TerminalMod" ColumnName="TerminalMod" />
-                <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
-                <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
-                <ScalarProperty Name="TerminalAlta" ColumnName="TerminalAlta" />
-                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
-                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
-                <ScalarProperty Name="CodigoSeguridad" ColumnName="CodigoSeguridad" />
-                <ScalarProperty Name="TarjetaNro" ColumnName="TarjetaNro" />
-                <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
-                <ScalarProperty Name="MontoInteres" ColumnName="MontoInteres" />
-                <ScalarProperty Name="PorcentajeInteres" ColumnName="PorcentajeInteres" />
-                <ScalarProperty Name="Cuotas" ColumnName="Cuotas" />
-                <ScalarProperty Name="CodPago" ColumnName="CodPago" />
-                <ScalarProperty Name="CodPagoTarjetaCredito" ColumnName="CodPagoTarjetaCredito" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DetallePagoTarjetaDebitoes">
-            <EntityTypeMapping TypeName="FunClubModel.DetallePagoTarjetaDebito">
-              <MappingFragment StoreEntitySet="DetallePagoTarjetaDebitoes">
-                <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
-                <ScalarProperty Name="TerminalMod" ColumnName="TerminalMod" />
-                <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
-                <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
-                <ScalarProperty Name="TerminalAlta" ColumnName="TerminalAlta" />
-                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
-                <ScalarProperty Name="CodigoSeguridad" ColumnName="CodigoSeguridad" />
-                <ScalarProperty Name="TarjetaNro" ColumnName="TarjetaNro" />
-                <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
-                <ScalarProperty Name="MontoInteres" ColumnName="MontoInteres" />
-                <ScalarProperty Name="PorcetajeInteres" ColumnName="PorcetajeInteres" />
-                <ScalarProperty Name="Cuotas" ColumnName="Cuotas" />
-                <ScalarProperty Name="Pago_CodPago" ColumnName="Pago_CodPago" />
-                <ScalarProperty Name="CodPagoTarjetaDebito" ColumnName="CodPagoTarjetaDebito" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="DetalleVentaBarras">
             <EntityTypeMapping TypeName="FunClubModel.DetalleVentaBarra">
               <MappingFragment StoreEntitySet="DetalleVentaBarras">
@@ -2230,22 +2169,6 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Discoteca_CodDiscoteca" ColumnName="Discoteca_CodDiscoteca" />
                 <ScalarProperty Name="DetalleVentaBarraCodNoche" ColumnName="DetalleVentaBarraCodNoche" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pagoes">
-            <EntityTypeMapping TypeName="FunClubModel.Pago">
-              <MappingFragment StoreEntitySet="Pagoes">
-                <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
-                <ScalarProperty Name="TerminalMod" ColumnName="TerminalMod" />
-                <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
-                <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
-                <ScalarProperty Name="TerminalAlta" ColumnName="TerminalAlta" />
-                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
-                <ScalarProperty Name="Monto" ColumnName="Monto" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
-                <ScalarProperty Name="CodPago" ColumnName="CodPago" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2379,6 +2302,77 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
                 <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="CodBebida" ColumnName="CodBebida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetallePagoEfectivoes">
+            <EntityTypeMapping TypeName="FunClubModel.DetallePagoEfectivo">
+              <MappingFragment StoreEntitySet="DetallePagoEfectivoes">
+                <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
+                <ScalarProperty Name="TerminalMod" ColumnName="TerminalMod" />
+                <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+                <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
+                <ScalarProperty Name="TerminalAlta" ColumnName="TerminalAlta" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Vuelto" ColumnName="Vuelto" />
+                <ScalarProperty Name="MontoPagado" ColumnName="MontoPagado" />
+                <ScalarProperty Name="Pago_CodPago" ColumnName="Pago_CodPago" />
+                <ScalarProperty Name="CodPagoEfectivo" ColumnName="CodPagoEfectivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetallePagoTarjetaCreditoes">
+            <EntityTypeMapping TypeName="FunClubModel.DetallePagoTarjetaCredito">
+              <MappingFragment StoreEntitySet="DetallePagoTarjetaCreditoes">
+                <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
+                <ScalarProperty Name="TerminalMod" ColumnName="TerminalMod" />
+                <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+                <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
+                <ScalarProperty Name="TerminalAlta" ColumnName="TerminalAlta" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="CodigoSeguridad" ColumnName="CodigoSeguridad" />
+                <ScalarProperty Name="TarjetaNro" ColumnName="TarjetaNro" />
+                <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+                <ScalarProperty Name="MontoInteres" ColumnName="MontoInteres" />
+                <ScalarProperty Name="PorcentajeInteres" ColumnName="PorcentajeInteres" />
+                <ScalarProperty Name="Cuotas" ColumnName="Cuotas" />
+                <ScalarProperty Name="CodPago" ColumnName="CodPago" />
+                <ScalarProperty Name="CodPagoTarjetaCredito" ColumnName="CodPagoTarjetaCredito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetallePagoTarjetaDebitoes">
+            <EntityTypeMapping TypeName="FunClubModel.DetallePagoTarjetaDebito">
+              <MappingFragment StoreEntitySet="DetallePagoTarjetaDebitoes">
+                <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
+                <ScalarProperty Name="TerminalMod" ColumnName="TerminalMod" />
+                <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+                <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
+                <ScalarProperty Name="TerminalAlta" ColumnName="TerminalAlta" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="CodigoSeguridad" ColumnName="CodigoSeguridad" />
+                <ScalarProperty Name="TarjetaNro" ColumnName="TarjetaNro" />
+                <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+                <ScalarProperty Name="Pago_CodPago" ColumnName="Pago_CodPago" />
+                <ScalarProperty Name="CodPagoTarjetaDebito" ColumnName="CodPagoTarjetaDebito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pagoes">
+            <EntityTypeMapping TypeName="FunClubModel.Pago">
+              <MappingFragment StoreEntitySet="Pagoes">
+                <ScalarProperty Name="UsuarioMod" ColumnName="UsuarioMod" />
+                <ScalarProperty Name="TerminalMod" ColumnName="TerminalMod" />
+                <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+                <ScalarProperty Name="UsuarioAlta" ColumnName="UsuarioAlta" />
+                <ScalarProperty Name="TerminalAlta" ColumnName="TerminalAlta" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+                <ScalarProperty Name="CodPago" ColumnName="CodPago" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

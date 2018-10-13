@@ -81,13 +81,19 @@
         <h1>Medio de pago</h1>
         <hr />
         <div class="form-inline">
-            <button id="medioPago" ng-click="Efectivo = true;TD = false;TC = false;" ng-class="Efectivo ? 'red' : ''" class="btn">Efectivo</button>
-            <button id="medioPago" ng-click="Efectivo = false;TD = true;TC = false;" ng-class="TD ? 'red' : ''" class="btn">Tarjeta de débito</button>
-            <button id="medioPago" ng-click="Efectivo = false;TD = false;TC = true;" ng-class="TC ? 'red' : ''" class="btn">Tarjeta de crédito</button>
+            <button id="medioPago" ng-click="EFE = true;TDB = false;TCC = false;" ng-class="EFE ? 'red' : ''" class="btn">Efectivo</button>
+            <button id="medioPago" ng-click="EFE = false;TDB = true;TCC = false;" ng-class="TDB ? 'red' : ''" class="btn">Tarjeta de débito</button>
+            <button id="medioPago" ng-click="EFE = false;TDB = false;TCC = true;" ng-class="TCC ? 'red' : ''" class="btn">Tarjeta de crédito</button>
             <hr />
         </div>
 
-        <div ng-show="Efectivo">
+        <div ng-show="ErrorPago != ''">
+            <div class="alert alert-warning">
+                <strong>Error:</strong> {{ErrorPago}}
+            </div>
+        </div>
+
+        <div ng-show="EFE">
             <div ng-show="Efectivo && !EfectivoConfirmado" class="panel panel-default credit-card-box">
                 <div class="panel-heading display-table">
                     <div class="row display-tr">
@@ -128,10 +134,10 @@
         </div>
         <!-- If you're using Stripe for payments -->
         <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-        <div ng-show="TC || TD" class="container">
-            <div class="row">
+        <div ng-show="(TCC || TDB)" class="container">
+            <div class="row" ng-show="!PagoTarjetaOk">
                 <!-- You can make it whatever width you want. I'm making it full width
-                 on <= small devices and 4/12 page width on >= medium devices -->
+         on <= small devices and 4/12 page width on >= medium devices -->
                 <div>
 
 
@@ -156,8 +162,7 @@
                                                        class="form-control"
                                                        name="cardNumber"
                                                        placeholder="Valid Card Number"
-                                                       autocomplete="cc-number"
-                                                       required autofocus />
+                                                       ng-model="TarjetaNro" />
                                                 <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                                             </div>
                                         </div>
@@ -171,7 +176,7 @@
                                                    class="form-control"
                                                    name="cardExpiry"
                                                    placeholder="MM / YY"
-                                                   autocomplete="cc-exp"
+                                                   ng-model="FechaVencimiento"
                                                    required />
                                         </div>
                                     </div>
@@ -182,7 +187,7 @@
                                                    class="form-control"
                                                    name="cardCVC"
                                                    placeholder="CVC"
-                                                   autocomplete="cc-csc"
+                                                   ng-model="CodigoSeguridad"
                                                    required />
                                         </div>
                                     </div>
@@ -206,7 +211,7 @@
                                                    class="form-control"
                                                    name="cardCVC"
                                                    placeholder="DNI"
-                                                   autocomplete="cc-csc"
+                                                   ng-model="NumeroDocumento"
                                                    required />
                                         </div>
                                     </div>
@@ -220,16 +225,22 @@
                 </div>
 
             </div>
+            <div ng-show="PagoTarjetaOk" style="text-align:center;">
+                <img width="400" height="250" src="https://www.hlb.com.my/content/dam/hlb/my/images/Personal/Credit_Cards/Gold-Card/gold_product_tile_front_en.png" />
+                <h3>Pago finalizado correctamente!</h3>
+                <h4>Total pagado: $ARG {{SubTotal}}</h4>
+                <hr />
+            </div>
         </div>
     </div>
 </div>
 
 <div ng-show="!CargandoPago && Continuar" class="form-inline" style="text-align:center">
-    <div ng-show="!EfectivoConfirmado">
+    <div ng-show="!EfectivoConfirmado && !PagoTarjetaOk">
         <button ng-click="Continuar = false;" class="btn btn-primary" style="width:40%">Ver ticket</button>
-        <button ng-click="EfectivoConfirmado = true;ProcesarPago(MontoEfectivoPagado);" class="btn btn-success" style="width:40%">Confirmar</button>
+        <button ng-click="ProcesarPago(MontoEfectivoPagado,EFE,TDB,TCC,NumeroDocumento,TarjetaNro,CodigoSeguridad,FechaVencimiento);" class="btn btn-success" style="width:40%">Confirmar</button>
     </div>
-    <div ng-show="EfectivoConfirmado">
+    <div ng-show="EfectivoConfirmado || PagoTarjetaOk">
         <button class="btn btn-primary"><span class="glyphicon glyphicon-print"></span> Imprimir ticket</button>
         <button ng-click="Inicializar()" class="btn btn-success">Nueva venta <span class="glyphicon glyphicon-arrow-right"></span></button>
     </div>

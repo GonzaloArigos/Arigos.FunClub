@@ -16,12 +16,10 @@ namespace DAL
     {
         public int CodPagoTarjetaDebito { get; set; }
         public int Pago_CodPago { get; set; }
-        public Nullable<int> Cuotas { get; set; }
-        public Nullable<decimal> PorcetajeInteres { get; set; }
-        public Nullable<decimal> MontoInteres { get; set; }
         public string NumeroDocumento { get; set; }
         public string TarjetaNro { get; set; }
         public Nullable<int> CodigoSeguridad { get; set; }
+        public Nullable<System.DateTime> FechaVencimiento { get; set; }
         public Nullable<System.DateTime> FechaAlta { get; set; }
         public string TerminalAlta { get; set; }
         public string UsuarioAlta { get; set; }

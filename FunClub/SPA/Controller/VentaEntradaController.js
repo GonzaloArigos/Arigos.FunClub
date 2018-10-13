@@ -1,29 +1,30 @@
-﻿angular.module('app').controller("VentaEntradaController", ["$scope", "VentaEntradaService", "ngDialog", 'Excel', '$timeout', 'Upload', "$q", function ($scope, VentaEntradaService, ngDialog, Excel, $timeout, Upload, $q) {
+﻿angular.module('app').controller("VentaEntradaController", ["$scope", "VentaEntradaService", "PagoService", "ngDialog", 'Excel', '$timeout', 'Upload', "$q", function ($scope, VentaEntradaService, PagoService, ngDialog, Excel, $timeout, Upload, $q) {
 
-    $scope.Cargando = false;
-    $scope.Ok = false;
-    $scope.Resultado = [];
+    //$scope.Cargando = false;
+    //$scope.Ok = false;
+    //$scope.Resultado = [];
 
-    $scope.Continuar = false;
-    $scope.Efectivo = true;
-    $scope.TD = false;
-    $scope.TC = false;
+    //$scope.Continuar = false;
+    //$scope.Efectivo = true;
+    //$scope.TD = false;
+    //$scope.TC = false;
 
-    $scope.VerCorrectos = false;
-    $scope.VerEx = false;
-    $scope.VerErr = false;
-    $scope.EntradaSeleccionada = {};
-    $scope.CargandoPago = false;
-    $scope.EfectivoConfirmado = false;
+    //$scope.VerCorrectos = false;
+    //$scope.VerEx = false;
+    //$scope.VerErr = false;
+    //$scope.EntradaSeleccionada = {};
+    //$scope.CargandoPago = false;
+    //$scope.EfectivoConfirmado = false;
+    //$scope.ErrorPago = '';
 
-    $scope.Entradas = {};
+    //$scope.Entradas = {};
 
-    var EntradasAux = {};
+    //var EntradasAux = {};
 
-    $scope.Venta = [];
+    //$scope.Venta = [];
 
-    $scope.SubTotal = 0;
-    $scope.MontoEfectivoPagado = 0;
+    //$scope.SubTotal = 0;
+    //$scope.MontoEfectivoPagado = 0;
 
     //.---------------------
     $scope.Inicializar = function () {
@@ -36,13 +37,20 @@
         $scope.TD = false;
         $scope.TC = false;
 
-       
+
         $scope.VerCorrectos = false;
         $scope.VerEx = false;
         $scope.VerErr = false;
         $scope.EntradaSeleccionada = {};
         $scope.CargandoPago = false;
         $scope.EfectivoConfirmado = false;
+        $scope.ErrorPago = '';
+
+        $scope.NumeroDocumento = "";
+        $scope.TarjetaNro = "";
+        $scope.CodigoSeguridad = "";
+        $scope.FechaVencimiento = "";
+
 
         $scope.Entradas = {};
 
@@ -56,9 +64,11 @@
         GetEntradas();
     }
 
-    $scope.ProcesarPago = function (montoEfectivoPag) {
+    $scope.Inicializar();
+
+    $scope.ProcesarPago = function (montoEfectivoPag,efec,tdbb,tccc,nrodoc,tjnro,codseg,fvenc) {
+
       
-        $scope.CargandoPago = true;
         var detalleVenta = [];
 
         for (var i = 0; i < $scope.Venta.length; i++) {
@@ -68,23 +78,37 @@
             };
             detalleVenta.push(detalle);
         }
-       
+
 
         var pago = {};
 
-        $scope.MontoEfectivoPagado;
 
-        if ($scope.Efectivo) {
+        if (efec) {
             pago.MontoPagado = montoEfectivoPag;
-            pago.vuelto = montoEfectivoPag - $scope.SubTotal;
+            pago.Vuelto = montoEfectivoPag - $scope.SubTotal;
+            if (pago.Vuelto >= 0) {
+                $scope.CargandoPago = true;
+                PagoService.ProcesarPago(JSON.stringify(detalleVenta), 1, JSON.stringify(pago)).then(function (response) {
+                    $scope.CargandoPago = false;
+                    $scope.EfectivoConfirmado = true;
+                });
+            } else {
+                $scope.ErrorPago = 'El monto ingresado debe ser superior al total.';
+            }
         }
 
-        VentaEntradaService.ProcesarPago(JSON.stringify(detalleVenta), 1, JSON.stringify(pago)).then(function (response) {
-            $scope.CargandoPago = false;
-            $scope.EfectivoConfirmado = true;
-        });
-
-    
+        if (tdbb) {
+            pago.NumeroDocumento = nrodoc;
+            pago.TarjetaNro = tjnro;
+            pago.CodigoSeguridad = codseg;
+            pago.FechaVencimiento = "01/" +fvenc;
+            $scope.CargandoPago = true;
+            PagoService.ProcesarPago(JSON.stringify(detalleVenta), 2, JSON.stringify(pago)).then(function (response) {
+                $scope.CargandoPago = false;
+                $scope.PagoTarjetaOk = true;
+            });
+            
+        }
     }
 
     function GetEntradas() {

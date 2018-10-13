@@ -3,19 +3,6 @@
 
     var service = {};
 
-    service.ProcesarPago = function (item,mediopago,pago) {
-        var promise = $http({
-            method: 'post',
-            url: '/VentaEntrada/ProcesarPago',
-            data: { item: item, pago: pago },
-            params: { mediopago: mediopago}
-        });
-
-        return $q.when(promise);
-
-    };
-
-
 
     service.GetEntradas = function () {
         var promise = $http({

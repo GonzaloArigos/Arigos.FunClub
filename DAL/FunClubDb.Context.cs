@@ -35,16 +35,12 @@ namespace DAL
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<Cliente> Clientes { get; set; }
         public virtual DbSet<Consumicion> Consumicions { get; set; }
-        public virtual DbSet<DetallePagoEfectivo> DetallePagoEfectivoes { get; set; }
-        public virtual DbSet<DetallePagoTarjetaCredito> DetallePagoTarjetaCreditoes { get; set; }
-        public virtual DbSet<DetallePagoTarjetaDebito> DetallePagoTarjetaDebitoes { get; set; }
         public virtual DbSet<DetalleVentaBarra> DetalleVentaBarras { get; set; }
         public virtual DbSet<DetalleVentaEntrada> DetalleVentaEntradas { get; set; }
         public virtual DbSet<Discoteca> Discotecas { get; set; }
         public virtual DbSet<Entrada_has_Beneficio> Entrada_has_Beneficio { get; set; }
         public virtual DbSet<Entrada> Entradas { get; set; }
         public virtual DbSet<Noch> Noches { get; set; }
-        public virtual DbSet<Pago> Pagoes { get; set; }
         public virtual DbSet<PrecioConsumicion> PrecioConsumicions { get; set; }
         public virtual DbSet<Usuario_Discotecas> Usuario_Discotecas { get; set; }
         public virtual DbSet<VentaBarra> VentaBarras { get; set; }
@@ -53,5 +49,9 @@ namespace DAL
         public virtual DbSet<PrecioEntrada> PrecioEntradas { get; set; }
         public virtual DbSet<Consumicion_Bebida> Consumicion_Bebida { get; set; }
         public virtual DbSet<Producto> Productos { get; set; }
+        public virtual DbSet<DetallePagoEfectivo> DetallePagoEfectivoes { get; set; }
+        public virtual DbSet<DetallePagoTarjetaCredito> DetallePagoTarjetaCreditoes { get; set; }
+        public virtual DbSet<DetallePagoTarjetaDebito> DetallePagoTarjetaDebitoes { get; set; }
+        public virtual DbSet<Pago> Pagoes { get; set; }
     }
 }
