@@ -59,6 +59,29 @@
         min-width: 180px;
     }
 </style>
+
+<div pdf-save-content="idOne" ng-show="Imprimir">
+     <h4>Ticket de entrada</h4>
+
+    <h4>Subtotal: $ARG {{SubTotal}}</h4>
+
+    <div class="col-md-12">
+        <div ng-repeat="x in Venta" class="row" style="border:2px solid black;border-style:dashed;margin-bottom:2%;">
+            <div class="col-md-8">
+                <h5>{{x.Descripcion}}</h5>
+                <h5>Cantidad: {{x.Cantidad}}</h5>
+                <h5>Subtotal: $ARG {{x.PrecioEntradas[0].Precio * x.Cantidad}}</h5>
+            </div>
+
+        </div>
+    </div>
+       <h6>Presentar en la entrada para su ingreso.</h6>
+    <h6>Funclub!</h6>
+    <br />
+</div>
+
+
+
 <div ng-show="!CargandoPago">
     <div ng-show="!Continuar">
         <h1>Detalle de venta</h1>
@@ -77,7 +100,7 @@
         <button ng-click="Continuar = true;" style="width:100%" class="btn btn-success">Continuar</button>
     </div>
 
-    <div ng-show="Continuar">
+    <div ng-show="Continuar  && !Imprimir">
         <h1>Medio de pago</h1>
         <hr />
         <div class="form-inline">
@@ -120,7 +143,7 @@
                 </div>
             </div>
 
-            <div ng-show="EfectivoConfirmado">
+            <div ng-show="EfectivoConfirmado && !Imprimir">
                 <h3>Ticket finalizado correctamente!</h3>
                 <br />
                 <div class="form-inline">
@@ -137,7 +160,7 @@
         <div ng-show="(TCC || TDB)" class="container">
             <div class="row" ng-show="!PagoTarjetaOk">
                 <!-- You can make it whatever width you want. I'm making it full width
-         on <= small devices and 4/12 page width on >= medium devices -->
+                on <= small devices and 4/12 page width on >= medium devices -->
                 <div>
 
 
@@ -163,7 +186,10 @@
                                                        name="cardNumber"
                                                        placeholder="Valid Card Number"
                                                        ng-model="TarjetaNro" />
-                                                <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-credit-card"
+                                                       ng-pattern="/^\d{1,16}$/"></i>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -225,7 +251,7 @@
                 </div>
 
             </div>
-            <div ng-show="PagoTarjetaOk" style="text-align:center;">
+            <div ng-show="PagoTarjetaOk && !Imprimir" style="text-align:center;">
                 <img width="400" height="250" src="https://www.hlb.com.my/content/dam/hlb/my/images/Personal/Credit_Cards/Gold-Card/gold_product_tile_front_en.png" />
                 <h3>Pago finalizado correctamente!</h3>
                 <h4>Total pagado: $ARG {{SubTotal}}</h4>
@@ -240,8 +266,10 @@
         <button ng-click="Continuar = false;" class="btn btn-primary" style="width:40%">Ver ticket</button>
         <button ng-click="ProcesarPago(MontoEfectivoPagado,EFE,TDB,TCC,NumeroDocumento,TarjetaNro,CodigoSeguridad,FechaVencimiento);" class="btn btn-success" style="width:40%">Confirmar</button>
     </div>
+
     <div ng-show="EfectivoConfirmado || PagoTarjetaOk">
-        <button class="btn btn-primary"><span class="glyphicon glyphicon-print"></span> Imprimir ticket</button>
+        <button ng-show="!Imprimir" ng-click="Imprimir = true" class="btn btn-primary"><span class="glyphicon glyphicon-ok-sign"></span> Generar ticket</button>
+        <button ng-show="Imprimir" pdf-save-button="idOne" pdf-name="Ticket.pdf" id="cmd" class="btn btn-primary"><span class="glyphicon glyphicon-print"></span> Imprimir</button>
         <button ng-click="Inicializar()" class="btn btn-success">Nueva venta <span class="glyphicon glyphicon-arrow-right"></span></button>
     </div>
 </div>
@@ -253,6 +281,8 @@
     <h3>Procesando pago...</h3>
     <hr />
 </div>
+
+
 
 
 

@@ -27,6 +27,8 @@
     //$scope.MontoEfectivoPagado = 0;
 
     //.---------------------
+
+   
     $scope.Inicializar = function () {
         $scope.Cargando = false;
         $scope.Ok = false;
@@ -45,6 +47,7 @@
         $scope.CargandoPago = false;
         $scope.EfectivoConfirmado = false;
         $scope.ErrorPago = '';
+        $scope.Imprimir = false;
 
         $scope.NumeroDocumento = "";
         $scope.TarjetaNro = "";
@@ -98,6 +101,13 @@
         }
 
         if (tdbb) {
+
+            if (nrodoc.length == 0 || tjnro.length == 0 || codseg.length == 0 || fvenc.length == 0) {
+                $scope.ErrorPago = 'Debe ingresar todos los campos para continuar.';
+
+            }
+
+            if ($scope.ErrorPago == '') {
             pago.NumeroDocumento = nrodoc;
             pago.TarjetaNro = tjnro;
             pago.CodigoSeguridad = codseg;
@@ -107,7 +117,7 @@
                 $scope.CargandoPago = false;
                 $scope.PagoTarjetaOk = true;
             });
-            
+            }
         }
     }
 

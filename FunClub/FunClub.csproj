@@ -1057,6 +1057,9 @@
     <Content Include="SPA\Controller\PrincipalController.js" />
     <Content Include="SPA\Controller\CargaMasivaController.js" />
     <Content Include="SPA\Controller\HomeController.js" />
+    <Content Include="SPA\jspdf.debug.js" />
+    <Content Include="SPA\jspdf.min.js" />
+    <Content Include="SPA\saveHtmlToPdf.min.js" />
     <Content Include="SPA\Services\PagoService.js" />
     <Content Include="SPA\Services\VentaEntradaService.js" />
     <Content Include="SPA\Services\ProductoService.js" />

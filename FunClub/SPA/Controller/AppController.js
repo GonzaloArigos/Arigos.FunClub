@@ -1,4 +1,4 @@
-﻿var app = angular.module("app", ['ngRoute', 'ngFileUpload','ngDialog']);
+﻿var app = angular.module("app", ['ngRoute', 'ngFileUpload', 'ngDialog', 'htmlToPdfSave']);
 
 app.factory('Excel', function ($window) {
     var uri = 'data:application/vnd.ms-excel;base64,',
