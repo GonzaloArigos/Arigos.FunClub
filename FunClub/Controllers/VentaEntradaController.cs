@@ -15,6 +15,16 @@ namespace FunClub.Controllers
             return View();
         }
 
+        public string GetVentaEntradasHoy(int take)
+        {
+            return JsonConvert.SerializeObject(BLL.VentaEntradaBLL.GetVentaEntradasHoy(User.Identity.Name,take), Formatting.None,
+            new JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+
+        }
+
         public string GetAllEntradas()
         {
           
@@ -28,7 +38,7 @@ namespace FunClub.Controllers
         [HttpPost]
         public void ProcesarPago(object item,int mediopago,object pago)
         {
-            System.Threading.Thread.Sleep(3000);
+           // System.Threading.Thread.Sleep(3000);
             List<DAL.DetalleVentaEntrada> detalleVenta = Newtonsoft.Json.JsonConvert.DeserializeObject<List<DAL.DetalleVentaEntrada>>(item.ToString());
 
             if (mediopago == 1)

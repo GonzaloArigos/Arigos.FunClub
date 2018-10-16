@@ -1,34 +1,7 @@
 ﻿angular.module('app').controller("VentaEntradaController", ["$scope", "VentaEntradaService", "PagoService", "ngDialog", 'Excel', '$timeout', 'Upload', "$q", function ($scope, VentaEntradaService, PagoService, ngDialog, Excel, $timeout, Upload, $q) {
 
-    //$scope.Cargando = false;
-    //$scope.Ok = false;
-    //$scope.Resultado = [];
 
-    //$scope.Continuar = false;
-    //$scope.Efectivo = true;
-    //$scope.TD = false;
-    //$scope.TC = false;
 
-    //$scope.VerCorrectos = false;
-    //$scope.VerEx = false;
-    //$scope.VerErr = false;
-    //$scope.EntradaSeleccionada = {};
-    //$scope.CargandoPago = false;
-    //$scope.EfectivoConfirmado = false;
-    //$scope.ErrorPago = '';
-
-    //$scope.Entradas = {};
-
-    //var EntradasAux = {};
-
-    //$scope.Venta = [];
-
-    //$scope.SubTotal = 0;
-    //$scope.MontoEfectivoPagado = 0;
-
-    //.---------------------
-
-   
     $scope.Inicializar = function () {
         $scope.Cargando = false;
         $scope.Ok = false;
@@ -56,6 +29,7 @@
 
 
         $scope.Entradas = {};
+        $scope.EntradasHoy = {};
 
         var EntradasAux = {};
 
@@ -69,9 +43,9 @@
 
     $scope.Inicializar();
 
-    $scope.ProcesarPago = function (montoEfectivoPag,efec,tdbb,tccc,nrodoc,tjnro,codseg,fvenc) {
+    $scope.ProcesarPago = function (montoEfectivoPag, efec, tdbb, tccc, nrodoc, tjnro, codseg, fvenc) {
 
-      
+
         var detalleVenta = [];
 
         for (var i = 0; i < $scope.Venta.length; i++) {
@@ -108,15 +82,15 @@
             }
 
             if ($scope.ErrorPago == '') {
-            pago.NumeroDocumento = nrodoc;
-            pago.TarjetaNro = tjnro;
-            pago.CodigoSeguridad = codseg;
-            pago.FechaVencimiento = "01/" +fvenc;
-            $scope.CargandoPago = true;
-            PagoService.ProcesarPago(JSON.stringify(detalleVenta), 2, JSON.stringify(pago)).then(function (response) {
-                $scope.CargandoPago = false;
-                $scope.PagoTarjetaOk = true;
-            });
+                pago.NumeroDocumento = nrodoc;
+                pago.TarjetaNro = tjnro;
+                pago.CodigoSeguridad = codseg;
+                pago.FechaVencimiento = "01/" + fvenc;
+                $scope.CargandoPago = true;
+                PagoService.ProcesarPago(JSON.stringify(detalleVenta), 2, JSON.stringify(pago)).then(function (response) {
+                    $scope.CargandoPago = false;
+                    $scope.PagoTarjetaOk = true;
+                });
             }
         }
     }
@@ -128,6 +102,10 @@
             EntradasAux = response.data;
             $scope.Cargando = false;
 
+        });
+
+        VentaEntradaService.GetVentaEntradasHoy(5).then(function (response) {
+            $scope.EntradasHoy = response.data;
         });
     }
 
@@ -174,6 +152,14 @@
     $scope.verEntrada = function () {
         ngDialog.open({
             template: 'SPA/Views/modalDetalleEntrada.html',
+            className: 'ngdialog-theme-default',
+            scope: $scope
+        });
+    };
+
+    $scope.verEntradasHoy = function () {
+        ngDialog.open({
+            template: 'SPA/Views/modalEntradasHoy.html',
             className: 'ngdialog-theme-default',
             scope: $scope
         });

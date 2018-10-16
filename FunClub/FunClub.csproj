@@ -1072,6 +1072,7 @@
     <Content Include="SPA\Views\GestionDiscotecas.html" />
     <Content Include="SPA\Views\Home.html" />
     <Content Include="SPA\Views\modalEditarDisco.html" />
+    <Content Include="SPA\Views\modalEntradasHoy.html" />
     <Content Include="SPA\Views\modalTicketEntrada.html" />
     <Content Include="SPA\Views\Principal.html" />
     <Content Include="SPA\Views\ToolBar.html" />

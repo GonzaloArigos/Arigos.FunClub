@@ -68,13 +68,13 @@ namespace FunClub.Controllers
         }
 
         // GET: Productoes/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? idprod,int? coddisco)
         {
-            if (id == null)
+            if (idprod == null || coddisco == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Producto producto = db.Productos.Find(id);
+            Producto producto = db.Productos.Where(a => a.CodBebida == idprod && a.CodDiscoteca == coddisco).FirstOrDefault();
             if (producto == null)
             {
                 return HttpNotFound();

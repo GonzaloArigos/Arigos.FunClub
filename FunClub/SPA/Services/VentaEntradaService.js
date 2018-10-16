@@ -4,6 +4,16 @@
     var service = {};
 
 
+    service.GetVentaEntradasHoy = function (take) {
+        var promise = $http({
+            method: 'get',
+            url: '/VentaEntrada/GetVentaEntradasHoy',
+            params: { take: take }
+        });
+
+        return $q.when(promise);
+    };
+
     service.GetEntradas = function () {
         var promise = $http({
             method: 'get',
@@ -63,11 +73,11 @@
 
     };
 
-    service.PublicarProducto = function (file,product) {
+    service.PublicarProducto = function (file, product) {
         var promise = $http({
             method: 'post',
             url: '/Product/PublicarProducto',
-            data: { file: file, product: product}
+            data: { file: file, product: product }
         });
 
         return $q.when(promise);

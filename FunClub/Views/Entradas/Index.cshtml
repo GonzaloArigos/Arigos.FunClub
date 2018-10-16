@@ -12,7 +12,7 @@
 
 
     <p>
-        @Html.ActionLink("Nueva entrada", "Create")
+        @Html.ActionLink("Nueva entrada", "Create", new { @class = "btn btn-default" })
     </p>
 
     <table class="table">
@@ -54,9 +54,8 @@
                     @Html.DisplayFor(modelItem => item.Discoteca.Descripcion)
                 </td>
                 <td>
-                    @Html.ActionLink("Modificar", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Ver detalles", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Modificar", "Edit", new { id = item.CodEntrada, coddisco = item.CodDiscoteca }, new { @class = "btn btn-default" }) 
+                    @*@Html.ActionLink("Eliminar", "Delete", new { id = item.CodEntrada, coddisco = item.CodDiscoteca })*@
                 </td>
             </tr>
         }

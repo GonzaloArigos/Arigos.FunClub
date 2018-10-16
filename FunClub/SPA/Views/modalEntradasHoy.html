@@ -1,0 +1,28 @@
+﻿<div class="container">
+    <h2>Últimas 5 entradas vendidas</h2>
+    <p>Aquí podras consultas las última 5 ventas con la posibilidad de cancelar:</p>
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>FechaHora</th>
+                <th>MedioPago</th>
+                <th>Total</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in EntradasHoy">
+                <td>{{x.Pago.FechaPago  | date:'dd/MM/yyyy hh:mm:ss'}}</td>
+                <td>
+                    {{x.Pago.DetallePagoEfectivoes.length > 0 ? 'Efectivo' : ''}}
+                    {{x.Pago.DetallePagoTarjetaDebitoes.length > 0 ? 'Débito' : ''}}
+                    {{x.Pago.DetallePagoTarjetaCreditoes.length > 0 ? 'Crédito' : ''}}
+                </td>
+                <td>$ARG {{x.Pago.Monto}}</td>
+                <td>
+                    <button class="btn btn-default">Cancelar</button>                
+                </td>
+            </tr>          
+        </tbody>
+    </table>
+</div>

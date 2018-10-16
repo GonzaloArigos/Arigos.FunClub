@@ -38,9 +38,10 @@ namespace FunClub.Views
 
         // GET: Entradas/Create
         public ActionResult Create()
-        {
-            ViewBag.CodConsumicion = new SelectList(db.Consumicions, "CodConsumicion", "Descripcion");
-            ViewBag.CodDiscoteca = new SelectList(db.Discotecas, "CodDiscoteca", "Descripcion");
+        { 
+             ViewBag.CodDiscoteca = new SelectList(db.Discotecas.Where(a => a.Usuario_Discotecas.Any(k => k.EmailUsuario == User.Identity.Name)), "CodDiscoteca", "Descripcion");
+             ViewBag.CodConsumicion = new SelectList(db.Consumicions, "CodConsumicion", "Descripcion");
+           
             return View();
         }
 
@@ -64,13 +65,13 @@ namespace FunClub.Views
         }
 
         // GET: Entradas/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id,int? coddisco)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Entrada entrada = db.Entradas.Find(id);
+            Entrada entrada = db.Entradas.Where(a => a.CodEntrada == id && a.CodDiscoteca == coddisco).FirstOrDefault();
             if (entrada == null)
             {
                 return HttpNotFound();
@@ -99,13 +100,13 @@ namespace FunClub.Views
         }
 
         // GET: Entradas/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int? coddisco)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Entrada entrada = db.Entradas.Find(id);
+            Entrada entrada = db.Entradas.Where(a => a.CodEntrada == id && a.CodDiscoteca == coddisco).FirstOrDefault();
             if (entrada == null)
             {
                 return HttpNotFound();
@@ -116,9 +117,9 @@ namespace FunClub.Views
         // POST: Entradas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? id, int? coddisco)
         {
-            Entrada entrada = db.Entradas.Find(id);
+            Entrada entrada = db.Entradas.Where(a => a.CodEntrada == id && a.CodDiscoteca == coddisco).FirstOrDefault();
             db.Entradas.Remove(entrada);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -31,6 +31,12 @@ namespace BLL
 
         }
 
+        public static List<DAL.VentaEntrada> GetVentaEntradasHoy(string name, int take)
+        {
+            var disco = BLL.DiscotecaBLL.GetDiscotecasUsuario(name).Where(a => a.Productiva == true).FirstOrDefault().CodDiscoteca;
+        return    DAL.VentaEntradaDAL.GetVentaEntradasHoy(disco, take);
+        }
+
         public static void ConfirmarVentaDebito(List<DAL.DetalleVentaEntrada> detalleventa, DAL.DetallePagoTarjetaDebito pagodebito, string usuario)
         {
             var Venta = new DAL.VentaEntrada();
@@ -39,8 +45,20 @@ namespace BLL
 
             var disco = BLL.DiscotecaBLL.GetDiscotecasUsuario(usuario).Where(a => a.Productiva == true).FirstOrDefault().CodDiscoteca;
 
+            decimal monto = 0;
 
-            int codpago = BLL.PagoBLL.GenerarPagoTarjetaDebito(disco, usuario, 1, pagodebito);
+            foreach(var item in detalleventa)
+            {
+                var Entrada = new DAL.Entrada()
+                {
+                    CodEntrada = item.CodEntrada,
+                    CodDiscoteca = disco
+                };
+                var precio = DAL.PrecioEntradaDAL.GetUltimoPrecio(Entrada).Precio;
+                monto =(decimal)(monto + (precio * item.Cantidad));
+            }
+
+            int codpago = BLL.PagoBLL.GenerarPagoTarjetaDebito(disco, usuario, monto, pagodebito);
 
             foreach (var item in detalleventa)
             {

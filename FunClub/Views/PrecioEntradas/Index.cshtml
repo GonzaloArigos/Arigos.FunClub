@@ -11,7 +11,7 @@
 <h2>Gestión de precios</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Nuevo precio")
+    @Html.ActionLink("Nuevo Precio", "Create")
 </p>
 <table class="table">
     <tr>
@@ -65,8 +65,8 @@
         </td>
 
         <td>
-            @Html.ActionLink("Edit", "Editar", new { /* id=item.PrimaryKey */ }) |
-           @Html.ActionLink("Delete", "Eliminar", new { disco=item.CodDiscoteca,entrada=item.CodEntrada,fecha=item.FechaInicio })
+            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }) |
+           @Html.ActionLink("Eliminar", "Delete", new { disco=item.CodDiscoteca,entrada=item.CodEntrada,fecha=item.FechaInicio })
         </td>
     </tr>
     }
