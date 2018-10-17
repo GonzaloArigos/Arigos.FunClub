@@ -252,9 +252,12 @@
 
             </div>
             <div ng-show="PagoTarjetaOk && !Imprimir" style="text-align:center;">
-                <img width="400" height="250" src="https://www.hlb.com.my/content/dam/hlb/my/images/Personal/Credit_Cards/Gold-Card/gold_product_tile_front_en.png" />
+                <img width="380" height="230" src="https://www.hlb.com.my/content/dam/hlb/my/images/Personal/Credit_Cards/Gold-Card/gold_product_tile_front_en.png" />
                 <h3>Pago finalizado correctamente!</h3>
-                <h4>Total pagado: $ARG {{SubTotal}}</h4>
+                <h4>SubTotal: $ARG {{SubTotal}}</h4>
+                <h4 ng-show="TCC">Intereses cobrados: %3</h4>
+                <h4 ng-show="TCC">Monto intereses: $ARG {{SubTotal * 0.03}}</h4>
+                <h4 ng-show="TCC">SubTotal: $ARG {{SubTotal * 1.03}}</h4>
                 <hr />
             </div>
         </div>

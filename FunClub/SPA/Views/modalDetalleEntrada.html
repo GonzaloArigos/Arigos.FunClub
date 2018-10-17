@@ -1,2 +1,4 @@
 ﻿<h3>{{EntradaSeleccionada.Descripcion}}</h3>
-<h4>Consumición: {{EntradaSeleccionada.Consumicon.Descripcion}}</h4>
+<h4 style="text-decoration-color:brown;font-weight:bold;">Consumición: {{EntradaSeleccionada.Consumicion.Descripcion}}</h4>
+<h3>Productos asociados</h3>
+<h4 style="text-decoration-color:brown;font-weight:bold;" ng-repeat="x in EntradaSeleccionada.Consumicion.Consumicion_Bebida">{{x.Producto.Descripcion}} X{{x.Cantidad}}</h4>

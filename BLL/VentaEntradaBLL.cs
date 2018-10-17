@@ -16,8 +16,11 @@ namespace BLL
 
             var disco = BLL.DiscotecaBLL.GetDiscotecasUsuario(usuario).Where(a => a.Productiva == true).FirstOrDefault().CodDiscoteca;
 
+            decimal monto = 0;
 
-            int codpago = BLL.PagoBLL.GenerarPagoEfectivo(disco, usuario, 1, pagoEfectivo);
+            monto = CalcularMonto(detalleventa, disco, monto);
+
+            int codpago = BLL.PagoBLL.GenerarPagoEfectivo(disco, usuario, monto, pagoEfectivo);
 
             foreach (var item in detalleventa)
             {
@@ -47,16 +50,7 @@ namespace BLL
 
             decimal monto = 0;
 
-            foreach(var item in detalleventa)
-            {
-                var Entrada = new DAL.Entrada()
-                {
-                    CodEntrada = item.CodEntrada,
-                    CodDiscoteca = disco
-                };
-                var precio = DAL.PrecioEntradaDAL.GetUltimoPrecio(Entrada).Precio;
-                monto =(decimal)(monto + (precio * item.Cantidad));
-            }
+            monto = CalcularMonto(detalleventa, disco, monto);
 
             int codpago = BLL.PagoBLL.GenerarPagoTarjetaDebito(disco, usuario, monto, pagodebito);
 
@@ -72,6 +66,22 @@ namespace BLL
 
         }
 
+        private static decimal CalcularMonto(List<DAL.DetalleVentaEntrada> detalleventa, int disco, decimal monto)
+        {
+            foreach (var item in detalleventa)
+            {
+                var Entrada = new DAL.Entrada()
+                {
+                    CodEntrada = item.CodEntrada,
+                    CodDiscoteca = disco
+                };
+                var precio = DAL.PrecioEntradaDAL.GetUltimoPrecio(Entrada).Precio;
+                monto = (decimal)(monto + (precio * item.Cantidad));
+            }
+
+            return monto;
+        }
+
         public static void CancelarVentaEntrada(int codventa, int coddisco)
         {
             DAL.VentaEntradaDAL.CancelarVentaEntrada(codventa,coddisco);
@@ -85,8 +95,11 @@ namespace BLL
 
             var disco = BLL.DiscotecaBLL.GetDiscotecasUsuario(usuario).Where(a => a.Productiva == true).FirstOrDefault().CodDiscoteca;
 
+            decimal monto = 0;
 
-            int codpago = BLL.PagoBLL.GenerarPagoTarjetaCredito(disco, usuario, 1, pagodebito);
+            monto = CalcularMonto(detalleventa, disco, monto);
+
+            int codpago = BLL.PagoBLL.GenerarPagoTarjetaCredito(disco, usuario, monto, pagodebito);
 
             foreach (var item in detalleventa)
             {

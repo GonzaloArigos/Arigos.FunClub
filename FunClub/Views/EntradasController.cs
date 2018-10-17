@@ -86,7 +86,7 @@ namespace FunClub.Views
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CodEntrada,CodDiscoteca,FechaRegistro,Descripcion,CodConsumicion,Estado")] Entrada entrada)
+        public ActionResult Edit([Bind(Include = "Descripcion,Estado")] Entrada entrada)
         {
             if (ModelState.IsValid)
             {

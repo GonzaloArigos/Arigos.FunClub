@@ -28,7 +28,7 @@ namespace BLL
         private static void CalcularIntereses(DetallePagoTarjetaCredito pagocredito, decimal monto)
         {
             pagocredito.Cuotas = 1;
-            pagocredito.PorcentajeInteres = (decimal)0.5;
+            pagocredito.PorcentajeInteres = (decimal)0.03;
             pagocredito.MontoInteres = pagocredito.PorcentajeInteres * monto;
             monto = (decimal)(monto + pagocredito.MontoInteres);
         }

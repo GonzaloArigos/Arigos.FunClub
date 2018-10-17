@@ -15,14 +15,18 @@ namespace DAL
                 using (FunClubEntities db = new FunClubEntities())
                 {
                     var disco = db.Usuario_Discotecas.Include("Discoteca").Where(a => a.EmailUsuario == email && a.Discoteca.Productiva == true).FirstOrDefault().Discoteca;
-                    return db.Entradas.Include("Consumicion").Include("PrecioEntradas").Where(a => a.CodDiscoteca == disco.CodDiscoteca).ToList();
-            }
+                    return db.Entradas.Include("Consumicion")
+                        .Include("PrecioEntradas")
+                        .Include("Consumicion.Consumicion_Bebida")
+                        .Include("Consumicion.Consumicion_Bebida.Producto")
+                        .Where(a => a.CodDiscoteca == disco.CodDiscoteca).ToList();
+                }
             }
             catch
             {
                 return null;
-            }           
-                    
-        } 
+            }
+
+        }
     }
 }

@@ -68,6 +68,7 @@
                 PagoService.ProcesarPago(JSON.stringify(detalleVenta), 1, JSON.stringify(pago)).then(function (response) {
                     $scope.CargandoPago = false;
                     $scope.EfectivoConfirmado = true;
+                    $scope.ErrorPago == '';
                 });
             } else {
                 $scope.ErrorPago = 'El monto ingresado debe ser superior al total.';
@@ -90,6 +91,28 @@
                 PagoService.ProcesarPago(JSON.stringify(detalleVenta), 2, JSON.stringify(pago)).then(function (response) {
                     $scope.CargandoPago = false;
                     $scope.PagoTarjetaOk = true;
+                    $scope.ErrorPago == '';
+                });
+            }
+        }
+
+        if (tccc) {
+
+            if (nrodoc.length == 0 || tjnro.length == 0 || codseg.length == 0 || fvenc.length == 0) {
+                $scope.ErrorPago = 'Debe ingresar todos los campos para continuar.';
+
+            }
+
+            if ($scope.ErrorPago == '') {
+                pago.NumeroDocumento = nrodoc;
+                pago.TarjetaNro = tjnro;
+                pago.CodigoSeguridad = codseg;
+                pago.FechaVencimiento = "01/" + fvenc;
+                $scope.CargandoPago = true;
+                PagoService.ProcesarPago(JSON.stringify(detalleVenta), 3, JSON.stringify(pago)).then(function (response) {
+                    $scope.CargandoPago = false;
+                    $scope.PagoTarjetaOk = true;
+                    $scope.ErrorPago == '';
                 });
             }
         }

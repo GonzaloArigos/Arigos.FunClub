@@ -49,10 +49,11 @@ namespace DAL
         {
             using (FunClubEntities db = new FunClubEntities())
             {
-                var venta = db.VentaEntradas.Where(a => a.CodVentaEntrada == codventa && a.CodDiscoteca == coddisco).FirstOrDefault();
+                var venta = db.VentaEntradas.Include("Pago").Where(a => a.CodVentaEntrada == codventa && a.CodDiscoteca == coddisco).FirstOrDefault();
                 if (venta != null)
                 {
                     venta.Estado = 2;
+                    venta.Pago.Estado = "2";
                     db.SaveChanges();
                 }
             }
