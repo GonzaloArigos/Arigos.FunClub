@@ -40,8 +40,21 @@ namespace DAL
                     .Include("Pago.DetallePagoEfectivoes")
                     .Include("Pago.DetallePagoTarjetaCreditoes")
                     .Include("Pago.DetallePagoTarjetaDebitoes")
-                    .Where(a => a.CodDiscoteca == disco).OrderByDescending(a=> a.Pago.FechaPago).Take(take).ToList();
+                    .Where(a => a.CodDiscoteca == disco).OrderByDescending(a => a.Pago.FechaPago).Take(take).ToList();
                 return ventas;
+            }
+        }
+
+        public static void CancelarVentaEntrada(int codventa, int coddisco)
+        {
+            using (FunClubEntities db = new FunClubEntities())
+            {
+                var venta = db.VentaEntradas.Where(a => a.CodVentaEntrada == codventa && a.CodDiscoteca == coddisco).FirstOrDefault();
+                if (venta != null)
+                {
+                    venta.Estado = 2;
+                    db.SaveChanges();
+                }
             }
         }
     }

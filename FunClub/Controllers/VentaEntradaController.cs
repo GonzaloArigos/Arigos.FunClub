@@ -59,6 +59,12 @@ namespace FunClub.Controllers
             }
 
         }
+        [HttpPost]
+        public void CancelarVenta(int codventa,int coddisco)
+        {
+            BLL.VentaEntradaBLL.CancelarVentaEntrada(codventa,coddisco);
+        }
+
 
     }
 }

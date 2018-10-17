@@ -72,6 +72,11 @@ namespace BLL
 
         }
 
+        public static void CancelarVentaEntrada(int codventa, int coddisco)
+        {
+            DAL.VentaEntradaDAL.CancelarVentaEntrada(codventa,coddisco);
+        }
+
         public static void ConfirmarVentaCredito (List<DAL.DetalleVentaEntrada> detalleventa, DAL.DetallePagoTarjetaCredito pagodebito, string usuario)
         {
             var Venta = new DAL.VentaEntrada();

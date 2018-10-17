@@ -139,6 +139,12 @@
         $scope.EntradaSeleccionada = entrada;
     }
 
+    $scope.CancelarVenta = function (x) {
+        VentaEntradaService.CancelarVenta(x.CodVentaEntrada, x.CodDiscoteca).then(function (response) {
+            x.Estado = 2;
+        });
+    }
+
     GetEntradas();
 
     $scope.verTicket = function () {

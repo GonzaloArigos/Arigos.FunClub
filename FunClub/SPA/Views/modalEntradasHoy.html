@@ -20,7 +20,8 @@
                 </td>
                 <td>$ARG {{x.Pago.Monto}}</td>
                 <td>
-                    <button class="btn btn-default">Cancelar</button>                
+                    <button ng-show="x.Estado == 1" ng-click="CancelarVenta(x)" class="btn btn-default">Cancelar</button>
+                    <button ng-show="x.Estado == 2" class="btn btn-warning" disabled>Cancelada</button>
                 </td>
             </tr>          
         </tbody>

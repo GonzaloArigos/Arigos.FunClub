@@ -25,6 +25,18 @@
 
     };
 
+
+    service.CancelarVenta = function (codventa, coddisco) {
+        var promise = $http({
+            method: 'post',
+            url: '/VentaEntrada/CancelarVenta',
+            params: { codventa: codventa, coddisco: coddisco }
+        });
+
+        return $q.when(promise);
+
+    };
+
     service.GetByName = function (item) {
         var promise = $http({
             method: 'get',
