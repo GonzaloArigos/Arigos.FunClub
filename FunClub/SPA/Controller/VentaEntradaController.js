@@ -1,4 +1,4 @@
-﻿angular.module('app').controller("VentaEntradaController", ["$scope", "VentaEntradaService", "PagoService", "ngDialog", 'Excel', '$timeout', 'Upload', "$q", function ($scope, VentaEntradaService, PagoService, ngDialog, Excel, $timeout, Upload, $q) {
+﻿angular.module('app').controller("VentaEntradaController", ["$scope", "VentaEntradaService", "PagoService", "WhatsappService", "ngDialog", 'Excel', '$timeout', 'Upload', "$q", function ($scope, VentaEntradaService, PagoService, WhatsappService, ngDialog, Excel, $timeout, Upload, $q) {
 
 
 
@@ -66,6 +66,7 @@
             if (pago.Vuelto >= 0) {
                 $scope.CargandoPago = true;
                 PagoService.ProcesarPago(JSON.stringify(detalleVenta), 1, JSON.stringify(pago)).then(function (response) {
+                    EnviarWsp("Se ha realizado una venta de entradas en efectivo, con un total de:  $ARG " + $scope.SubTotal);
                     $scope.CargandoPago = false;
                     $scope.EfectivoConfirmado = true;
                     $scope.ErrorPago == '';
@@ -89,6 +90,7 @@
                 pago.FechaVencimiento = "01/" + fvenc;
                 $scope.CargandoPago = true;
                 PagoService.ProcesarPago(JSON.stringify(detalleVenta), 2, JSON.stringify(pago)).then(function (response) {
+                    EnviarWsp("Se ha realizado una venta de entradas con tarjeta de débito, con un total de:  $ARG " + $scope.SubTotal);
                     $scope.CargandoPago = false;
                     $scope.PagoTarjetaOk = true;
                     $scope.ErrorPago == '';
@@ -110,12 +112,19 @@
                 pago.FechaVencimiento = "01/" + fvenc;
                 $scope.CargandoPago = true;
                 PagoService.ProcesarPago(JSON.stringify(detalleVenta), 3, JSON.stringify(pago)).then(function (response) {
+                    EnviarWsp("Se ha realizado una venta de entradas con tarjeta de crédito, con un total de: $ARG " + ($scope.SubTotal * 0.003) );
                     $scope.CargandoPago = false;
                     $scope.PagoTarjetaOk = true;
                     $scope.ErrorPago == '';
                 });
             }
         }
+    }
+
+    function EnviarWsp(mensaje) {
+        mensaje = mensaje + ".Saludos, FunClub! "
+        WhatsappService.EnviarMensaje(mensaje).then(function (response) {
+        });
     }
 
     function GetEntradas() {

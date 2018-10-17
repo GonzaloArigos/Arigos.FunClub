@@ -196,6 +196,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductoesController.cs" />
     <Compile Include="Controllers\VentaEntradaController.cs" />
+    <Compile Include="Controllers\WhatsappController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1060,6 +1061,7 @@
     <Content Include="SPA\jspdf.debug.js" />
     <Content Include="SPA\jspdf.min.js" />
     <Content Include="SPA\saveHtmlToPdf.min.js" />
+    <Content Include="SPA\Services\WhatsappService.js" />
     <Content Include="SPA\Services\PagoService.js" />
     <Content Include="SPA\Services\VentaEntradaService.js" />
     <Content Include="SPA\Services\ProductoService.js" />
@@ -1136,6 +1138,7 @@
     <Folder Include="Views\CargaMasiva\" />
     <Folder Include="Views\Discoteca\" />
     <Folder Include="Views\VentaEntrada\" />
+    <Folder Include="Views\Whatsapp\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -31,7 +31,7 @@ namespace BLL
             }
 
             DAL.VentaEntradaDAL.GenerarVentaEntrada(disco, codpago, detalleventa, usuario);
-
+                        
         }
 
         public static List<DAL.VentaEntrada> GetVentaEntradasHoy(string name, int take)

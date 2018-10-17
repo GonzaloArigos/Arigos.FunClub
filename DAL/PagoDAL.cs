@@ -18,7 +18,8 @@ namespace DAL
                 pago.Estado = "1";
                 pago.FechaAlta = DateTime.Now;
                 pago.FechaPago = DateTime.Now;
-                pago.TerminalAlta = "1";
+                pago.UsuarioAlta = email;
+                pago.TerminalAlta = "Servidor";
                 pago.Monto = monto;
                 pago.DetallePagoEfectivoes = new List<DetallePagoEfectivo>();
                 pago.DetallePagoEfectivoes.Add(detalle);
@@ -42,7 +43,8 @@ namespace DAL
                 pago.Estado = "1";
                 pago.FechaAlta = DateTime.Now;
                 pago.FechaPago = DateTime.Now;
-                pago.TerminalAlta = "1";
+                pago.UsuarioAlta = email;
+                pago.TerminalAlta = "Servidor";
                 pago.Monto = monto;
                 pago.DetallePagoTarjetaDebitoes = new List<DetallePagoTarjetaDebito>();
                 pago.DetallePagoTarjetaDebitoes.Add(detalle);
@@ -56,32 +58,33 @@ namespace DAL
             }
         }
 
-            public static int GenerarPagoTarjetaCredito(int disco, string email, decimal monto, DetallePagoTarjetaCredito detalle)
+        public static int GenerarPagoTarjetaCredito(int disco, string email, decimal monto, DetallePagoTarjetaCredito detalle)
+        {
+            Pago pago = new Pago();
+            using (FunClubEntities db = new FunClubEntities())
             {
-                Pago pago = new Pago();
-                using (FunClubEntities db = new FunClubEntities())
-                {
-                    int codpago = db.Pagoes.ToList().Count > 0 ? db.Pagoes.Max(a => a.CodPago) + 1 : 1;
-                    pago.CodPago = codpago;
-                    pago.Estado = "1";
-                    pago.FechaAlta = DateTime.Now;
-                    pago.FechaPago = DateTime.Now;
-                    pago.TerminalAlta = "1";
-                    pago.Monto = monto;
-                    pago.DetallePagoTarjetaCreditoes = new List<DetallePagoTarjetaCredito>();
-                    pago.DetallePagoTarjetaCreditoes.Add(detalle);
+                int codpago = db.Pagoes.ToList().Count > 0 ? db.Pagoes.Max(a => a.CodPago) + 1 : 1;
+                pago.CodPago = codpago;
+                pago.Estado = "1";
+                pago.FechaAlta = DateTime.Now;
+                pago.FechaPago = DateTime.Now;
+                pago.UsuarioAlta = email;
+                pago.TerminalAlta = "Servidor";
+                pago.Monto = monto;
+                pago.DetallePagoTarjetaCreditoes = new List<DetallePagoTarjetaCredito>();
+                pago.DetallePagoTarjetaCreditoes.Add(detalle);
 
-                    db.Pagoes.Add(pago);
+                db.Pagoes.Add(pago);
 
-                    db.SaveChanges();
+                db.SaveChanges();
 
-                    return pago.CodPago;
-
-                }
-
+                return pago.CodPago;
 
             }
-        }
 
+
+        }
     }
-    
+
+}
+

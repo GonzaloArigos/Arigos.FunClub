@@ -20,6 +20,8 @@ namespace DAL
                 codprecio = ultimoPrecio != null ? (int)ultimoPrecio + 1 : 1;
                 codigo = ultimaEntrada != null ? (int)ultimaEntrada + 1 : 1;
 
+                entradas.FechaRegistro = DateTime.Now;
+            
                 entradas.CodEntrada = codigo;
                 entradas.PrecioEntradas.ToList()[0].Precio = codprecio;
                 entradas.PrecioEntradas.ToList()[0].CodEntrada = codigo;

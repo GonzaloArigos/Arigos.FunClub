@@ -20,9 +20,9 @@ namespace DAL
             venta.Estado = 1;
             venta.DetalleVentaEntradas = detalle;
             venta.FechaAlta = DateTime.Now;
-            venta.UsuarioAlta = null;
-            venta.TerminalAlta = null;
-
+            venta.UsuarioAlta = email;
+            venta.TerminalAlta = "Servidor";
+           
             using (FunClubEntities db = new FunClubEntities())
             {
                 venta.CodVentaEntrada = db.VentaEntradas.Where(a => a.CodDiscoteca == disco).Any() ? db.VentaEntradas.Where(a => a.CodDiscoteca == disco).Max(a => a.CodVentaEntrada) + 1 : 1;

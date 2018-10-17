@@ -18,6 +18,9 @@ namespace DAL
 
                 var disconuevo = new Discoteca();
 
+                disconuevo.UsuarioAlta = usuario;
+                disconuevo.FechaAlta = DateTime.Now;
+
                 disconuevo.CodDiscoteca = codigo;
                 disconuevo.Descripcion = nombre;
                 disconuevo.Usuario_Discotecas = new List<Usuario_Discotecas>();
@@ -41,6 +44,9 @@ namespace DAL
                 var disco = db.Discotecas.Where(a=> a.CodDiscoteca == codDisco).FirstOrDefault();
                 disco.Descripcion = nombre;
                 disco.Productiva = prod;
+
+                disco.FechaMod = DateTime.Now;
+                disco.UsuarioMod = "Administrador";
 
                 var entry2 = db.Entry(disco); // Gets the entry for entity inside context
                 entry2.State = System.Data.Entity.EntityState.Modified; // Tell EF this entity has been modified
