@@ -69,7 +69,7 @@
                     EnviarWsp("Se ha realizado una venta de entradas en efectivo, con un total de:  $ARG " + $scope.SubTotal);
                     $scope.CargandoPago = false;
                     $scope.EfectivoConfirmado = true;
-                    $scope.ErrorPago == '';
+                    $scope.ErrorPago = '';
                 });
             } else {
                 $scope.ErrorPago = 'El monto ingresado debe ser superior al total.';
@@ -93,7 +93,7 @@
                     EnviarWsp("Se ha realizado una venta de entradas con tarjeta de débito, con un total de:  $ARG " + $scope.SubTotal);
                     $scope.CargandoPago = false;
                     $scope.PagoTarjetaOk = true;
-                    $scope.ErrorPago == '';
+                    $scope.ErrorPago = '';
                 });
             }
         }
@@ -115,16 +115,16 @@
                     EnviarWsp("Se ha realizado una venta de entradas con tarjeta de crédito, con un total de: $ARG " + ($scope.SubTotal * 0.003) );
                     $scope.CargandoPago = false;
                     $scope.PagoTarjetaOk = true;
-                    $scope.ErrorPago == '';
+                    $scope.ErrorPago = '';
                 });
             }
         }
     }
 
     function EnviarWsp(mensaje) {
-        mensaje = mensaje + ".Saludos, FunClub! "
-        WhatsappService.EnviarMensaje(mensaje).then(function (response) {
-        });
+       // mensaje = mensaje + ".Saludos, FunClub! "
+       // WhatsappService.EnviarMensaje(mensaje).then(function (response) {
+       // });
     }
 
     function GetEntradas() {
