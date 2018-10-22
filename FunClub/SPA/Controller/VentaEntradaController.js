@@ -180,11 +180,13 @@
     GetEntradas();
 
     $scope.verTicket = function () {
-        ngDialog.open({
+if($scope.Venta.length >0){
+ngDialog.open({
             template: 'SPA/Views/modalTicketEntrada.html',
             className: 'ngdialog-theme-default',
             scope: $scope
         });
+}        
     };
 
     $scope.verEntrada = function () {
