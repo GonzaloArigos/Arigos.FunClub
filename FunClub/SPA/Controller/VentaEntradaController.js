@@ -122,9 +122,9 @@
     }
 
     function EnviarWsp(mensaje) {
-       // mensaje = mensaje + ".Saludos, FunClub! "
-       // WhatsappService.EnviarMensaje(mensaje).then(function (response) {
-       // });
+        mensaje = mensaje + ".Saludos, FunClub! "
+        WhatsappService.EnviarMensaje(mensaje).then(function (response) {
+        });
     }
 
     function GetEntradas() {
@@ -158,7 +158,9 @@
     };
 
     $scope.CalcularSubTotalVenta = function (cantidad, precio) {
-        $scope.SubTotal = $scope.SubTotal + (cantidad * precio);
+        if (cantidad > 0 && precio > 0){
+            $scope.SubTotal = $scope.SubTotal + (cantidad * precio);
+        }       
     }
 
     $scope.CancelarTicket = function () {

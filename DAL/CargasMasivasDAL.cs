@@ -23,7 +23,7 @@ namespace DAL
                 entradas.FechaRegistro = DateTime.Now;
             
                 entradas.CodEntrada = codigo;
-                entradas.PrecioEntradas.ToList()[0].Precio = codprecio;
+               // entradas.PrecioEntradas.ToList()[0].Precio = codprecio;
                 entradas.PrecioEntradas.ToList()[0].CodEntrada = codigo;
                 db.Entradas.Add(entradas);
                 db.SaveChanges();

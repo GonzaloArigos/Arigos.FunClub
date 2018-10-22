@@ -86,11 +86,13 @@ namespace FunClub.Views
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Descripcion,Estado")] Entrada entrada)
+        public ActionResult Edit([Bind(Include = "Descripcion,Estado,CodEntrada,CodDiscoteca,Consumicion,CodConsumicion")] Entrada entrada)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(entrada).State = EntityState.Modified;
+                var edit = db.Entradas.Where(a => a.CodEntrada == entrada.CodEntrada && a.CodDiscoteca == entrada.CodDiscoteca).FirstOrDefault();
+                edit.Descripcion = entrada.Descripcion;
+                edit.Estado = entrada.Estado;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

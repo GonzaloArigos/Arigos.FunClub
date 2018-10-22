@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 
 namespace SL
 {
@@ -14,7 +15,7 @@ namespace SL
     {
         public DataRowCollection Leer(string FileName, byte[] Data)
         {
-            string Ruta =  @"C:\Users\Daniel Arigos\Documents\GitHub\Arigos.FunClub\CargasMasivas\" + FileName;
+            string Ruta = WebConfigurationManager.AppSettings["RutaCargasMasivas"].ToString() + FileName;
             File.WriteAllBytes(Ruta, Data);
             var ds = new System.Data.DataSet();
             var extension = Path.GetExtension(FileName).ToLower();

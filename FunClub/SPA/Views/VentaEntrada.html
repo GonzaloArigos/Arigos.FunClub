@@ -55,12 +55,12 @@
 
 <div class="container">
 
-    <h1 class="recuadrado">Ticket actual</h1>
+    <h1 translate="TICKET_ACTUAL" class="recuadrado"></h1>
     <h3 class="subtotal">Subtotal: $ARG {{SubTotal}}</h3>
     <div class="form-inline">
-        <button ng-click="verTicket()" class="btn btn-success"><span class="glyphicon glyphicon-info-sign"></span> Ver Ticket</button>
-        <button ng-click="CancelarTicket()" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span> Reiniciar Venta</button>
-        <button ng-click="verEntradasHoy()" class="btn btn-info"><span class="glyphicon glyphicon-info-sign"></span> Últimas ventas</button>
+        <button ng-click="verTicket()" class="btn btn-success"><span class="glyphicon glyphicon-info-sign"></span><span translate="VER_TICKET_BTN"></span></button>
+        <button ng-click="CancelarTicket()" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span> <span translate="REINICIAR_VENTA"></span></button>
+        <button ng-click="verEntradasHoy()" class="btn btn-info"><span class="glyphicon glyphicon-info-sign"></span><span translate="ULTIMAS_VENTAS"></span></button>
     </div>
     <br />
     <br />
@@ -85,11 +85,11 @@
                 <div style="color:white;background-color:#090117;" class="panel-footer announcement-bottom">
                     <div class="row">
                         <div class="col-xs-6">
-                            <button ng-click="Seleccionar(x);verEntrada();" class="btn btn-success"> Ver contenido</button>
+                            <button ng-click="Seleccionar(x);verEntrada();" class="btn btn-success"><span translate="VER_CONTENIDO"></span></button>
                         </div>
                         <div class="col-xs-6 text-right">
 
-                            <button ng-show="!x.Agregado" class="btn btn-primary" ng-click="Agregar(x);CalcularSubTotalVenta(x.Cantidad,x.PrecioEntradas[0].Precio);"> Agregar</button>
+                            <button ng-show="!x.Agregado" class="btn btn-primary" ng-click="Agregar(x);CalcularSubTotalVenta(x.Cantidad,x.PrecioEntradas[0].Precio);"> <span translate="AGREGAR"></span></button>
                             <button class="btn btn-primary" ng-show="x.Agregado"> <span class="glyphicon glyphicon-ok-sign"></span> </button>
                         </div>
                     </div>
