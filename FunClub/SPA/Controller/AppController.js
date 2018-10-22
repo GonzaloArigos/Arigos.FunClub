@@ -97,7 +97,7 @@ app.config(function ($translateProvider) {
         ULTIMAS_VENTAS: "Last sells",
         VER_CONTENIDO: "See content",
         AGREGAR: "Add",
-        CANTIDAD: "Cuantity";
+        CANTIDAD: "Cuantity",
         BUTTON_LANG_EN: "English",
         BUTTON_LANG_ES: "Spanish"
     });
