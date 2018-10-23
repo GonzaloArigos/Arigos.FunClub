@@ -65,8 +65,8 @@
 <div class="container">
     <div class="jumbotron">
         <div ng-show="!NuevaDisco && !GestionDisco">
-            <button class="btn btn-link" ng-click="NuevaDisco = true"><h1 style="color:orangered" class="glyphicon glyphicon-headphones"></h1><br /><h4>Nueva Discoteca</h4></button>
-            <button class="btn btn-link" ng-click="GestionDisco = true"><h1 style="color:orangered" class="glyphicon glyphicon-edit"></h1><br /><h4>Gestión Discotecas</h4></button>
+            <button ng-show="!Discotecas" class="btn btn-link" ng-click="NuevaDisco = true"><h1 style="color:orangered" class="glyphicon glyphicon-headphones"></h1><br /><h4>Crear tu Discoteca</h4></button>
+            <button ng-show="Discotecas" class="btn btn-link" ng-click="GestionDisco = true"><h1 style="color:orangered" class="glyphicon glyphicon-edit"></h1><br /><h4>Gestionar {{Discotecas[0].Descripcion}}</h4></button>
         </div>
         <div ng-show="NuevaDisco || GestionDisco">
             <button class="btn btn-link" ng-click="GestionDisco = false;NuevaDisco = false;Ok = false">Volver</button>

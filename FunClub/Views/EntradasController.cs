@@ -17,8 +17,13 @@ namespace FunClub.Views
         // GET: Entradas
         public ActionResult Index()
         {
-            var entradas = db.Entradas.Include(e => e.Consumicion).Include(e => e.Discoteca);
-            return View(entradas.ToList());
+            var disco = BLL.DiscotecaBLL.GetDiscotecasUsuario(User.Identity.Name).FirstOrDefault();
+            if (disco != null)
+            {
+                var entradas = db.Entradas.Include(e => e.Consumicion).Include(e => e.Discoteca).Where(a => a.CodDiscoteca == disco.CodDiscoteca);
+                return View(entradas.ToList());
+            }
+            return null;
         }
 
         // GET: Entradas/Details/5
@@ -38,10 +43,10 @@ namespace FunClub.Views
 
         // GET: Entradas/Create
         public ActionResult Create()
-        { 
-             ViewBag.CodDiscoteca = new SelectList(db.Discotecas.Where(a => a.Usuario_Discotecas.Any(k => k.EmailUsuario == User.Identity.Name)), "CodDiscoteca", "Descripcion");
-             ViewBag.CodConsumicion = new SelectList(db.Consumicions, "CodConsumicion", "Descripcion");
-           
+        {
+            ViewBag.CodDiscoteca = new SelectList(db.Discotecas.Where(a => a.Usuario_Discotecas.Any(k => k.EmailUsuario == User.Identity.Name)), "CodDiscoteca", "Descripcion");
+            ViewBag.CodConsumicion = new SelectList(db.Consumicions, "CodConsumicion", "Descripcion");
+
             return View();
         }
 
@@ -65,7 +70,7 @@ namespace FunClub.Views
         }
 
         // GET: Entradas/Edit/5
-        public ActionResult Edit(int? id,int? coddisco)
+        public ActionResult Edit(int? id, int? coddisco)
         {
             if (id == null)
             {

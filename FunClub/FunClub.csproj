@@ -191,6 +191,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CargaMasivaController.cs" />
+    <Compile Include="Controllers\ConsumicionController.cs" />
     <Compile Include="Controllers\DiscotecaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -1052,6 +1053,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sitemap.xml" />
     <Content Include="SPA\Controller\AppController.js" />
+    <Content Include="SPA\Controller\ConsumicionController.js" />
     <Content Include="SPA\Controller\VentaEntradaController.js" />
     <Content Include="SPA\Controller\ProductoController.js" />
     <Content Include="SPA\Controller\DiscotecaController.js" />
@@ -1061,6 +1063,7 @@
     <Content Include="SPA\jspdf.debug.js" />
     <Content Include="SPA\jspdf.min.js" />
     <Content Include="SPA\saveHtmlToPdf.min.js" />
+    <Content Include="SPA\Services\ConsumicionService .js" />
     <Content Include="SPA\Services\WhatsappService.js" />
     <Content Include="SPA\Services\PagoService.js" />
     <Content Include="SPA\Services\VentaEntradaService.js" />
@@ -1072,8 +1075,10 @@
     <Content Include="SPA\Views\CargaMasiva.html" />
     <Content Include="SPA\Views\GestionProductos.html" />
     <Content Include="SPA\Views\GestionDiscotecas.html" />
+    <Content Include="SPA\Views\GestorConsumiciones.html" />
     <Content Include="SPA\Views\Home.html" />
     <Content Include="SPA\Views\modalDetalleEntrada.html" />
+    <Content Include="SPA\Views\modalEditarConsumicion.html" />
     <Content Include="SPA\Views\modalEditarDisco.html" />
     <Content Include="SPA\Views\modalEntradasHoy.html" />
     <Content Include="SPA\Views\modalTicketEntrada.html" />
@@ -1136,6 +1141,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\CargaMasiva\" />
+    <Folder Include="Views\Consumicion\" />
     <Folder Include="Views\Discoteca\" />
     <Folder Include="Views\VentaEntrada\" />
     <Folder Include="Views\Whatsapp\" />

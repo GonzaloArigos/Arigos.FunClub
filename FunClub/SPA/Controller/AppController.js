@@ -42,6 +42,11 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: 'SPA/Views/GestionProductos.html',
             controller: 'ProductoaController'
         })
+        .when('/Consumiciones',
+        {
+            templateUrl: 'SPA/Views/GestorConsumiciones.html',
+            controller: 'ConsumicionController'
+        })
         .when('/CargaMasiva',
         {
             templateUrl: 'SPA/Views/CargaMasiva.html',

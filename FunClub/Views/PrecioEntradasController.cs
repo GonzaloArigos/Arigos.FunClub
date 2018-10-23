@@ -17,8 +17,13 @@ namespace FunClub.Views
         // GET: PrecioEntradas
         public ActionResult Index()
         {
-            var precioEntradas = db.PrecioEntradas.Include(p => p.Entrada);
-            return View(precioEntradas.ToList());
+            var disco = BLL.DiscotecaBLL.GetDiscotecasUsuario(User.Identity.Name).FirstOrDefault();
+            if (disco != null)
+            {
+                var precioEntradas = db.PrecioEntradas.Include(p => p.Entrada).Where(a=> a.CodDiscoteca == disco.CodDiscoteca);
+                return View(precioEntradas.ToList());
+            }
+            return null;
         }
 
         // GET: PrecioEntradas/Details/5
@@ -39,7 +44,11 @@ namespace FunClub.Views
         // GET: PrecioEntradas/Create
         public ActionResult Create()
         {
-            ViewBag.CodEntrada = new SelectList(db.Entradas, "CodEntrada", "Descripcion");
+            var disco = BLL.DiscotecaBLL.GetDiscotecasUsuario(User.Identity.Name).FirstOrDefault();
+            if (disco != null)
+            {
+                ViewBag.CodEntrada = new SelectList(db.Entradas.Where(a=> a.CodDiscoteca == disco.CodDiscoteca), "CodEntrada", "Descripcion");
+            }
             return View();
         }
 
@@ -52,10 +61,15 @@ namespace FunClub.Views
         {
             if (ModelState.IsValid)
             {
-                precioEntrada.CodDiscoteca = 1;
-                db.PrecioEntradas.Add(precioEntrada);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var disco = BLL.DiscotecaBLL.GetDiscotecasUsuario(User.Identity.Name).FirstOrDefault();
+                if (disco != null)
+                {
+                    precioEntrada.CodDiscoteca = disco.CodDiscoteca;
+                    db.PrecioEntradas.Add(precioEntrada);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return null;
             }
 
             ViewBag.CodEntrada = new SelectList(db.Entradas, "CodEntrada", "Descripcion", precioEntrada.CodEntrada);

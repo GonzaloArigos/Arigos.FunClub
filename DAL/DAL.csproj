@@ -80,6 +80,7 @@
     <Compile Include="Consumicion.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="ConsumicionDAL.cs" />
     <Compile Include="Consumicion_Bebida.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>

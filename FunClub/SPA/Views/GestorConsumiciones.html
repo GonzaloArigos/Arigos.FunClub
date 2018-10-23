@@ -1,0 +1,114 @@
+﻿<style>
+    .jumbotron {
+        text-align: center;
+        width: 50%;
+        border-radius: 0.5rem;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 4rem auto;
+        background-color: #fff;
+        padding: 2rem;
+    }
+
+    .container .glyphicon-check {
+        font-size: 10rem;
+        margin-top: 3rem;
+        color: #f96145;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 1.4rem;
+        padding: 1rem;
+        background-color: #ecf2f4;
+        border-radius: 0.2rem;
+        border: none;
+    }
+
+    h2 {
+        margin-bottom: 3rem;
+        font-weight: bold;
+        color: #ababab;
+    }
+
+    /*.btn {
+        border-radius: 0.2rem;
+    }*/
+
+    /*.btn .glyphicon {
+            font-size: 3rem;
+            color: #fff;
+        }*/
+
+    .full-width {
+        background-color: #8eb5e2;
+        width: 100%;
+        -webkit-border-top-right-radius: 0;
+        -webkit-border-bottom-right-radius: 0;
+        -moz-border-radius-topright: 0;
+        -moz-border-radius-bottomright: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .box {
+        bottom: 0;
+        left: 0;
+        margin-bottom: 3rem;
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+
+    .grafico {
+        min-width: 310px;
+        max-width: 400px;
+        height: 280px;
+        margin: 0 auto
+    }
+
+    .recuadrado {
+        width: 100%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        padding-left: 1%;
+        padding-right: 1%;
+        text-align: center;
+        background-color: #090117;
+        border-radius: 6px 6px 6px 6px;
+    }
+</style>
+
+<div ng-include="'/SPA/Views/ToolBar.html'"></div>
+<h1 class="recuadrado">Gestor de consumicones</h1>
+<div class="container">
+    <button ng-click="GenerarNuevo();VerConsumicion();" class="btn btn-success">Nueva consumición</button>
+    <div class="jumbotron">
+        <div class="box">
+            <h2>Consumiciones</h2>
+            <table class="table" style="color:black;font-size:12px;">
+                <thead>
+                    <tr>
+                        <th>Descripcion</th>
+                        <th>Estado</th>
+                        <th>Precio vigente</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in Consumiciones" class="">
+
+                        <td>{{x.Descripcion}} </td>
+
+                        <td>{{x.Estado}}</td>
+                        <td>$ARG {{x.PrecioConsumicions[0].Precio}}</td>
+
+                        <td ng-click="VerConsumicion();SeleccionarConsumicion(x);GenerarEditar();"><button class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></button></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+﻿<style>
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+
+        .switch input {
+            display: none;
+        }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+    input:checked + .slider {
+        background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+</style>
+
+<h3>{{Editar ? 'Editar' : 'Nueva'}} Consumicion</h3>
+<label>Nombre</label>
+<input ng-model="ConsumicionSeleccionada.Descripcion" type="text" />
+<label>Agregar Productos</label>
+<select ng-model="ProductoSeleccionado" style="max-width :100%" class="form-control">
+    <option ng-repeat="x in Productos" ng-value="x">{{x.Descripcion}}</option>
+</select>
+<label>Cantidad</label>
+<input ng-model="CantidadSeleccionada" type="number" placeholder="Cantidad" />
+<button ng-click="AgregarProducto(ProductoSeleccionado,CantidadSeleccionada)" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="x in ConsumicionSeleccionada.Consumicion_Bebida" class="">
+
+            <td>{{x.Producto.Descripcion}} </td>
+            <td>{{x.Cantidad}}</td>
+            <td ng-click="EliminarProducto(x.Producto)" ><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
+           
+        </tr>
+    </tbody>
+</table>
+<br />
+<button ng-click="Confirmar()" class="btn btn-success">Confirmar</button>

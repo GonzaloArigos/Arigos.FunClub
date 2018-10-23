@@ -17,10 +17,14 @@
     $scope.GetDiscotecas = function () {
 
         DiscotecaService.GetDiscotecasUsuario().then(function (response) {
-            $scope.Discotecas = response.data;
-            $scope.DiscotecaSeleccionada = response.data[0];
-            $scope.UsuarioSeleccionado = $scope.DiscotecaSeleccionada.Usuario_Discotecas[0].AspNetUser;
-            $scope.VerificarPermisos();
+            if (response.data.length > 0) {
+                $scope.Discotecas = [];
+                $scope.Discotecas.push(response.data[0]);
+                $scope.DiscotecaSeleccionada = response.data[0];
+                $scope.UsuarioSeleccionado = $scope.DiscotecaSeleccionada.Usuario_Discotecas[0].AspNetUser;
+                $scope.VerificarPermisos();
+            }
+
         });
     }
 
@@ -87,7 +91,7 @@
     }
 
     $scope.AsignarRol = function (cod) {
-        DiscotecaService.AsignarRol(cod,$scope.UsuarioSeleccionado.Email).then(function (response) {
+        DiscotecaService.AsignarRol(cod, $scope.UsuarioSeleccionado.Email).then(function (response) {
             var rolnuevo = { Id: cod };
             $scope.UsuarioSeleccionado.AspNetRoles.push(rolnuevo);
             $scope.VerificarPermisos();

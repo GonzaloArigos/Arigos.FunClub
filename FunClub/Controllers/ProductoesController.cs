@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DAL;
+using Newtonsoft.Json;
 
 namespace FunClub.Controllers
 {
@@ -17,9 +18,31 @@ namespace FunClub.Controllers
         // GET: Productoes
         public ActionResult Index()
         {
-            var productos = db.Productos.Include(p => p.Discoteca);
-            return View(productos.ToList());
+            var disco = BLL.DiscotecaBLL.GetDiscotecasUsuario(User.Identity.Name).FirstOrDefault();
+            if (disco != null)
+            {
+                var productos = db.Productos.Include(p => p.Discoteca).Where(a=> a.CodDiscoteca == disco.CodDiscoteca);
+                return View(productos.ToList());
+            }
+            return null;
+            }
+
+        public string GetProductosDisco()
+        {
+            var disco = BLL.DiscotecaBLL.GetDiscotecasUsuario(User.Identity.Name).FirstOrDefault();
+            if (disco != null)
+            {
+                var productos = db.Productos.Include(p => p.Discoteca).Where(a => a.CodDiscoteca == disco.CodDiscoteca);
+
+                return JsonConvert.SerializeObject(productos.ToList(), Formatting.None,
+                 new JsonSerializerSettings()
+                 {
+                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                 });
+            }
+            return null;
         }
+    
 
         // GET: Productoes/Details/5
         public ActionResult Details(int? id)
@@ -54,8 +77,8 @@ namespace FunClub.Controllers
             if (ModelState.IsValid)
             {
 
-                int? id = db.Productos.Any(a => a.CodDiscoteca == producto.CodDiscoteca) ? db.Productos.Where(a => a.CodDiscoteca == producto.CodDiscoteca).Max(a => a.CodBebida) : 1;
-                producto.CodBebida = id != 1 ? (int)id + 1 : 1;
+                int? id = db.Productos.Any(a => a.CodDiscoteca == producto.CodDiscoteca) ? db.Productos.Where(a => a.CodDiscoteca == producto.CodDiscoteca).Max(a => a.CodBebida) : 0;
+                producto.CodBebida = id >= 1 ? (int)id + 1 : 1;
                 producto.TerminalAlta = "Servidor";
                 producto.UsuarioAlta = User.Identity.Name;
                 db.Productos.Add(producto);

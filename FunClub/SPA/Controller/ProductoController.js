@@ -24,6 +24,7 @@
         });
     }
 
+
     $scope.VerificarPermisos = function () {
         $scope.Administrador = false;
         $scope.CajeroBar = false;
