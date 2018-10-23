@@ -61,12 +61,12 @@
 </style>
 
 <div pdf-save-content="idOne" ng-show="Imprimir">
-     <h4>Ticket de entrada</h4>
+     <h4 style="color:white" class="recuadrado">Ticket de entrada</h4>
 
-    <h4>Subtotal: $ARG {{SubTotal}}</h4>
+    <h4 style="color:white" class="recuadrado">Subtotal: $ARG {{SubTotal}}</h4>
 
     <div class="col-md-12">
-        <div ng-repeat="x in Venta" class="row" style="border:2px solid black;border-style:dashed;margin-bottom:2%;">
+        <div ng-repeat="x in Venta" class="recuadrado" style="color:white;border:2px solid black;border-style:dashed;margin-bottom:2%;">
             <div class="col-md-8">
                 <h5>{{x.Descripcion}}</h5>
                 <h5>Cantidad: {{x.Cantidad}}</h5>
@@ -84,7 +84,7 @@
 
 <div ng-show="!CargandoPago">
     <div ng-show="!Continuar">
-        <h1>Detalle de venta</h1>
+        <h1 style="color:white" class="recuadrado">Detalle de venta</h1>
         <hr />
         <div class="col-md-12">
             <div ng-repeat="x in Venta" class="row" style="border:2px solid black;border-style:dashed;margin-bottom:2%;">
@@ -101,7 +101,7 @@
     </div>
 
     <div ng-show="Continuar  && !Imprimir">
-        <h1>Medio de pago</h1>
+        <h1 style="color:white" class="recuadrado">Medio de pago</h1>
         <hr />
         <div class="form-inline">
             <button id="medioPago" ng-click="EFE = true;TDB = false;TCC = false;" ng-class="EFE ? 'red' : ''" class="btn">Efectivo</button>
@@ -144,7 +144,7 @@
             </div>
 
             <div ng-show="EfectivoConfirmado && !Imprimir">
-                <h3>Ticket finalizado correctamente!</h3>
+                <h3 style="color:white" class="recuadrado">Ticket finalizado correctamente!</h3>
                 <br />
                 <div class="form-inline">
                     <h4>Medio de pago: Efectivo</h4>
