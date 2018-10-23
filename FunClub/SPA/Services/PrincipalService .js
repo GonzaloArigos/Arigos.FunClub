@@ -5,11 +5,10 @@
 
 
 
-    service.GetAll = function (skip) {
+    service.GetDashboard = function () {
         var promise = $http({
             method: 'get',
-            url: '/Product/GetAll',
-            params: {skip: skip}
+            url: '/Dashboard/GetDashboard'
         });
 
 

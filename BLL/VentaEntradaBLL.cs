@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
 
 namespace BLL
 {
@@ -32,6 +33,21 @@ namespace BLL
 
             DAL.VentaEntradaDAL.GenerarVentaEntrada(disco, codpago, detalleventa, usuario);
                         
+        }
+
+        internal static List<VentaEntrada> GetVentaEntradasFecha(Discoteca disco)
+        {
+            return DAL.VentaEntradaDAL.GetVentaEntradasFecha(disco);
+        }
+
+        internal static string GetFacturacionHoy(Discoteca disco)
+        {
+            return DAL.VentaEntradaDAL.GetFacturacionHoy(disco);
+        }
+
+        internal static string GetCantidadVendidaHoy(Discoteca disco)
+        {
+            return DAL.VentaEntradaDAL.GetCantidadVendidaHoy(disco);
         }
 
         public static List<DAL.VentaEntrada> GetVentaEntradasHoy(string name, int take)

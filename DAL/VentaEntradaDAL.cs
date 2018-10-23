@@ -22,7 +22,7 @@ namespace DAL
             venta.FechaAlta = DateTime.Now;
             venta.UsuarioAlta = email;
             venta.TerminalAlta = "Servidor";
-           
+
             using (FunClubEntities db = new FunClubEntities())
             {
                 venta.CodVentaEntrada = db.VentaEntradas.Where(a => a.CodDiscoteca == disco).Any() ? db.VentaEntradas.Where(a => a.CodDiscoteca == disco).Max(a => a.CodVentaEntrada) + 1 : 1;
@@ -42,6 +42,38 @@ namespace DAL
                     .Include("Pago.DetallePagoTarjetaDebitoes")
                     .Where(a => a.CodDiscoteca == disco).OrderByDescending(a => a.Pago.FechaPago).Take(take).ToList();
                 return ventas;
+            }
+        }
+
+        public static List<VentaEntrada> GetVentaEntradasFecha(Discoteca disco)
+        {
+            using (FunClubEntities db = new FunClubEntities())
+            {
+                var fechaayer = DateTime.Now.AddDays(-1);
+                return db.VentaEntradas
+                    .Include("Pago")
+                    .Include("Pago.DetallePagoEfectivoes")
+                    .Include("Pago.DetallePagoTarjetaCreditoes")
+                    .Include("Pago.DetallePagoTarjetaDebitoes")
+                    .Where(a => a.FechaAlta <= DateTime.Now && a.FechaAlta >= fechaayer).ToList();
+            }
+        }
+
+        public static string GetFacturacionHoy(Discoteca disco)
+        {
+            using (FunClubEntities db = new FunClubEntities())
+            {
+                var fechaayer = DateTime.Now.AddDays(-1);
+                return db.VentaEntradas.Where(a => a.FechaAlta <= DateTime.Now && a.FechaAlta >= fechaayer).Sum(a=> a.Pago.Monto).ToString();
+            }
+        }
+
+        public static string GetCantidadVendidaHoy(Discoteca disco)
+        {
+            using (FunClubEntities db = new FunClubEntities())
+            {
+                var fechaayer = DateTime.Now.AddDays(-1);
+                return db.VentaEntradas.Where(a => a.FechaAlta <= DateTime.Now && a.FechaAlta >= fechaayer).Count().ToString();
             }
         }
 

@@ -34,7 +34,7 @@
 <div class="container">
     <div class="row">
 
-        <div class="main-header">Funclub! <span class="destaque">Kika Club!</span></div>
+        <div class="main-header">Funclub! <span class="destaque">{{Dashboard.Disco}}</span></div>
     </div>
 
     <h2>Estado de situación</h2>
@@ -43,23 +43,23 @@
 
     <div class="col-md-3">
 
-        <div class="panel panel-info">
-            <div class="panel-heading">
+        <div class="panel panel-info" style="border:none">
+            <div class="panel-heading" style="color: #fdfdfd;background-color:#1e012ad1;border-color:none;border:none;">
                 <div class="row">
                     <div class="col-xs-6">
                         <i class="fa fa-list-ol fa-5x"></i>
                     </div>
                     <div class="col-xs-6 text-right">
-                        <p class="announcement-heading">4</p>
-                        <p class="announcement-text">Entradas vendidas</p>
+                        <h4 class="announcement-heading">{{Dashboard.CantidadEntradasVendidas}}</h4>
+                        <p>Cantidad</p>
                     </div>
                 </div>
             </div>
             <a href="#">
-                <div class="panel-footer announcement-bottom">
+                <div class="panel-footer" style="background-color: #1e012ad1;color:#ffffff;">
                     <div class="row">
                         <div class="col-xs-6">
-                            View
+                            Entradas
                         </div>
                         <div class="col-xs-6 text-right">
                             <i class="fa fa-arrow-circle-right"></i>
@@ -72,26 +72,84 @@
     </div>
 
 
-
     <div class="col-md-3">
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="panel panel-info" style="border:none;background-color:none;">
+            <div class="panel-heading" style="color: #fdfdfd;background-color:#1e012ad1;border-color:none;border:none;">
                 <div class="row">
                     <div class="col-xs-6">
                         <i class="fa fa-usd fa-5x"></i>
                     </div>
                     <div class="col-xs-6 text-right">
-                        <p class="announcement-heading"> $ARG 60.000</p>
-                        <p class="announcement-text">Facturación entradas</p>
+                        <h4 class="announcement-heading"> {{Dashboard.FacturacionEntradas | currency}}</h4>
+                        <p>Facturación</p>
                     </div>
                 </div>
             </div>
             <a href="#">
-                <div class="panel-footer announcement-bottom">
+                <div class="panel-footer" style="background-color: #1e012ad1;color:#ffffff;">
                     <div class="row">
                         <div class="col-xs-6">
-                            Details
+                            Entradas
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <i class="fa fa-arrow-circle-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="panel panel-info" style="border:none;background-color:none;">
+            <div class="panel-heading" style="color: #fdfdfd;background-color:#1e012ad1;border-color:none;border:none;">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <i class="fa fa-list-ol fa-5x"></i>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <h4 class="announcement-heading">{{Dashboard.CantidadEntradasVendidas}}</h4>
+                        <p>Cantidad</p>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer" style="background-color: #1e012ad1;color:#ffffff;">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Entradas
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <i class="fa fa-arrow-circle-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="panel panel-info" style="border:none;background-color:none;">
+            <div class="panel-heading" style="color: #fdfdfd;background-color:#1e012ad1;border-color:none;border:none;">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <i class="fa fa-usd fa-5x"></i>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <h4 class="announcement-heading"> {{Dashboard.FacturacionEntradas | currency}}</h4>
+                        <p>Facturación</p>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer" style="background-color: #1e012ad1;color:#ffffff;">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Entradas
                         </div>
                         <div class="col-xs-6 text-right">
                             <i class="fa fa-arrow-circle-right"></i>
@@ -104,7 +162,9 @@
     </div>
 
 
-    <div class="col-md-3">
+
+
+    <!--<div class="col-md-3">
 
         <div class="panel panel-warning">
             <div class="panel-heading">
@@ -164,12 +224,12 @@
             </a>
         </div>
 
-    </div>
+    </div>-->
 
 
 
 
-    <div class="col-md-6">
+    <div class="col-md-12">
 
         <h3>Venta de entradas en tiempo real</h3>
 
@@ -177,7 +237,6 @@
             <thead>
                 <tr>
 
-                    <th>Entrada</th>
                     <th>Hora Sol.</th>
                     <th>Medio.P/</th>
                     <th>Total</th>
@@ -187,23 +246,22 @@
             </thead>
             <tbody>
 
-                <tr>
+                <tr ng-repeat="x in Dashboard.EntradasVendidas">
 
                     <td>
-                        Entrada Champagne Federico 2AM
+                        {{x.FechaAlta | date:'hh:mm:ss'}}
                     </td>
                     <td>
-                        09/09/2018 02:20 
+                        {{x.Pago.DetallePagoEfectivoes.length >0 ? 'Efectivo': ''}}
+                        {{x.Pago.DetallePagoTarjetaCreditoes.length >0  ? 'Credito': ''}}
+                        {{x.Pago.DetallePagoTarjetaDebitoes.length >0  ? 'Debito': ''}}
                     </td>
                     <td>
-                        Efectivo
+                        $ARG {{x.Pago.Monto}}
                     </td>
+                    <td>{{x.Pago.Estado == 1 ? "Confirmado" : "Cancelado"}}</td>
                     <td>
-                        $550
-                    </td>
-                    <td>Confirmado</td>
-                    <td>
-                        09/09/2018 02:21 
+                        {{x.Pago.FechaAlta | date:'hh:mm:ss'}}
                     </td>
 
                 </tr>
@@ -211,7 +269,7 @@
 
             </tbody>
 
-            
+
 
         </table>
 
@@ -221,7 +279,7 @@
 
     </div>
 
-    <div class="col-md-6">
+    <!--<div class="col-md-6">
 
         <h3>Venta de consumiciones en tiempo real</h3>
 
@@ -259,14 +317,14 @@
 
                 </tr>
 
-              
+
             </tbody>
 
         </table>
 
         <button class="btn btn-success" ng-click="exportToExcel('#ventabarra')">
             <span class="glyphicon glyphicon-share"></span> Export to Excel
-        </button>
-    </div>
+        </button>-->
+</div>
 
 </div>

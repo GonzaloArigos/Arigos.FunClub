@@ -11,11 +11,16 @@ namespace BLL
         public static Entities.Dashboard GetDashBoard(string user)
         {
             var dash = new Entities.Dashboard();
-            dash.EntradasVendidas = BLL.VentaEntradaBLL.GetVentaEntradasHoy(user, 5000);
             var disco = BLL.DiscotecaBLL.GetDiscotecasUsuario(user).FirstOrDefault();
-            dash.Disco = disco != null ? disco.Descripcion : "No posee ninguna discoteca productiva.";
-           // dash.CantidadEntradasVendidas = BLL.VentaEntradaBLL.GetCantidadVendidaHoy();
-            return dash;
+            if (disco != null)
+            {
+                dash.Disco = disco.Descripcion;
+                dash.EntradasVendidas = BLL.VentaEntradaBLL.GetVentaEntradasFecha(disco);
+                dash.CantidadEntradasVendidas = BLL.VentaEntradaBLL.GetCantidadVendidaHoy(disco);
+                dash.FacturacionEntradas = BLL.VentaEntradaBLL.GetFacturacionHoy(disco);
+                return dash;
+            }
+            return null;
         }
     }
 }
