@@ -27,35 +27,23 @@
 
     };
 
-    service.GetAllNames = function () {
-        var promise = $http({
-            method: 'get',
-            url: '/Product/GetAllNames'
-        });
-
-
-        return $q.when(promise);
-
-    };
-
-
-    service.GetCartByIdClient = function (id) {
-        var promise = $http({
-            method: 'get',
-            url: '/Product/GetCartByIdClient',
-            params: {
-                id: id
-            }
-        });
-
-        return $q.when(promise);
-
-    };
+   
 
     service.NuevaConsumicion = function (consumicion) {
         var promise = $http({
             method: 'post',
             url: '/Consumicion/NuevaConsumicion',
+            data: { consumicion: consumicion }
+        });
+
+        return $q.when(promise);
+
+    };
+
+    service.EditarConsumicion = function (consumicion) {
+        var promise = $http({
+            method: 'post',
+            url: '/Consumicion/EditarConsumicion',
             data: { consumicion: consumicion }
         });
 

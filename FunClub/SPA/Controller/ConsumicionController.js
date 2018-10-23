@@ -71,9 +71,19 @@
     }
 
     $scope.Confirmar = function () {
-        if ($scope.Nuevo) {
+        if ($scope.Nuevo && !$scope.Editar) {
 
             ConsumicionService.NuevaConsumicion(JSON.stringify($scope.ConsumicionSeleccionada)).then(function (response) {
+                $scope.GetConsumiciones();
+                ngDialog.close();
+                $scope.ConsumicionSeleccionada = {};
+            });
+
+        }
+
+        if ($scope.Editar && !$scope.Nuevo) {
+
+            ConsumicionService.EditarConsumicion(JSON.stringify($scope.ConsumicionSeleccionada)).then(function (response) {
                 $scope.GetConsumiciones();
                 ngDialog.close();
                 $scope.ConsumicionSeleccionada = {};

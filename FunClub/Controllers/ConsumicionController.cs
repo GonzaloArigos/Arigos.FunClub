@@ -32,5 +32,12 @@ namespace FunClub.Controllers
             DAL.Consumicion Consumicion = Newtonsoft.Json.JsonConvert.DeserializeObject<DAL.Consumicion>(consumicion.ToString());
             BLL.ConsumicionBLL.NuevaConsumicion(Consumicion, User.Identity.Name);
         }
+
+        [HttpPost]
+        public void EditarConsumicion(object consumicion)
+        {
+            DAL.Consumicion Consumicion = Newtonsoft.Json.JsonConvert.DeserializeObject<DAL.Consumicion>(consumicion.ToString());
+            BLL.ConsumicionBLL.EditarConsumicion(Consumicion, User.Identity.Name);
+        }
     }
 }
