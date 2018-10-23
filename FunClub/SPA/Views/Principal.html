@@ -37,7 +37,7 @@
         <div class="main-header">Funclub! <span class="destaque">{{Dashboard.Disco}}</span></div>
     </div>
 
-    <h2>Estado de situación</h2>
+    <h2 translate="DASHBOARD"></h2>
 
 
 
@@ -51,15 +51,15 @@
                     </div>
                     <div class="col-xs-6 text-right">
                         <h4 class="announcement-heading">{{Dashboard.CantidadEntradasVendidas}}</h4>
-                        <p>Cantidad</p>
+                        <p translate="CANTIDAD"></p>
                     </div>
                 </div>
             </div>
             <a href="#">
                 <div class="panel-footer" style="background-color: #1e012ad1;color:#ffffff;">
                     <div class="row">
-                        <div class="col-xs-6">
-                            Entradas
+                        <div translate="ENTRADA" class="col-xs-6">
+                            
                         </div>
                         <div class="col-xs-6 text-right">
                             <i class="fa fa-arrow-circle-right"></i>
@@ -81,15 +81,15 @@
                     </div>
                     <div class="col-xs-6 text-right">
                         <h4 class="announcement-heading"> {{Dashboard.FacturacionEntradas | currency}}</h4>
-                        <p>Facturación</p>
+                        <p translate="FACTURACION"></p>
                     </div>
                 </div>
             </div>
             <a href="#">
                 <div class="panel-footer" style="background-color: #1e012ad1;color:#ffffff;">
                     <div class="row">
-                        <div class="col-xs-6">
-                            Entradas
+                        <div translate="ENTRADA" class="col-xs-6">
+                            
                         </div>
                         <div class="col-xs-6 text-right">
                             <i class="fa fa-arrow-circle-right"></i>
@@ -111,15 +111,15 @@
                     </div>
                     <div class="col-xs-6 text-right">
                         <h4 class="announcement-heading">{{Dashboard.CantidadEntradasVendidas}}</h4>
-                        <p>Cantidad</p>
+                        <p translate="CANTIDAD"></p>
                     </div>
                 </div>
             </div>
             <a href="#">
                 <div class="panel-footer" style="background-color: #1e012ad1;color:#ffffff;">
                     <div class="row">
-                        <div class="col-xs-6">
-                            Entradas
+                        <div translate="ENTRADA" class="col-xs-6">
+                            
                         </div>
                         <div class="col-xs-6 text-right">
                             <i class="fa fa-arrow-circle-right"></i>
@@ -141,15 +141,15 @@
                     </div>
                     <div class="col-xs-6 text-right">
                         <h4 class="announcement-heading"> {{Dashboard.FacturacionEntradas | currency}}</h4>
-                        <p>Facturación</p>
+                        <p translate="FACTURACION"></p>
                     </div>
                 </div>
             </div>
             <a href="#">
                 <div class="panel-footer" style="background-color: #1e012ad1;color:#ffffff;">
                     <div class="row">
-                        <div class="col-xs-6">
-                            Entradas
+                        <div translate="ENTRADA" class="col-xs-6">
+                            
                         </div>
                         <div class="col-xs-6 text-right">
                             <i class="fa fa-arrow-circle-right"></i>
@@ -231,17 +231,17 @@
 
     <div class="col-md-12">
 
-        <h3>Venta de entradas en tiempo real</h3>
+        <h3 translate="TIEMPO_REAL"></h3>
 
         <table class="table" id="ventaentradas">
             <thead>
                 <tr>
 
-                    <th>Hora Sol.</th>
-                    <th>Medio.P/</th>
+                    <th translate="HORASOL">Hora Sol.</th>
+                    <th translate="MEDIOP">Medio.P/</th>
                     <th>Total</th>
-                    <th>Estado.P/</th>
-                    <th>Hora pago</th>
+                    <th translate="ESTADO">Estado.P/</th>
+                    <th translate="HPAGO">Hora pago</th>
                 </tr>
             </thead>
             <tbody>
@@ -274,7 +274,7 @@
         </table>
 
         <button class="btn btn-success" ng-click="exportToExcel('#ventaentradas')">
-            <span class="glyphicon glyphicon-share"></span> Export to Excel
+            <span class="glyphicon glyphicon-share"></span> <span translate="EXPORTEXCEL_BTN"></span>
         </button>
 
     </div>

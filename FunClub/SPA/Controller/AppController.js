@@ -103,6 +103,14 @@ app.config(function ($translateProvider) {
         VER_CONTENIDO: "See content",
         AGREGAR: "Add",
         CANTIDAD: "Cuantity",
+        ENTRADA: "Ticket",
+        FACTURACION: "Billing",
+        TIEMPO_REAL: "Ticket sales in real time",
+        HORASOL: "Hour Sol.",
+        MEDIOP: "Paym.M/",
+        ESTADO: "State",
+        HPAGO: "Paym.Hour",
+        EXPORTEXCEL_BTN: "Export to excel",
         BUTTON_LANG_EN: "English",
         BUTTON_LANG_ES: "Spanish"
     });
@@ -138,6 +146,14 @@ app.config(function ($translateProvider) {
         VER_CONTENIDO: "Ver contenido",
         AGREGAR: "Agregar",
         CANTIDAD: "Cantidad",
+        ENTRADA: "Entrada",
+        FACTURACION: "Facturación",
+        TIEMPO_REAL: "Venta de entradas en tiempo real",
+        HORASOL: "Hora Sol.",
+        MEDIOP: "Medio.P/",
+        ESTADO: "Estado",
+        HPAGO: "Hora pago",
+        EXPORTEXCEL_BTN: "Exportar excel",
         BUTTON_LANG_EN: "Inglés",
         BUTTON_LANG_ES: "Español"
     });
