@@ -1140,9 +1140,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\CargaMasiva\" />
-    <Folder Include="Views\Consumicion\" />
-    <Folder Include="Views\Discoteca\" />
     <Folder Include="Views\VentaEntrada\" />
     <Folder Include="Views\Whatsapp\" />
   </ItemGroup>

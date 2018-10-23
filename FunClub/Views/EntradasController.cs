@@ -44,8 +44,12 @@ namespace FunClub.Views
         // GET: Entradas/Create
         public ActionResult Create()
         {
-            ViewBag.CodDiscoteca = new SelectList(db.Discotecas.Where(a => a.Usuario_Discotecas.Any(k => k.EmailUsuario == User.Identity.Name)), "CodDiscoteca", "Descripcion");
-            ViewBag.CodConsumicion = new SelectList(db.Consumicions, "CodConsumicion", "Descripcion");
+            var disco = BLL.DiscotecaBLL.GetDiscotecasUsuario(User.Identity.Name).FirstOrDefault();
+            if (disco != null)
+            {
+                ViewBag.CodDiscoteca = new SelectList(db.Discotecas.Where(a => a.Usuario_Discotecas.Any(k => k.EmailUsuario == User.Identity.Name)), "CodDiscoteca", "Descripcion");
+                ViewBag.CodConsumicion = new SelectList(db.Consumicions.Where(a=> a.CodDiscoteca == disco.CodDiscoteca), "CodConsumicion", "Descripcion");
+            }
 
             return View();
         }
@@ -59,6 +63,10 @@ namespace FunClub.Views
         {
             if (ModelState.IsValid)
             {
+                int? ultimaEntrada = db.Entradas.Where(a => a.CodDiscoteca == entrada.CodDiscoteca).Max(a => (int?)a.CodEntrada);
+                entrada.CodEntrada = ultimaEntrada != null ? (int)ultimaEntrada + 1 : 1;
+                entrada.Estado = "Confirmado";
+                entrada.FechaRegistro = DateTime.Now;
                 db.Entradas.Add(entrada);
                 db.SaveChanges();
                 return RedirectToAction("Index");
