@@ -196,6 +196,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductoesController.cs" />
+    <Compile Include="Controllers\PuntosController.cs" />
     <Compile Include="Controllers\VentaEntradaController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\WhatsappController.cs" />
@@ -1141,6 +1142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Puntos\" />
     <Folder Include="Views\VentaEntrada\" />
     <Folder Include="Views\Whatsapp\" />
   </ItemGroup>
