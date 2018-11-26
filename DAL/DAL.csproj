@@ -77,6 +77,9 @@
     <Compile Include="Cliente.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="ClienteFichada.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Consumicion.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
