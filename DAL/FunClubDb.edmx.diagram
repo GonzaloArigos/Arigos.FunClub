@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="df89248cfa4444979a4e12c40432d21d" Name="Diagram1" ZoomLevel="97">
+      <Diagram DiagramId="df89248cfa4444979a4e12c40432d21d" Name="Diagram1" ZoomLevel="87">
         <EntityTypeShape EntityType="FunClubModel.AspNetRole" Width="1.5" PointX="1.5" PointY="15.875" />
         <EntityTypeShape EntityType="FunClubModel.AspNetUserClaim" Width="1.5" PointX="0.75" PointY="4.75" />
         <EntityTypeShape EntityType="FunClubModel.AspNetUser" Width="1.5" PointX="0.75" PointY="18.875" />
@@ -61,6 +61,8 @@
         <AssociationConnector Association="FunClubModel.FK__DetalleTa__Pago___6383C8BA" />
         <AssociationConnector Association="FunClubModel.FK__VentaBarr__Pago___2B0A656D" />
         <AssociationConnector Association="FunClubModel.FK__VentaEntr__Pago___0F624AF8" />
+        <EntityTypeShape EntityType="FunClubModel.ClienteFichada" Width="1.5" PointX="3" PointY="11.625" />
+        <AssociationConnector Association="FunClubModel.FK_ClienteFichadas_Discotecas" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
