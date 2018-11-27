@@ -13,7 +13,7 @@ namespace FunClub.Controllers
         [HttpPost]
         public void EnviarMensaje(string mensajewsp)
         {
-#if !DEBUG
+
             string yourId = "IB5axXPSa0m2C8d1tbmOMmdvbnphbG9hcmlnb3NfYXRfZ21haWxfZG90X2NvbQ==";
             string yourMobile = "+5491164077830";
             string yourMessage = mensajewsp;
@@ -39,7 +39,7 @@ namespace FunClub.Controllers
             {
                 Console.WriteLine(se.Message);
             }
-#endif
+
         }
 
     }
