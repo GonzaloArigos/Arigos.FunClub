@@ -116,6 +116,20 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           <Property Name="Model" Type="varbinary(max)" Nullable="false" />
           <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
         </EntityType>
+        <EntityType Name="ClienteFichadas">
+          <Key>
+            <PropertyRef Name="Dni" />
+            <PropertyRef Name="FechaHoraEntrada" />
+            <PropertyRef Name="CodDisco" />
+          </Key>
+          <Property Name="Dni" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" />
+          <Property Name="FechaNac" Type="varchar" MaxLength="50" />
+          <Property Name="FechaHoraEntrada" Type="datetime" Nullable="false" />
+          <Property Name="Puntos" Type="int" />
+          <Property Name="CodDisco" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Clientes">
           <Key>
             <PropertyRef Name="CodCliente" />
@@ -646,6 +660,18 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ClienteFichadas_Discotecas">
+          <End Role="Discotecas" Type="Self.Discotecas" Multiplicity="1" />
+          <End Role="ClienteFichadas" Type="Self.ClienteFichadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discotecas">
+              <PropertyRef Name="CodDiscoteca" />
+            </Principal>
+            <Dependent Role="ClienteFichadas">
+              <PropertyRef Name="CodDisco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Consumicion_Bebida_Consumicions">
           <End Role="Consumicions" Type="Self.Consumicions" Multiplicity="1" />
           <End Role="Consumicion_Bebida" Type="Self.Consumicion_Bebida" Multiplicity="*" />
@@ -817,6 +843,7 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           <EntitySet Name="Beneficios" EntityType="Self.Beneficios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BeneficiosAdquiridosClientes" EntityType="Self.BeneficiosAdquiridosClientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClienteFichadas" EntityType="Self.ClienteFichadas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Consumicion_Bebida" EntityType="Self.Consumicion_Bebida" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Consumicions" EntityType="Self.Consumicions" Schema="dbo" store:Type="Tables" />
@@ -914,6 +941,10 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers" Association="Self.FK_AspNetUserRoles_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClienteFichadas_Discotecas" Association="Self.FK_ClienteFichadas_Discotecas">
+            <End Role="Discotecas" EntitySet="Discotecas" />
+            <End Role="ClienteFichadas" EntitySet="ClienteFichadas" />
           </AssociationSet>
           <AssociationSet Name="FK_Consumicion_Bebida_Consumicions" Association="Self.FK_Consumicion_Bebida_Consumicions">
             <End Role="Consumicions" EntitySet="Consumicions" />
@@ -1111,6 +1142,11 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           <AssociationSet Name="FK__VentaEntr__Pago___0F624AF8" Association="FunClubModel.FK__VentaEntr__Pago___0F624AF8">
             <End Role="Pago" EntitySet="Pagoes" />
             <End Role="VentaEntrada" EntitySet="VentaEntradas" />
+          </AssociationSet>
+          <EntitySet Name="ClienteFichadas" EntityType="FunClubModel.ClienteFichada" />
+          <AssociationSet Name="FK_ClienteFichadas_Discotecas" Association="FunClubModel.FK_ClienteFichadas_Discotecas">
+            <End Role="Discoteca" EntitySet="Discotecas" />
+            <End Role="ClienteFichada" EntitySet="ClienteFichadas" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AspNetRole">
@@ -1312,6 +1348,7 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           <NavigationProperty Name="VentaEntradas" Relationship="FunClubModel.FK__VentaEntr__Disco__10566F31" FromRole="Discoteca" ToRole="VentaEntrada" />
           <NavigationProperty Name="Usuario_Discotecas" Relationship="FunClubModel.FK_Usuario_Discotecas_Discotecas" FromRole="Discoteca" ToRole="Usuario_Discotecas" />
           <NavigationProperty Name="Productos" Relationship="FunClubModel.FK_Productos_Discotecas" FromRole="Discoteca" ToRole="Producto" />
+          <NavigationProperty Name="ClienteFichadas" Relationship="FunClubModel.FK_ClienteFichadas_Discotecas" FromRole="Discoteca" ToRole="ClienteFichada" />
         </EntityType>
         <EntityType Name="Entrada_has_Beneficio">
           <Key>
@@ -1944,6 +1981,33 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ClienteFichada">
+          <Key>
+            <PropertyRef Name="Dni" />
+            <PropertyRef Name="FechaHoraEntrada" />
+            <PropertyRef Name="CodDisco" />
+          </Key>
+          <Property Name="Dni" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNac" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaHoraEntrada" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Puntos" Type="Int32" />
+          <Property Name="CodDisco" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Discoteca" Relationship="FunClubModel.FK_ClienteFichadas_Discotecas" FromRole="ClienteFichada" ToRole="Discoteca" />
+        </EntityType>
+        <Association Name="FK_ClienteFichadas_Discotecas">
+          <End Type="FunClubModel.Discoteca" Role="Discoteca" Multiplicity="1" />
+          <End Type="FunClubModel.ClienteFichada" Role="ClienteFichada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discoteca">
+              <PropertyRef Name="CodDiscoteca" />
+            </Principal>
+            <Dependent Role="ClienteFichada">
+              <PropertyRef Name="CodDisco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2373,6 +2437,19 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
                 <ScalarProperty Name="CodPago" ColumnName="CodPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClienteFichadas">
+            <EntityTypeMapping TypeName="FunClubModel.ClienteFichada">
+              <MappingFragment StoreEntitySet="ClienteFichadas">
+                <ScalarProperty Name="CodDisco" ColumnName="CodDisco" />
+                <ScalarProperty Name="Puntos" ColumnName="Puntos" />
+                <ScalarProperty Name="FechaHoraEntrada" ColumnName="FechaHoraEntrada" />
+                <ScalarProperty Name="FechaNac" ColumnName="FechaNac" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Dni" ColumnName="Dni" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

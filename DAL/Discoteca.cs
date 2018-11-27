@@ -25,6 +25,7 @@ namespace DAL
             this.VentaEntradas = new HashSet<VentaEntrada>();
             this.Usuario_Discotecas = new HashSet<Usuario_Discotecas>();
             this.Productos = new HashSet<Producto>();
+            this.ClienteFichadas = new HashSet<ClienteFichada>();
         }
     
         public int CodDiscoteca { get; set; }
@@ -53,5 +54,7 @@ namespace DAL
         public virtual ICollection<Usuario_Discotecas> Usuario_Discotecas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Producto> Productos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClienteFichada> ClienteFichadas { get; set; }
     }
 }
