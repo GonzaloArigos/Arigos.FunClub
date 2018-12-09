@@ -51,6 +51,7 @@
     <Compile Include="PagoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioBLL.cs" />
+    <Compile Include="VentaBarraBLL.cs" />
     <Compile Include="VentaEntradaBLL.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -36,6 +36,11 @@ app.config(function ($routeProvider, $locationProvider) {
             {
                 templateUrl: 'SPA/Views/VentaEntrada.html',
                 controller: 'VentaEntradaController'
+        })
+        .when('/VentaBarra',
+            {
+                templateUrl: 'SPA/Views/VentaBarra.html',
+                controller: 'VentaBarraController'
             })
         .when('/ProductoManager',
         {
@@ -111,6 +116,7 @@ app.config(function ($translateProvider) {
         ESTADO: "State",
         HPAGO: "Paym.Hour",
         EXPORTEXCEL_BTN: "Export to excel",
+        TIEMPO_REAL_FICH: "Signs in real time",
         BUTTON_LANG_EN: "English",
         BUTTON_LANG_ES: "Spanish"
     });
@@ -154,6 +160,7 @@ app.config(function ($translateProvider) {
         ESTADO: "Estado",
         HPAGO: "Hora pago",
         EXPORTEXCEL_BTN: "Exportar excel",
+        TIEMPO_REAL_FICH: "Fichadas en tiempo real",
         BUTTON_LANG_EN: "Inglés",
         BUTTON_LANG_ES: "Español"
     });

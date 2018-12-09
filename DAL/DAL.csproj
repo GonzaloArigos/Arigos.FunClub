@@ -141,6 +141,7 @@
     <Compile Include="PrecioConsumicion.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="PrecioConsumicionDAL.cs" />
     <Compile Include="PrecioEntrada.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
@@ -157,6 +158,7 @@
     <Compile Include="VentaBarra.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="VentaBarraDAL.cs" />
     <Compile Include="VentaEntrada.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>

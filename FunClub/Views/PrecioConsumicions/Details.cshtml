@@ -1,0 +1,114 @@
+﻿@model DAL.PrecioConsumicion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PrecioConsumicion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaVigencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaVigencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAlta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAlta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TerminalAlta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TerminalAlta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioAlta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioAlta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaMod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaMod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TerminalMod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TerminalMod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioMod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioMod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Puntos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Puntos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Consumicion.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consumicion.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

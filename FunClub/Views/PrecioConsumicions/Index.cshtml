@@ -1,0 +1,87 @@
+﻿@model IEnumerable<DAL.PrecioConsumicion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <h2>Precios de consumicion</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaVigencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observaciones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaAlta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TerminalAlta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuarioAlta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaMod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TerminalMod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuarioMod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Puntos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Consumicion.Descripcion)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Consumicion.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaVigencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaFin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaAlta)
+            </td>
+            <td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Puntos)
+            </td>
+            <td>
+                @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+        }
+
+    </table>
+
+</div>

@@ -15,6 +15,19 @@
 
     };   
 
+    service.ProcesarPagoBarra = function (item, mediopago, pago) {
+        var promise = $http({
+            method: 'post',
+            url: '/VentaBarra/ProcesarPago',
+            data: { item: item, pago: pago },
+            params: { mediopago: mediopago }
+        });
+
+        return $q.when(promise);
+
+    };   
+
+
     return service;
 
 })

@@ -197,6 +197,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductoesController.cs" />
     <Compile Include="Controllers\PuntosController.cs" />
+    <Compile Include="Controllers\VentaBarraController.cs" />
     <Compile Include="Controllers\VentaEntradaController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\WhatsappController.cs" />
@@ -209,6 +210,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Views\EntradasController.cs" />
+    <Compile Include="Views\PrecioConsumicionsController.cs" />
     <Compile Include="Views\PrecioEntradasController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1056,6 +1058,7 @@
     <Content Include="Scripts\sitemap.xml" />
     <Content Include="SPA\Controller\AppController.js" />
     <Content Include="SPA\Controller\ConsumicionController.js" />
+    <Content Include="SPA\Controller\VentaBarraController.js" />
     <Content Include="SPA\Controller\VentaEntradaController.js" />
     <Content Include="SPA\Controller\ProductoController.js" />
     <Content Include="SPA\Controller\DiscotecaController.js" />
@@ -1066,6 +1069,7 @@
     <Content Include="SPA\jspdf.min.js" />
     <Content Include="SPA\saveHtmlToPdf.min.js" />
     <Content Include="SPA\Services\ConsumicionService .js" />
+    <Content Include="SPA\Services\VentaBarraService.js" />
     <Content Include="SPA\Services\WhatsappService.js" />
     <Content Include="SPA\Services\PagoService.js" />
     <Content Include="SPA\Services\VentaEntradaService.js" />
@@ -1079,13 +1083,17 @@
     <Content Include="SPA\Views\GestionDiscotecas.html" />
     <Content Include="SPA\Views\GestorConsumiciones.html" />
     <Content Include="SPA\Views\Home.html" />
+    <Content Include="SPA\Views\modalDetalleConsumicion.html" />
     <Content Include="SPA\Views\modalDetalleEntrada.html" />
     <Content Include="SPA\Views\modalEditarConsumicion.html" />
     <Content Include="SPA\Views\modalEditarDisco.html" />
+    <Content Include="SPA\Views\modalConsumicionesHoy.html" />
     <Content Include="SPA\Views\modalEntradasHoy.html" />
+    <Content Include="SPA\Views\modalTicketBarra.html" />
     <Content Include="SPA\Views\modalTicketEntrada.html" />
     <Content Include="SPA\Views\Principal.html" />
     <Content Include="SPA\Views\ToolBar.html" />
+    <Content Include="SPA\Views\VentaBarra.html" />
     <Content Include="SPA\Views\VentaEntrada.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1139,10 +1147,16 @@
     <Content Include="Views\Productoes\Details.cshtml" />
     <Content Include="Views\Productoes\Edit.cshtml" />
     <Content Include="Views\Productoes\Index.cshtml" />
+    <Content Include="Views\PrecioConsumicions\Create.cshtml" />
+    <Content Include="Views\PrecioConsumicions\Delete.cshtml" />
+    <Content Include="Views\PrecioConsumicions\Details.cshtml" />
+    <Content Include="Views\PrecioConsumicions\Edit.cshtml" />
+    <Content Include="Views\PrecioConsumicions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Puntos\" />
+    <Folder Include="Views\VentaBarra\" />
     <Folder Include="Views\VentaEntrada\" />
     <Folder Include="Views\Whatsapp\" />
   </ItemGroup>
