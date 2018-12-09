@@ -18,6 +18,7 @@ namespace BLL
                 dash.EntradasVendidas = BLL.VentaEntradaBLL.GetVentaEntradasFecha(disco);
                 dash.CantidadEntradasVendidas = BLL.VentaEntradaBLL.GetCantidadVendidaHoy(disco);
                 dash.FacturacionEntradas = BLL.VentaEntradaBLL.GetFacturacionHoy(disco);
+                dash.clienteFichadas = DAL.PuntosDAL.ObtenerFichadasHoy(disco);
                 return dash;
             }
             return null;

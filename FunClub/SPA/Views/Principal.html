@@ -225,43 +225,35 @@
         </div>
 
     </div>-->
-
-
-
-
     <div class="col-md-12">
-
-        <h3 translate="TIEMPO_REAL"></h3>
-
-        <table class="table" id="ventaentradas">
+        <table class="table" id="fichadas">
             <thead>
                 <tr>
 
-                    <th translate="HORASOL">Hora Sol.</th>
-                    <th translate="MEDIOP">Medio.P/</th>
-                    <th>Total</th>
-                    <th translate="ESTADO">Estado.P/</th>
-                    <th translate="HPAGO">Hora pago</th>
+                    <th>DNI</th>
+                    <th>NOMBRE</th>
+                    <th>APELLIDO</th>
+                    <th>FECHA NAC</th>
+                    <th>HORA ENTRADA</th>
+                 
                 </tr>
             </thead>
             <tbody>
 
-                <tr ng-repeat="x in Dashboard.EntradasVendidas">
+                <tr ng-repeat="x in Dashboard.clienteFichadas">
 
                     <td>
-                        {{x.FechaAlta | date:'hh:mm:ss'}}
+                        {{x.Dni}}
                     </td>
                     <td>
-                        {{x.Pago.DetallePagoEfectivoes.length >0 ? 'Efectivo': ''}}
-                        {{x.Pago.DetallePagoTarjetaCreditoes.length >0  ? 'Credito': ''}}
-                        {{x.Pago.DetallePagoTarjetaDebitoes.length >0  ? 'Debito': ''}}
+                        {{x.Nombre}}
                     </td>
                     <td>
-                        $ARG {{x.Pago.Monto}}
+                        {{x.Apellido}}
                     </td>
-                    <td>{{x.Pago.Estado == 1 ? "Confirmado" : "Cancelado"}}</td>
+                    <td>{{x.FechaNac}}</td>
                     <td>
-                        {{x.Pago.FechaAlta | date:'hh:mm:ss'}}
+                        {{x.FechaHoraEntrada | date:'hh:mm:ss'}}
                     </td>
 
                 </tr>
@@ -273,58 +265,109 @@
 
         </table>
 
-        <button class="btn btn-success" ng-click="exportToExcel('#ventaentradas')">
+        <button class="btn btn-success" ng-click="exportToExcel('#fichadas')">
             <span class="glyphicon glyphicon-share"></span> <span translate="EXPORTEXCEL_BTN"></span>
         </button>
+        </div>
 
+
+
+        <div class="col-md-12">
+
+            <h3 translate="TIEMPO_REAL"></h3>
+
+            <table class="table" id="ventaentradas">
+                <thead>
+                    <tr>
+
+                        <th translate="HORASOL">Hora Sol.</th>
+                        <th translate="MEDIOP">Medio.P/</th>
+                        <th>Total</th>
+                        <th translate="ESTADO">Estado.P/</th>
+                        <th translate="HPAGO">Hora pago</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr ng-repeat="x in Dashboard.EntradasVendidas">
+
+                        <td>
+                            {{x.FechaAlta | date:'hh:mm:ss'}}
+                        </td>
+                        <td>
+                            {{x.Pago.DetallePagoEfectivoes.length >0 ? 'Efectivo': ''}}
+                            {{x.Pago.DetallePagoTarjetaCreditoes.length >0  ? 'Credito': ''}}
+                            {{x.Pago.DetallePagoTarjetaDebitoes.length >0  ? 'Debito': ''}}
+                        </td>
+                        <td>
+                            $ARG {{x.Pago.Monto}}
+                        </td>
+                        <td>{{x.Pago.Estado == 1 ? "Confirmado" : "Cancelado"}}</td>
+                        <td>
+                            {{x.Pago.FechaAlta | date:'hh:mm:ss'}}
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+
+
+            </table>
+
+            <button class="btn btn-success" ng-click="exportToExcel('#ventaentradas')">
+                <span class="glyphicon glyphicon-share"></span> <span translate="EXPORTEXCEL_BTN"></span>
+            </button>
+
+        </div>
+
+        <!--<div class="col-md-6">
+
+            <h3>Venta de consumiciones en tiempo real</h3>
+
+            <table class="table" id="ventabarra">
+                <thead>
+                    <tr>
+                        <th>Entrada</th>
+                        <th>Hora Sol.</th>
+                        <th>Medio.P/</th>
+                        <th>Total</th>
+                        <th>Estado.P/</th>
+                        <th>Hora pago</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            Champagne Federico C/ 2 Speed
+                       </td>
+                        <td>
+                            09/09/2018 02:20
+                        </td>
+                        <td>
+                            Efectivo
+                        </td>
+                        <td>
+                            $550
+                        </td>
+                        <td>Confirmado</td>
+                        <td>
+                            09/09/2018 02:21
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+            <button class="btn btn-success" ng-click="exportToExcel('#ventabarra')">
+                <span class="glyphicon glyphicon-share"></span> Export to Excel
+            </button>-->
     </div>
-
-    <!--<div class="col-md-6">
-
-        <h3>Venta de consumiciones en tiempo real</h3>
-
-        <table class="table" id="ventabarra">
-            <thead>
-                <tr>
-                    <th>Entrada</th>
-                    <th>Hora Sol.</th>
-                    <th>Medio.P/</th>
-                    <th>Total</th>
-                    <th>Estado.P/</th>
-                    <th>Hora pago</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                <tr>
-
-                    <td>
-                        Champagne Federico C/ 2 Speed
-                   </td>
-                    <td>
-                        09/09/2018 02:20
-                    </td>
-                    <td>
-                        Efectivo
-                    </td>
-                    <td>
-                        $550
-                    </td>
-                    <td>Confirmado</td>
-                    <td>
-                        09/09/2018 02:21
-                    </td>
-
-                </tr>
-
-
-            </tbody>
-
-        </table>
-
-        <button class="btn btn-success" ng-click="exportToExcel('#ventabarra')">
-            <span class="glyphicon glyphicon-share"></span> Export to Excel
-        </button>-->
-</div>
 
 </div>

@@ -15,5 +15,6 @@ namespace Entities
         public string FacturacionConsumiciones { get; set; }
         public List<DAL.VentaEntrada> EntradasVendidas { get; set; }
         public List<DAL.VentaBarra> ConsumicionessVendidas { get; set; }
+        public List<DAL.ClienteFichada> clienteFichadas { get; set; }
     }
 }
