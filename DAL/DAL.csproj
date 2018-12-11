@@ -73,6 +73,9 @@
     <Compile Include="Beneficio_has_Consumicion.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Bitacora.cs">
+      <DependentUpon>FunClubDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="CargasMasivasDAL.cs" />
     <Compile Include="Cliente.cs">
       <DependentUpon>FunClubDb.tt</DependentUpon>

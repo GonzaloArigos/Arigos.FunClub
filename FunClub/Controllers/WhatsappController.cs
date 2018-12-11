@@ -5,11 +5,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using DAL;
+
 
 namespace FunClub.Controllers
 {
     public class WhatsappController : Controller
     {
+        private FunClubEntities db = new FunClubEntities();
         [HttpPost]
         public void EnviarMensaje(string mensajewsp)
         {
@@ -34,6 +37,17 @@ namespace FunClub.Controllers
                 {
                     Console.WriteLine(streamIn.ReadToEnd());
                 }
+
+                db.Bitacoras.Add(new Bitacora()
+                {
+                    Descripcion = "Se  realizo un envío de WhatsApp",
+                    FechaHora = DateTime.Now,
+                    Modulo = "WhatappService",
+                    UserId = User.Identity.Name
+                }
+      );
+
+                db.SaveChanges();
             }
             catch (SystemException se)
             {

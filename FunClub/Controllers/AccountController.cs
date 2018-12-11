@@ -11,12 +11,15 @@ using Microsoft.Owin.Security;
 using FunClub.Models;
 using System.Net.Mail;
 using System.Net.Mime;
+using DAL;
 
 namespace FunClub.Controllers
 {
+
     [Authorize]
     public class AccountController : Controller
     {
+        private FunClubEntities db = new FunClubEntities();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -81,6 +84,16 @@ namespace FunClub.Controllers
                 if (user.EmailConfirmed == true)
                 {
                     await SignInManager.SignInAsync(user, model.RememberMe, true);
+                    db.Bitacoras.Add(new Bitacora()
+                    {
+                        Descripcion = "Se efectuó n Log In en la aplicacion",
+                        FechaHora = DateTime.Now,
+                        Modulo = "LogIn",
+                        UserId = model.Email
+                    }
+    );
+
+                    db.SaveChanges();
                     return RedirectToLocal("http://localhost:49298/#!/Principal");
                 }
                 else

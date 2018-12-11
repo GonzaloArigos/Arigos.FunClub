@@ -64,6 +64,16 @@ namespace FunClub.Controllers
                 int? puntos = db.ClienteFichadas.Where(a => a.Dni == fichada.Dni).Sum(x => x.Puntos);
                 puntos = puntos == null ? 0 : puntos;
 
+                db.Bitacoras.Add(new Bitacora()
+                {
+                    Descripcion = "Se acreditaron puntos al dni: " + fichada.Dni,
+                    FechaHora = DateTime.Now,
+                    Modulo = "Android",
+                    UserId = fichada.Dni
+                }
+                );
+
+                db.SaveChanges();
 
                 return "Se creditaron " + fichada.Puntos + " puntos al DNI: " + fichada.Dni + ". Acumulaste un total de: " + puntos.ToString() + " en la discoteca: " + objdisco.Descripcion;
             }

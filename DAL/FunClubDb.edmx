@@ -106,6 +106,16 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           <Property Name="TerminalMod" Type="varchar" MaxLength="1" />
           <Property Name="UsuarioMod" Type="varchar" MaxLength="1" />
         </EntityType>
+        <EntityType Name="Bitacora">
+          <Key>
+            <PropertyRef Name="CodLog" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="Modulo" Type="varchar" MaxLength="50" />
+          <Property Name="FechaHora" Type="datetime" />
+          <Property Name="CodLog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -842,6 +852,7 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
           <EntitySet Name="Beneficio_has_Consumicion" EntityType="Self.Beneficio_has_Consumicion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Beneficios" EntityType="Self.Beneficios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BeneficiosAdquiridosClientes" EntityType="Self.BeneficiosAdquiridosClientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bitacora" EntityType="Self.Bitacora" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClienteFichadas" EntityType="Self.ClienteFichadas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
@@ -1148,6 +1159,7 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
             <End Role="Discoteca" EntitySet="Discotecas" />
             <End Role="ClienteFichada" EntitySet="ClienteFichadas" />
           </AssociationSet>
+          <EntitySet Name="Bitacoras" EntityType="FunClubModel.Bitacora" />
         </EntityContainer>
         <EntityType Name="AspNetRole">
           <Key>
@@ -2008,6 +2020,16 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Bitacora">
+          <Key>
+            <PropertyRef Name="CodLog" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Modulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaHora" Type="DateTime" Precision="3" />
+          <Property Name="CodLog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2450,6 +2472,17 @@ warning 6002: The table/view 'FunClub.dbo.AspNetUserLogins' does not have a prim
                 <ScalarProperty Name="Apellido" ColumnName="Apellido" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Dni" ColumnName="Dni" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bitacoras">
+            <EntityTypeMapping TypeName="FunClubModel.Bitacora">
+              <MappingFragment StoreEntitySet="Bitacora">
+                <ScalarProperty Name="CodLog" ColumnName="CodLog" />
+                <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+                <ScalarProperty Name="Modulo" ColumnName="Modulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

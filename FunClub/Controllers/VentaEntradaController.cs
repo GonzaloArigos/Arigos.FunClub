@@ -6,11 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using DAL;
 
 namespace FunClub.Controllers
 {
     public class VentaEntradaController : Controller
     {
+        private FunClubEntities db = new FunClubEntities();
         // GET: VentaEntrada
         public ActionResult Index()
         {
@@ -67,6 +69,17 @@ namespace FunClub.Controllers
                 BLL.VentaEntradaBLL.ConfirmarVentaCredito(detalleVenta, detallepago, User.Identity.Name);
                 mensajewsp = "Se realizó una venta de entrada!";
             }
+
+            db.Bitacoras.Add(new Bitacora()
+            {
+                Descripcion = "Se  realizo una venta de entradas",
+                FechaHora = DateTime.Now,
+                Modulo = "VentaEntradas",
+                UserId = User.Identity.Name
+            }
+           );
+
+            db.SaveChanges();
 
         }
 

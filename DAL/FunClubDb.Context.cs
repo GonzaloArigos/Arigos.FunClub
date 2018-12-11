@@ -54,5 +54,6 @@ namespace DAL
         public virtual DbSet<DetallePagoTarjetaDebito> DetallePagoTarjetaDebitoes { get; set; }
         public virtual DbSet<Pago> Pagoes { get; set; }
         public virtual DbSet<ClienteFichada> ClienteFichadas { get; set; }
+        public virtual DbSet<Bitacora> Bitacoras { get; set; }
     }
 }

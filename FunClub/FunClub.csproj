@@ -209,6 +209,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\BitacorasController.cs" />
     <Compile Include="Views\EntradasController.cs" />
     <Compile Include="Views\PrecioConsumicionsController.cs" />
     <Compile Include="Views\PrecioEntradasController.cs" />
@@ -1152,6 +1153,11 @@
     <Content Include="Views\PrecioConsumicions\Details.cshtml" />
     <Content Include="Views\PrecioConsumicions\Edit.cshtml" />
     <Content Include="Views\PrecioConsumicions\Index.cshtml" />
+    <Content Include="Views\Bitacoras\Create.cshtml" />
+    <Content Include="Views\Bitacoras\Delete.cshtml" />
+    <Content Include="Views\Bitacoras\Details.cshtml" />
+    <Content Include="Views\Bitacoras\Edit.cshtml" />
+    <Content Include="Views\Bitacoras\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

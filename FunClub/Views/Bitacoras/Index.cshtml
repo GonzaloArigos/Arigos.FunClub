@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DAL.Bitacora>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div ng-include="'/SPA/Views/ToolBar.html'"></div>
+
+<div class="container">
+    <h2>Bitácora FunClub!</h2>
+
+   
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaHora)
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaHora)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>
